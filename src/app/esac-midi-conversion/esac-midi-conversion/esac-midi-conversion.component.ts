@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from "@angular/common/http";
-import 'rxjs/Rx' ;
+import { HttpClient, HttpRequest } from "@angular/common/http";
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-esac-midi-conversion',
@@ -22,19 +22,25 @@ export class EsacMidiConversionComponent {
     ]),
     bem: new FormControl()
   });
+  private urlEsac2midi: string = '/esac2midi';
 
   constructor(private http: HttpClient) { }
 
   private submit(): void {
-    this.http.post('/esac2midi', this.form.value).subscribe(data => {
-      this.downloadMidi(data);
-    },
-      error => console.log("Error downloading file: ", error));
+    this.http.post(this.urlEsac2midi, this.form.value, { responseType: 'arraybuffer' })
+      .subscribe(data => {
+        this.downloadMidi(data);
+      },
+      error => {
+        console.log("Error downloading file: ", error)
+      });
   }
 
-  private downloadMidi(data: Object): void {
-    var blob = new Blob([data], { type: 'audio/midi' });
-    var url = window.URL.createObjectURL(blob);
+  private downloadMidi(data): void {
+    const blob = new Blob([data], { type: 'audio/midi' });
+    // const file = new File([blob], 'file.mid', { type: 'audio/midi' });
+
+    const url = window.URL.createObjectURL(blob);
     window.open(url);
   }
 
