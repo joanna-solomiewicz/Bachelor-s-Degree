@@ -18,7 +18,7 @@ export class EsacMidiConversionComponent {
     key: new FormControl(),
     mel: new FormControl(null, [
       Validators.required,
-      Validators.pattern("[0-7\+\-\^\#b\ ]+")
+      Validators.pattern("(?:[0-7\+\-\^\#b\ \.\_\(\)]|\n\ \ \ \ |\ \/\/)+")
     ]),
     bem: new FormControl()
   });
