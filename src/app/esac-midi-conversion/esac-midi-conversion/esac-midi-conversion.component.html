@@ -1,31 +1,28 @@
 <div class="container">
-  <p>
-    ESAC to MIDI conversion
-  </p>
   <form class="form-container" [formGroup]="form" novalidate>
     <div class="form-column">
       <mat-form-field>
         <input matInput formControlName="dwok" placeholder="DWOK">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="cut" placeholder="CUT[...]">
+        <input matInput formControlName="cut" placeholder="CUT">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="trd" placeholder="TRD[...]">
+        <input matInput formControlName="trd" placeholder="TRD">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="sig" placeholder="SIG[...]">
+        <input matInput formControlName="sig" placeholder="SIG">
       </mat-form-field>
     </div>
     <div class="form-column">
       <mat-form-field>
-        <input matInput formControlName="key" placeholder="KEY[...]">
+        <input matInput formControlName="key" placeholder="KEY">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="mel" placeholder="MEL[...]*">
+        <input matInput formControlName="mel" placeholder="MEL*">
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput formControlName="bem" placeholder="BEM[...]" rows="3"></textarea>
+        <textarea matInput formControlName="bem" placeholder="BEM" rows="4"></textarea>
       </mat-form-field>
     </div>
   </form>
@@ -33,6 +30,4 @@
   <button mat-fab color="accent" (click)="submit()" [disabled]="form.invalid">
     <i class="material-icons">swap_horiz</i>
   </button>
-
-  <p>Status: {{ form.status | json }}</p>
 </div>

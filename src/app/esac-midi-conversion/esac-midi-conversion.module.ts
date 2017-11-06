@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { EsacMidiConversionComponent } from './esac-midi-conversion/esac-midi-conversion.component';
 
@@ -13,7 +14,8 @@ import { EsacMidiConversionComponent } from './esac-midi-conversion/esac-midi-co
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     EsacMidiConversionComponent

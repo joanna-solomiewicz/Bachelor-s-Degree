@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { EsacMidiConversionModule } from './esac-midi-conversion/esac-midi-conversion.module';
+import { MatTabsModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    EsacMidiConversionModule
+    EsacMidiConversionModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
