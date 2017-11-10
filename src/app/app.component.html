@@ -1,6 +1,5 @@
-<mat-tab-group color="accent">
-  <mat-tab label="ESAC to MIDI conversion">
-    <app-esac-midi-conversion></app-esac-midi-conversion>
-  </mat-tab>
-  <mat-tab label="MIDI to ESAC conversion"></mat-tab>
-</mat-tab-group>
+<mat-toolbar color="accent">
+  <a mat-button routerLink="/esactomidi">ESAC &rarr; MIDI</a>
+  <a mat-button routerLink="/miditoesac">MIDI &rarr; ESAC</a>
+</mat-toolbar>
+<router-outlet></router-outlet>

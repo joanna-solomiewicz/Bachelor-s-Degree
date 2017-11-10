@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EsacMidiConversionComponent } from './esac-midi-conversion.component';
+import { EsacToMidiComponent } from './esac-to-midi.component';
 
-describe('EsacMidiConversionComponent', () => {
-  let component: EsacMidiConversionComponent;
-  let fixture: ComponentFixture<EsacMidiConversionComponent>;
+describe('EsacToMidiComponent', () => {
+  let component: EsacToMidiComponent;
+  let fixture: ComponentFixture<EsacToMidiComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EsacMidiConversionComponent ]
+      declarations: [ EsacToMidiComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EsacMidiConversionComponent);
+    fixture = TestBed.createComponent(EsacToMidiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

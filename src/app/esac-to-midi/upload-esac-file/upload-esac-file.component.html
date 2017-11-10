@@ -1,0 +1,7 @@
+<div class="container">
+  <button mat-fab color="accent">
+    <mat-icon>file_upload</mat-icon>
+  </button>
+  <input multiple #fileInput type="file" (change)="onChange()" />
+  <button mat-raised-button color="accent" (click)="addFile()">Add</button>
+</div>

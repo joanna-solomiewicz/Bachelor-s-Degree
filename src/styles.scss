@@ -1,2 +1,11 @@
 @import './assets/styles/theme';
 @import './assets/styles/material_icons';
+
+body, 
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}

@@ -1,9 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { EsacMidiConversionModule } from './esac-midi-conversion/esac-midi-conversion.module';
-import { MatTabsModule } from '@angular/material';
+import { EsacToMidiModule } from './esac-to-midi/esac-to-midi.module';
+import { MatToolbarModule, MatButtonModule } from '@angular/material';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/esactomidi', pathMatch: 'full' },
+  { path: '**', redirectTo: '/esactomidi', pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [
@@ -11,8 +17,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    EsacMidiConversionModule,
-    MatTabsModule
+    EsacToMidiModule,
+    MatToolbarModule,
+    MatButtonModule,
+    RouterModule.forRoot( appRoutes )
   ],
   providers: [],
   bootstrap: [AppComponent]
