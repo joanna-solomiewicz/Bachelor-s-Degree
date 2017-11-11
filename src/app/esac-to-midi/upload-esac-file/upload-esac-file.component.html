@@ -1,7 +1,19 @@
 <div class="container">
-  <button mat-fab color="accent">
-    <mat-icon>file_upload</mat-icon>
-  </button>
-  <input multiple #fileInput type="file" (change)="onChange()" />
-  <button mat-raised-button color="accent" (click)="addFile()">Add</button>
+  <form [formGroup]="form" novalidate>
+    <span class="file--button">
+      <button mat-fab color="accent">
+        <mat-icon>attach_file</mat-icon>
+        <input #file type="file" class="file--input" (change)="onChangeFile()">
+      </button>
+    </span>
+    <mat-form-field>
+      <input #fileName matInput readonly formControlName="fileName" placeholder="File">
+    </mat-form-field>
+    <span class="file--upload">
+      <button mat-raised-button color="accent" (click)="uploadFile()">
+        <span>Upload</span>
+        <mat-icon>file_upload</mat-icon>
+      </button>
+    </span>
+  </form>
 </div>

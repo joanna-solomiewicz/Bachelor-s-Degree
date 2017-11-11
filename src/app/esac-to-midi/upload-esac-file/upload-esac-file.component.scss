@@ -1,3 +1,25 @@
+$space: 10px;
+$button--width: 56px;
+
 .container {
-  padding: 10px 0;
+  padding: $space;
+}
+
+.file--button {
+  position: relative;
+  margin-right: $space;
+}
+
+.file--input {
+  cursor: pointer;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: 0;
+  width: $button--width;;
+}
+
+.file--upload {
+  margin-left: $space;
 }

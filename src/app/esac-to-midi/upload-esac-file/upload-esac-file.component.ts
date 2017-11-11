@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { EsacToMidiService } from '../services/esac-to-midi.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'upload-esac-file',
@@ -8,14 +9,31 @@ import { EsacToMidiService } from '../services/esac-to-midi.service';
 })
 export class UploadEsacFileComponent {
 
-  @ViewChild('fileInput') fileInput;
+  @ViewChild('file') file;
+  @ViewChild('fileName') fileName;
+
+  private form: FormGroup = new FormGroup({
+    fileName: new FormControl()
+  });
 
   constructor(
     private esacToMidiService: EsacToMidiService
   ) { }
 
-  private addFile(): void {
-    let files = this.fileInput.nativeElement.files;
+  private onChangeFile(): void {
+    this.showFileName(this.file.nativeElement.files);
+  }
+
+  private showFileName(files: Object): void {
+    if (files && files[0]) {
+      this.fileName.nativeElement.value = files[0].name;
+    } else {
+      this.fileName.nativeElement.value = null;
+    }
+  }
+
+  private uploadFile(): void {
+    let files = this.file.nativeElement.files;
     if (files && files[0]) {
       let fileToUpload = files[0];
       this.esacToMidiService.uploadFile(fileToUpload)
@@ -23,9 +41,5 @@ export class UploadEsacFileComponent {
           console.log(response);
         });
     }
-  }
-
-  private onChange(): void {
-    console.log(this.fileInput.nativeElement.files);
   }
 }

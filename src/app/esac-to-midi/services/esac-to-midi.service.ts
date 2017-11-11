@@ -14,7 +14,7 @@ export class EsacToMidiService {
     let input = new FormData();
     input.append('file', file);
 
-    return this.http.post('/esac2midi', input);
+    return this.http.post(this.urlEsac2midi, input);
   }
 
   submitEsac(form: any) {
