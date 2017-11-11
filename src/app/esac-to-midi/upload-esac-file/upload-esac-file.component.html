@@ -10,7 +10,7 @@
       <input #fileName matInput readonly formControlName="fileName" placeholder="File">
     </mat-form-field>
     <span class="file--upload">
-      <button mat-raised-button color="accent" (click)="uploadFile()">
+      <button mat-raised-button color="accent" (click)="uploadFile()" [disabled]="!isFile()">
         <span>Upload</span>
         <mat-icon>file_upload</mat-icon>
       </button>

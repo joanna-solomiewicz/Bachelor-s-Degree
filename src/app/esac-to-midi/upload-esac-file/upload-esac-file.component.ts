@@ -42,4 +42,8 @@ export class UploadEsacFileComponent {
         });
     }
   }
+
+  private isFile(): boolean {
+    return this.file.nativeElement.files[0];
+  }
 }
