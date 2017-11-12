@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { EsacToMidiService } from '../services/esac-to-midi.service';
+import { pattern } from './regexp';
 
 @Component({
   selector: 'new-esac',
@@ -17,8 +19,7 @@ export class NewEsacComponent {
     key: new FormControl(),
     mel: new FormControl(null, [
       Validators.required,
-      //poprawić . _ ()
-      Validators.pattern('(?:[0-7]|(\n\ \ \ \ )|(\\+\\d)|(\\-\\d)|(\\d\\^)|(\\d\\#)|(\\db)|(\\d\ {2}\\d)|(\\d\ {4}\\d))+\ \/\/')
+      Validators.pattern(pattern)
     ]),
     bem: new FormControl()
   });
