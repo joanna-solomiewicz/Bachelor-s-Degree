@@ -2,27 +2,27 @@
   <form class="form-container" [formGroup]="form" novalidate>
     <div class="form-column">
       <mat-form-field>
-        <input matInput formControlName="dwok" placeholder="DWOK">
+        <input matInput formControlName="name" placeholder="DWOK">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="cut" placeholder="CUT">
+        <input matInput formControlName="title" placeholder="CUT">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="trd" placeholder="TRD">
+        <input matInput formControlName="source" placeholder="TRD">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="sig" placeholder="SIG">
+        <input matInput formControlName="signature" placeholder="SIG">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="key" placeholder="KEY">
+        <input matInput formControlName="key" placeholder="KEY*">
       </mat-form-field>
     </div>
     <div class="form-column">
       <mat-form-field>
-        <textarea matInput formControlName="mel" placeholder="MEL*" rows="4"></textarea>
+        <textarea matInput formControlName="melody" placeholder="MEL*" rows="4"></textarea>
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput formControlName="bem" placeholder="BEM" rows="5"></textarea>
+        <textarea matInput formControlName="remarks" placeholder="BEM" rows="5"></textarea>
       </mat-form-field>
     </div>
   </form>

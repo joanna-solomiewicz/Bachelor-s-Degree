@@ -12,16 +12,17 @@ import { pattern } from './regexp';
 export class NewEsacComponent {
 
   private form: FormGroup = new FormGroup({
-    dwok: new FormControl(),
-    cut: new FormControl(),
-    trd: new FormControl(),
-    sig: new FormControl(),
-    key: new FormControl(),
-    mel: new FormControl(null, [
+    name: new FormControl(''),
+    title: new FormControl(''),
+    source: new FormControl(''),
+    region: new FormControl(''),
+    signature: new FormControl(''),
+    key: new FormControl(''),
+    melody: new FormControl('', [
       Validators.required,
       Validators.pattern(pattern)
     ]),
-    bem: new FormControl()
+    remarks: new FormControl('')
   });
 
   constructor(
@@ -29,7 +30,7 @@ export class NewEsacComponent {
   ) { }
 
   private submit(): void {
-    this.esacToMidiService.submitEsac(this.form.value.mel)
+    this.esacToMidiService.submitEsac(this.form.value)
       .subscribe(data => {
         this.downloadMidi(data);
       },
