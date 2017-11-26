@@ -39,11 +39,20 @@ export class UploadEsacFileComponent {
       this.esacToMidiService.uploadFile(fileToUpload)
         .subscribe(response => {
           console.log(response);
+          this.resetFileInput();
+        }, error => {
+          console.log(error);
+          this.resetFileInput();
         });
     }
   }
 
-  private isFile(): boolean {
+  private isFileSelected(): boolean {
     return this.file.nativeElement.files[0];
+  }
+
+  private resetFileInput(): void {
+    this.file.nativeElement.value = null;
+    this.fileName.nativeElement.value = null;
   }
 }
