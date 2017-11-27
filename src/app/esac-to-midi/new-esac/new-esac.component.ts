@@ -23,14 +23,9 @@ export class NewEsacComponent implements OnInit {
 
   private submit(): void {
     this.esacToMidiService.submitEsac(this.form.value)
-      .subscribe(data => {
-        this.downloadMidi(data);
-      },
-      error => {
-        console.log('Error downloading file: ', error)
-      }, () => {
-        this.form = this.newForm();
-      });
+      .subscribe(data => this.downloadMidi(data),
+      error => console.log('Error downloading file: ', error),
+      () => this.form = this.newForm());
   }
 
   private downloadMidi(data: ArrayBuffer): void {

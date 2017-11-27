@@ -37,13 +37,9 @@ export class UploadEsacFileComponent {
     if (files && files[0]) {
       let fileToUpload = files[0];
       this.esacToMidiService.uploadFile(fileToUpload)
-        .subscribe(response => {
-          console.log(response);
-          this.resetFileInput();
-        }, error => {
-          console.log(error);
-          this.resetFileInput();
-        });
+        .subscribe(response => console.log(response),
+        error => console.log(error),
+        () => this.resetFileInput());
     }
   }
 
