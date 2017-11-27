@@ -1,30 +1,29 @@
 <div class="container">
-  <form class="form-container" [formGroup]="form" novalidate>
-    <div class="form-column">
-      <mat-form-field>
-        <input matInput formControlName="name" placeholder="DWOK">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput formControlName="title" placeholder="CUT">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput formControlName="source" placeholder="TRD">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput formControlName="signature" placeholder="SIG">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput formControlName="key" placeholder="KEY*">
-      </mat-form-field>
-    </div>
-    <div class="form-column">
-      <mat-form-field>
-        <textarea matInput formControlName="melody" placeholder="MEL*" rows="4"></textarea>
-      </mat-form-field>
-      <mat-form-field>
-        <textarea matInput formControlName="remarks" placeholder="BEM" rows="5"></textarea>
-      </mat-form-field>
-    </div>
+  <form [formGroup]="form" novalidate class="container-form">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="title" placeholder="Title">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="source" placeholder="Source">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="region" placeholder="Region">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="signature" placeholder="Signaure">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="key" placeholder="Key*">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput formControlName="melody" placeholder="Melody*" rows="4"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput formControlName="remarks" placeholder="Remarks" rows="4"></textarea>
+    </mat-form-field>
   </form>
 
   <button mat-fab color="accent" (click)="submit()" [disabled]="form.invalid">

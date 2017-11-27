@@ -17,7 +17,9 @@ export class NewEsacComponent {
     source: new FormControl(''),
     region: new FormControl(''),
     signature: new FormControl(''),
-    key: new FormControl(''),
+    key: new FormControl('', [
+      Validators.required
+    ]),
     melody: new FormControl('', [
       Validators.required,
       Validators.pattern(pattern)
