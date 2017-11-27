@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { EsacToMidiService } from '../services/esac-to-midi.service';
@@ -9,27 +9,17 @@ import { pattern } from './regexp';
   templateUrl: './new-esac.component.html',
   styleUrls: ['./new-esac.component.scss']
 })
-export class NewEsacComponent {
+export class NewEsacComponent implements OnInit {
 
-  private form: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    title: new FormControl(''),
-    source: new FormControl(''),
-    region: new FormControl(''),
-    signature: new FormControl(''),
-    key: new FormControl('', [
-      Validators.required
-    ]),
-    melody: new FormControl('', [
-      Validators.required,
-      Validators.pattern(pattern)
-    ]),
-    remarks: new FormControl('')
-  });
+  private form: FormGroup;
 
   constructor(
     private esacToMidiService: EsacToMidiService
   ) { }
+
+  ngOnInit() {
+    this.form = this.newForm();
+  }
 
   private submit(): void {
     this.esacToMidiService.submitEsac(this.form.value)
@@ -38,6 +28,8 @@ export class NewEsacComponent {
       },
       error => {
         console.log('Error downloading file: ', error)
+      }, () => {
+        this.form = this.newForm();
       });
   }
 
@@ -47,5 +39,23 @@ export class NewEsacComponent {
 
     const url = window.URL.createObjectURL(blob);
     window.open(url);
+  }
+
+  private newForm(): FormGroup {
+    return new FormGroup({
+      name: new FormControl(''),
+      title: new FormControl(''),
+      source: new FormControl(''),
+      region: new FormControl(''),
+      signature: new FormControl(''),
+      key: new FormControl('', [
+        Validators.required
+      ]),
+      melody: new FormControl('', [
+        Validators.required,
+        Validators.pattern(pattern)
+      ]),
+      remarks: new FormControl('')
+    });
   }
 }
