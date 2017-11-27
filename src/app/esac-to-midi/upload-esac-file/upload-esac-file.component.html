@@ -6,6 +6,9 @@
         <input #file type="file" class="file--input" (change)="onChangeFile()">
       </button>
     </span>
+    <button mat-icon-button (click)="resetFileInput()" [disabled]="!isFileSelected()">
+      <mat-icon>clear</mat-icon>
+    </button>
     <mat-form-field>
       <input #fileName matInput readonly formControlName="fileName" placeholder="File">
     </mat-form-field>
