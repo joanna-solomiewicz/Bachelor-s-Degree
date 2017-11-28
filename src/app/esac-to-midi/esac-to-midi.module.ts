@@ -27,10 +27,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot( appRoutes )
-  ],
-  exports: [
-    EsacToMidiComponent
+    RouterModule.forChild(appRoutes)
   ],
   declarations: [
     EsacToMidiComponent,
