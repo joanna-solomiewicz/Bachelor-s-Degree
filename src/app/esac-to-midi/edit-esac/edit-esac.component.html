@@ -1,0 +1,43 @@
+<div class="container-search">
+  <form [formGroup]="searchEsacForm">
+    <mat-form-field>
+      <input matInput [formControl]="searchEsacFormControl" placeholder="Search ESAC" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let esac of filteredEsacs | async" [value]="esac.name" (onSelectionChange)="onEsacSelection($event, esac)">
+          <span>{{ esac.name }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>
+
+<div [hidden]="!esacSelected">
+  <div class="container-form">
+    <form [formGroup]="editEsacForm" novalidate class="form">
+      <mat-form-field>
+        <input matInput formControlName="name" placeholder="Name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="title" placeholder="Title">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="source" placeholder="Source">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="region" placeholder="Region">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="signature" placeholder="Signature">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="key" placeholder="Key*">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput formControlName="melody" placeholder="Melody*" rows="4"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput formControlName="remarks" placeholder="Remarks" rows="4"></textarea>
+      </mat-form-field>
+    </form>
+  </div> 
+</div>

@@ -5,6 +5,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 export class EsacToMidiService {
 
   private urlEsac2midi: string = '/esac2midi';
+  private urlEsacs: string = '/esacs';
 
   constructor(
     private http: HttpClient
@@ -19,5 +20,9 @@ export class EsacToMidiService {
 
   submitEsac(form: any) {
     return this.http.post(this.urlEsac2midi, form, { responseType: 'arraybuffer' })
+  }
+
+  getEsacs() {
+    return this.http.get(this.urlEsacs);
   }
 }
