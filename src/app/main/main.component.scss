@@ -1,3 +1,9 @@
+$card--width: 320px;
+$card--max-width: 350px;
+$card--margin: 10px;
+$card--opacity: .85;
+$button-add--offset: 20px;
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -7,10 +13,10 @@
 }
 
 .card {
-    max-width: 350px;
-    width: 320px;
-    margin: 10px;
-    opacity: 0.85;
+    width: $card--width;
+    max-width: $card--max-width;
+    margin: $card--margin;
+    opacity: $card--opacity;
 }
 
 .card-buttons {
@@ -24,4 +30,10 @@
 
 .whitespace {
     white-space: pre-wrap;
+}
+
+.button-add {
+    position: fixed;
+    right: $button-add--offset;
+    bottom: $button-add--offset;
 }
