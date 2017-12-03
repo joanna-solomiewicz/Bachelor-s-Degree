@@ -1,3 +1,45 @@
-<p>
-  main works!
-</p>
+<div class="card-container">
+  <mat-card class="card" *ngFor="let esac of esacs">
+    <div class="card-buttons">
+      <button mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="accent">
+        <mat-icon>file_download</mat-icon>
+      </button>
+    </div>
+    <mat-card-header>
+      <mat-card-title>{{ esac.name }}</mat-card-title>
+      <mat-card-subtitle>{{ esac.title }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p *ngIf="esac.region.length">
+        <span class="card-content--bold">Region:</span>
+        <span>{{ esac.region }}</span>
+      </p>
+      <p *ngIf="esac.source.length">
+        <span class="card-content--bold">Source:</span>
+        <span>{{ esac.source }}</span>
+      </p>
+      <p *ngIf="esac.signature.length">
+        <span class="card-content--bold">Signature:</span>
+        <span>{{ esac.signature }}</span>
+      </p>
+      <p *ngIf="esac.key.length">
+        <span class="card-content--bold">Key:</span>
+        <span>{{ esac.key }}</span>
+      </p>
+      <p *ngIf="esac.melody.length">
+        <span class="card-content--bold">Melody:</span>
+        <span class="whitespace">{{ esac.melody }}</span>
+      </p>
+      <p *ngIf="esac.remarks.length">
+        <span class="card-content--bold">Remarks:</span>
+        <span>{{ esac.remarks }}</span>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

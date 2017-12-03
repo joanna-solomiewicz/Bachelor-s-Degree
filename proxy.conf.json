@@ -1,0 +1,11 @@
+{
+  "/esac2midi": {
+    "target": "http://esac-server.herokuapp.com",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/esacs": {
+    "target": "http://localhost:8080",
+    "secure": false
+  }
+}
