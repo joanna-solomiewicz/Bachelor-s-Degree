@@ -1,5 +1,5 @@
 <div class="card-container">
-  <mat-card class="card" *ngFor="let esac of esacs">
+  <mat-card class="card" *ngFor="let esac of esacs; index as idx">
     <div class="card-buttons">
       <button mat-icon-button>
         <mat-icon>delete</mat-icon>
@@ -7,7 +7,7 @@
       <button mat-icon-button>
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="accent">
+      <button mat-icon-button (click)="downloadEsac(idx)" color="accent">
         <mat-icon>file_download</mat-icon>
       </button>
     </div>
