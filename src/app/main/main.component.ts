@@ -10,6 +10,7 @@ import { MainService } from './services/main.service';
 export class MainComponent implements OnInit {
 
   private esacs;  //typ
+  private esacsExpanded: boolean[] = [];
 
   constructor(
     private mainService: MainService
@@ -23,10 +24,29 @@ export class MainComponent implements OnInit {
     this.mainService.getEsacs().subscribe(
       data => {
         this.esacs = data;
+        this.fillEsacsExpanded(this.esacs.length);
       }, error => {
         console.log('GET /esacs error');
       }
     )
+  }
+
+  private fillEsacsExpanded(length: number): void {
+    for (let i = 0; i < length; i++) {
+      this.esacsExpanded.push(false);
+    }
+  }
+
+  private toggleCard(index: number): void {
+    this.esacsExpanded[index] = !this.esacsExpanded[index];
+  }
+
+  private expandAll(): void {
+    this.esacsExpanded.fill(true);
+  }
+
+  private closeAll(): void {
+    this.esacsExpanded.fill(false);
   }
 
   private downloadEsac(index: number): void {

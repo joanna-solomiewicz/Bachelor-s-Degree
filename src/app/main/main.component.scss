@@ -1,27 +1,33 @@
+$top--margin: 10px;
 $card--width: 320px;
 $card--max-width: 350px;
-$card--margin: 10px;
+$card--margin-top: 10px;
+$card--margin-side: 5px;
 $card--opacity: .85;
 $button-add--offset: 20px;
+
+.top-container {
+    margin: $top--margin;
+    text-align: right;
+}
 
 .card-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 .card {
     width: $card--width;
     max-width: $card--max-width;
-    margin: $card--margin;
+    margin: $card--margin-top $card--margin-side;
     opacity: $card--opacity;
 }
 
 .card-buttons {
-    display: flex;
-    justify-content: flex-end;
+    text-align: right;
 }
 
 .card-content--bold {
@@ -36,4 +42,8 @@ $button-add--offset: 20px;
     position: fixed;
     right: $button-add--offset;
     bottom: $button-add--offset;
+}
+
+.card-footer-button {
+    width: 100%;
 }
