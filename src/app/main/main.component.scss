@@ -1,11 +1,10 @@
 $top--margin: 10px;
-$menu--opacity: .8;
-$menu--background: rgba(255, 255, 255, $menu--opacity);
+$background-opacity: .8;
+$background-color: rgba(255, 255, 255, $background-opacity);
 $card--width: 320px;
 $card--max-width: 350px;
 $card--margin-top: 10px;
 $card--margin-side: 5px;
-$card--opacity: .85;
 $button-add--offset: 20px;
 
 .top-container--large {
@@ -38,7 +37,7 @@ $button-add--offset: 20px;
     width: $card--width;
     max-width: $card--max-width;
     margin: $card--margin-top $card--margin-side;
-    opacity: $card--opacity;
+    background-color: $background-color;
 }
 
 .card-buttons {

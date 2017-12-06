@@ -1,0 +1,22 @@
+<div class="file-container">
+  <form [formGroup]="form" novalidate>
+    <span class="file-button">
+      <button mat-fab color="accent">
+        <mat-icon>attach_file</mat-icon>
+        <input #file type="file" class="file-input" (change)="onChangeFile()">
+      </button>
+    </span>
+    <button mat-icon-button (click)="resetFileInput()" [disabled]="!isFileSelected()">
+      <mat-icon>clear</mat-icon>
+    </button>
+    <mat-form-field>
+      <input #fileName matInput readonly formControlName="fileName" placeholder="File">
+    </mat-form-field>
+    <span class="file-upload">
+      <button mat-raised-button color="accent" (click)="chooseFile()" [disabled]="!isFileSelected()">
+        <span>Upload</span>
+        <mat-icon>file_upload</mat-icon>
+      </button>
+    </span>
+  </form>
+</div>
