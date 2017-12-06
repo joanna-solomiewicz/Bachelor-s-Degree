@@ -47,4 +47,8 @@ export class ConverterComponent implements OnInit {
   private handleEsacToMidiFile(event): void {
     console.log(event)
   }
+
+  private handleEsacToMidiNew(event): void {
+    console.log(event)
+  }
 }

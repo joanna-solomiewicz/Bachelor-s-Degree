@@ -1,0 +1,32 @@
+<div class="new-container">
+  <form [formGroup]="form" novalidate class="new-form">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="title" placeholder="Title">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="source" placeholder="Source">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="region" placeholder="Region">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="signature" placeholder="Signature">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="key" placeholder="Key*">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput formControlName="melody" placeholder="Melody*" rows="4"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput formControlName="remarks" placeholder="Remarks" rows="4"></textarea>
+    </mat-form-field>
+  </form>
+
+  <button mat-fab color="accent" (click)="submit()" [disabled]="form.invalid">
+    <mat-icon>swap_horiz</mat-icon>
+  </button>
+</div>

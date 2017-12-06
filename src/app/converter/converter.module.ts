@@ -9,6 +9,7 @@ import { ConverterComponent } from './converter.component';
 import { EsacFileComponent } from './esac-file/esac-file.component';
 
 import { ConverterService } from './services/converter.service';
+import { EsacNewComponent } from './esac-new/esac-new.component';
 
 const appRoutes: Routes = [
   { path: 'converter', component: ConverterComponent },
@@ -27,7 +28,7 @@ const appRoutes: Routes = [
     MatInputModule,
     RouterModule.forChild(appRoutes)
   ],
-  declarations: [ConverterComponent, EsacFileComponent],
+  declarations: [ConverterComponent, EsacFileComponent, EsacNewComponent],
   providers: [ConverterService]
 })
 export class ConverterModule { }

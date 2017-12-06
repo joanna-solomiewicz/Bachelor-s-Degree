@@ -5,8 +5,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ConverterService {
 
-  private urlGetEsacs: string = '/esacs'
-  private urlEsac2Midi: string = '/esac2midifile'
+  private urlGetEsacs: string = '/esacs';
+  private urlEsac2MidiFile: string = '/esac2midifile';
+  private urlEsac2MidiNew: string = '/esac2midi'; //esac2midinew
 
   constructor(
     private http: HttpClient
@@ -20,6 +21,10 @@ export class ConverterService {
     let input = new FormData();
     input.append('file', file);
 
-    return this.http.post(this.urlEsac2Midi, input);
+    return this.http.post(this.urlEsac2MidiFile, input);
+  }
+
+  esacToMidiNew(form: any) {
+    return this.http.post(this.urlEsac2MidiNew, form, { responseType: 'arraybuffer' })
   }
 }
