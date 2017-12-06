@@ -35,11 +35,6 @@ export class ConverterComponent implements OnInit {
     this.updateProgress();
   }
 
-  private nextStep(): void {
-    if (this.step < this.lastStep) this.step++;
-    this.updateProgress();
-  }
-
   private updateProgress(): void {
     this.progress = this.step*100/this.lastStep;
   }

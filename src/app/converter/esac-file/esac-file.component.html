@@ -11,12 +11,13 @@
     </button>
     <mat-form-field>
       <input #fileName matInput readonly formControlName="fileName" placeholder="File">
+      <mat-hint>Must be a text file</mat-hint>
     </mat-form-field>
-    <span class="file-upload">
-      <button mat-raised-button color="accent" (click)="chooseFile()" [disabled]="!isFileSelected()">
-        <span>Upload</span>
-        <mat-icon>file_upload</mat-icon>
+    <p>
+      <button mat-raised-button color="accent" (click)="chooseFile()" [disabled]="!isFileSelected() || form.invalid">
+        <span>Convert</span>
+        <mat-icon>swap_horiz</mat-icon>
       </button>
-    </span>
+    </p>
   </form>
 </div>

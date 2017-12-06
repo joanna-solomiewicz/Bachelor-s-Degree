@@ -18,7 +18,9 @@
   <div *ngIf="step === 3" class="wizard-step">
   </div>
   <div class="wizard-navigation">
-    <button mat-button (click)="prevStep()" *ngIf="step > 0">Previous</button>
-    <button mat-button (click)="nextStep()" *ngIf="step < lastStep">Next</button>
+    <button mat-button (click)="prevStep()" *ngIf="step > 0">
+      <mat-icon>chevron_left</mat-icon>
+      <span>Previous</span>
+    </button>
   </div>
 </div>

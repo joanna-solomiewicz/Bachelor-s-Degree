@@ -30,16 +30,16 @@ export class EsacFileComponent implements OnInit {
   }
 
   private showFileName(files: Object): void {
-    if (files && files[0]) {
+    if (this.isFileSelected()) {
       this.fileName.nativeElement.value = files[0].name;
     } else {
-      this.fileName.nativeElement.value = null;
+      this.resetFileInput();
     }
   }
 
   private chooseFile(): void {
     let files = this.file.nativeElement.files;
-    if (files && files[0]) {
+    if (this.isFileSelected()) {
       let file = files[0];
       this.converterService.esacToMidiFile(file)
         .subscribe(response => {
@@ -58,7 +58,7 @@ export class EsacFileComponent implements OnInit {
   }
 
   private resetFileInput(): void {
-    this.file.nativeElement.value = null;
-    this.fileName.nativeElement.value = null;
+    this.file.nativeElement.value = '';
+    this.fileName.nativeElement.value = '';
   }
 }
