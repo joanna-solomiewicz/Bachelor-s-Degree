@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { MatCardModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule } from '@angular/material';
 
 import { MainComponent } from './main.component';
 import { MainService } from './services/main.service'
@@ -18,6 +18,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
     RouterModule.forChild(appRoutes)
   ],
   declarations: [MainComponent],

@@ -1,4 +1,6 @@
 $top--margin: 10px;
+$menu--opacity: .8;
+$menu--background: rgba(255, 255, 255, $menu--opacity);
 $card--width: 320px;
 $card--max-width: 350px;
 $card--margin-top: 10px;
@@ -6,9 +8,22 @@ $card--margin-side: 5px;
 $card--opacity: .85;
 $button-add--offset: 20px;
 
-.top-container {
+.top-container--large {
     margin: $top--margin;
     text-align: right;
+
+    @media screen and (max-width: 500px) {
+        display: none;
+    }
+}
+
+.top-container--small {
+    margin: $top--margin;
+    text-align: right;
+
+    @media screen and (min-width: 501px) {
+        display: none;
+    }
 }
 
 .card-container {
