@@ -21,3 +21,8 @@ $padding--item: 2px;
     padding: 0 $padding--item;
   }
 }
+
+.new-spinner {
+  display: flex;
+  justify-content: center;
+}

@@ -1,32 +1,36 @@
-<div class="new-container">
+<div class="new-container" *ngIf="!converting">
   <form [formGroup]="form" novalidate class="new-form">
     <mat-form-field>
-      <input matInput formControlName="name" placeholder="Name">
+      <input matInput formControlName="name" placeholder="Catalog">
     </mat-form-field>
     <mat-form-field>
-      <input matInput formControlName="title" placeholder="Title">
+      <input matInput formControlName="title" placeholder="CUT">
     </mat-form-field>
     <mat-form-field>
-      <input matInput formControlName="source" placeholder="Source">
+      <input matInput formControlName="region" placeholder="REG">
     </mat-form-field>
     <mat-form-field>
-      <input matInput formControlName="region" placeholder="Region">
+      <input matInput formControlName="source" placeholder="TRD">
     </mat-form-field>
     <mat-form-field>
-      <input matInput formControlName="signature" placeholder="Signature">
+      <input matInput formControlName="signature" placeholder="SIG">
     </mat-form-field>
     <mat-form-field>
-      <input matInput formControlName="key" placeholder="Key*">
+      <input matInput formControlName="key" placeholder="KEY*">
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput formControlName="melody" placeholder="Melody*" rows="4"></textarea>
+      <textarea matInput formControlName="melody" placeholder="MEL*" rows="4"></textarea>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput formControlName="remarks" placeholder="Remarks" rows="4"></textarea>
+      <textarea matInput formControlName="remarks" placeholder="BEM" rows="4"></textarea>
     </mat-form-field>
   </form>
 
-  <button mat-fab color="accent" (click)="submit()" [disabled]="form.invalid">
+  <button mat-raised-button color="accent" (click)="submit()" [disabled]="form.invalid">
+    <span>Convert</span>
     <mat-icon>swap_horiz</mat-icon>
   </button>
+</div>
+<div *ngIf="converting" class="new-spinner">
+  <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
 </div>

@@ -11,6 +11,7 @@ import { ConverterService } from '../services/converter.service';
 export class EsacNewComponent implements OnInit {
 
   private form: FormGroup;
+  private converting: boolean = false;
   @Output() converted = new EventEmitter();
 
   constructor(
@@ -22,6 +23,7 @@ export class EsacNewComponent implements OnInit {
   }
 
   private submit(): void {
+    this.converting = true;
     this.converterService.esacToMidiNew(this.form.value)
       .subscribe(data => {
         // this.downloadMidi(data),
@@ -30,7 +32,8 @@ export class EsacNewComponent implements OnInit {
       error => {
         console.log('Error downloading file: ', error)
         this.converted.emit(error);
-      });
+      },
+      () => this.converting = false);
   }
 
   private downloadMidi(data: ArrayBuffer): void {

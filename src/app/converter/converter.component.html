@@ -16,6 +16,7 @@
     <esac-new *ngIf="sourceType === 2" (converted)="handleEsacToMidiNew($event)"></esac-new>
   </div>
   <div *ngIf="step === 3" class="wizard-step">
+    <esac-result [midi]="result"></esac-result>
   </div>
   <div class="wizard-navigation">
     <button mat-button (click)="prevStep()" *ngIf="step > 0">

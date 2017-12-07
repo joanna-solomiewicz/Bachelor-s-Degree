@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatProgressBarModule, MatIconModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatProgressBarModule, MatIconModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
 
 import { ConverterComponent } from './converter.component';
 import { EsacFileComponent } from './esac-file/esac-file.component';
 
 import { ConverterService } from './services/converter.service';
 import { EsacNewComponent } from './esac-new/esac-new.component';
+import { EsacResultComponent } from './esac-result/esac-result.component';
 
 const appRoutes: Routes = [
   { path: 'converter', component: ConverterComponent },
@@ -26,9 +27,10 @@ const appRoutes: Routes = [
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     RouterModule.forChild(appRoutes)
   ],
-  declarations: [ConverterComponent, EsacFileComponent, EsacNewComponent],
+  declarations: [ConverterComponent, EsacFileComponent, EsacNewComponent, EsacResultComponent],
   providers: [ConverterService]
 })
 export class ConverterModule { }

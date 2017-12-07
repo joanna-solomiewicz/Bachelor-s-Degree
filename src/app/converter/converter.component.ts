@@ -12,6 +12,7 @@ export class ConverterComponent implements OnInit {
   private converterType: number;
   private sourceType: number;
   private progress: number = 0;
+  private result: ArrayBuffer;
 
   constructor() { }
 
@@ -40,10 +41,12 @@ export class ConverterComponent implements OnInit {
   }
 
   private handleEsacToMidiFile(event): void {
-    console.log(event)
+    this.step++;
+    this.result = event;
   }
 
   private handleEsacToMidiNew(event): void {
-    console.log(event)
+    this.step++;
+    this.result = event;
   }
 }
