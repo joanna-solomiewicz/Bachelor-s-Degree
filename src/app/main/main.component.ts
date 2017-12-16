@@ -9,7 +9,7 @@ import { MainService } from './services/main.service';
 })
 export class MainComponent implements OnInit {
 
-  private esacs;  //typ
+  public esacs;  //typ
   private esacsExpanded: boolean[] = [];
 
   constructor(
@@ -41,11 +41,11 @@ export class MainComponent implements OnInit {
     this.esacsExpanded[index] = !this.esacsExpanded[index];
   }
 
-  private expandAll(): void {
+  public expandAll(): void {
     this.esacsExpanded.fill(true);
   }
 
-  private closeAll(): void {
+  public closeAll(): void {
     this.esacsExpanded.fill(false);
   }
 
