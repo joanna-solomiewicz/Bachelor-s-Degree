@@ -26,7 +26,7 @@ export class EsacNewComponent implements OnInit {
     this.converting = true;
     this.converterService.esacToMidiNew(this.form.value)
       .subscribe(data => {
-        // this.downloadMidi(data),
+        this.downloadMidi(data);
         this.converted.emit(data);
       },
       error => {

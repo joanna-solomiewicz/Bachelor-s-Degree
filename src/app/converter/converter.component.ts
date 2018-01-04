@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as MIDI from '../../assets/js/MIDI.min.js';
-
 @Component({
   selector: 'converter',
   templateUrl: './converter.component.html',
@@ -9,33 +7,40 @@ import * as MIDI from '../../assets/js/MIDI.min.js';
 })
 export class ConverterComponent implements OnInit {
 
-  private step: number = 0;
+  public step: number = 0;
   private lastStep: number = 3;
   private converterType: number;
   private sourceType: number;
-  private progress: number = 0;
+  public progress: number = 0;
   private result: ArrayBuffer;
 
   constructor() { }
 
   ngOnInit() {
-    // midi.loadPlugin({
-    //   soundfontUrl: "./soundfont/",
-    //   instrument: "acoustic_grand_piano",
-    //   onprogress: function (state, progress) {
-    //     console.log(state, progress);
-    //   },
-    //   onsuccess: function () {
-    //     var delay = 0; // play one note every quarter second
-    //     var note = 50; // the MIDI note
-    //     var velocity = 127; // how hard the note hits
-    //     // play the note
-    //     midi.setVolume(0, 127);
-    //     midi.noteOn(0, note, velocity, delay);
-    //     midi.noteOff(0, note, delay + 0.75);
-    //   }
-    // });
+    MIDI.loadPlugin({
+      soundfontUrl: "assets/soundfont/",
+      instrument: "acoustic_grand_piano",
+      onprogress: function (state, progress) {
+        console.log(state, progress);
+      },
+      onsuccess: function () {
+        var delay = 0; // play one note every quarter second
+        var note = 50; // the MIDI note
+        var velocity = 127; // how hard the note hits
+        // play the note
+        MIDI.setVolume(0, 127);
+        MIDI.noteOn(0, note, velocity, delay);
+        MIDI.noteOff(0, note, delay + 0.75);
 
+        // MIDI.Player.currentTime = 0; // time we are at now within the song.
+        // MIDI.Player.endTime = 111; // time when song ends.
+        // MIDI.Player.playing = true; // are we playing? yes or no.
+        // MIDI.Player.loadFile('filepath', MIDI.Player.start()); // load .MIDI from base64 or binary XML request.
+        // MIDI.Player.resume(); // resume the MIDI track from pause.
+        // MIDI.Player.pause(); // pause the MIDI track.
+        // MIDI.Player.stop(); // stops all audio being played, and resets currentTime to 0.
+      }
+    });
   }
 
   private chooseConverter(converter: number): void {
