@@ -13,32 +13,16 @@ export class ConverterComponent implements OnInit {
   private sourceType: number;
   public progress: number = 0;
   private result: ArrayBuffer;
+  player = MIDI.Player;
+  private midiLoaded = false;
 
   constructor() { }
 
   ngOnInit() {
     MIDI.loadPlugin({
-      soundfontUrl: "assets/soundfont/",
-      instrument: "acoustic_grand_piano",
-      onprogress: function (state, progress) {
-        console.log(state, progress);
-      },
-      onsuccess: function () {
-        var delay = 0; // play one note every quarter second
-        var note = 50; // the MIDI note
-        var velocity = 127; // how hard the note hits
-        // play the note
-        MIDI.setVolume(0, 127);
-        MIDI.noteOn(0, note, velocity, delay);
-        MIDI.noteOff(0, note, delay + 0.75);
-
-        // MIDI.Player.currentTime = 0; // time we are at now within the song.
-        // MIDI.Player.endTime = 111; // time when song ends.
-        // MIDI.Player.playing = true; // are we playing? yes or no.
-        // MIDI.Player.loadFile('filepath', MIDI.Player.start()); // load .MIDI from base64 or binary XML request.
-        // MIDI.Player.resume(); // resume the MIDI track from pause.
-        // MIDI.Player.pause(); // pause the MIDI track.
-        // MIDI.Player.stop(); // stops all audio being played, and resets currentTime to 0.
+      soundfontUrl: 'assets/soundfont/',
+      onsuccess: () => {
+        this.midiLoaded = true;
       }
     });
   }
@@ -72,5 +56,6 @@ export class ConverterComponent implements OnInit {
   private handleEsacToMidiNew(event): void {
     this.step++;
     this.result = event;
+    if (this.midiLoaded) this.player.loadFile('../../assets/batman.mid', this.player.start);
   }
 }
