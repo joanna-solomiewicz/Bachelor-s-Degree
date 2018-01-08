@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 
 import { MainService } from './services/main.service';
+import { EsacAddComponent } from './esac-add/esac-add.component';
 
 @Component({
   selector: 'main',
@@ -13,8 +15,22 @@ export class MainComponent implements OnInit {
   private esacsExpanded: boolean[] = [];
 
   constructor(
-    private mainService: MainService
+    private mainService: MainService,
+    public dialog: MatDialog
   ) { }
+
+  addEsac(): void {
+    let dialogRef = this.dialog.open(EsacAddComponent, {
+      autoFocus: false,
+      minWidth: 300,
+      width: '80%',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // use result
+    });
+  }
 
   ngOnInit() {
     this.getEsacs();
