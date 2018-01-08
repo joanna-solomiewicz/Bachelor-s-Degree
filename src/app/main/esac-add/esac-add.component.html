@@ -35,8 +35,10 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button color="accent" (click)="addEsac()" [disabled]="form.invalid">
-    <span>Add ESAC</span>
-    <mat-icon>add</mat-icon>
-  </button>
+  <div class="dialog-actions">
+    <button mat-raised-button color="accent" (click)="addEsac()" [disabled]="form.invalid">
+      <span>Add ESAC</span>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </mat-dialog-actions>
