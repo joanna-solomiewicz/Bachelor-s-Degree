@@ -34,11 +34,14 @@ export class MainComponent implements OnInit {
   }
 
   convertEsac(index: number): void {
+    let esacs;
+    if (index === -1) esacs = this.esacs;
+    else esacs = [this.esacs[index]];
     let dialogRef = this.dialog.open(EsacConvertDialogComponent, {
       autoFocus: false,
       minWidth: 300,
       disableClose: true,
-      data: { name: this.esacs[index].name, title: this.esacs[index].title }
+      data: esacs
     });
   }
 

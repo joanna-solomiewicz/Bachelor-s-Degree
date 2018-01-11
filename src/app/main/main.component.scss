@@ -7,19 +7,19 @@ $card--margin-top: 10px;
 $card--margin-side: 5px;
 $button-add--offset: 20px;
 
-.top-container--large {
+.top-container {
     margin: $top--margin;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}
 
+.top-container--large {
     @media screen and (max-width: 500px) {
         display: none;
     }
 }
 
 .top-container--small {
-    margin: $top--margin;
-    text-align: right;
-
     @media screen and (min-width: 501px) {
         display: none;
     }

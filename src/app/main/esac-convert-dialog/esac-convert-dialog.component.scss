@@ -1,3 +1,31 @@
+$card--width: 320px;
+$card--max-width: 350px;
+$card--margin-top: 10px;
+$card--margin-side: 10px;
+$card-actions--margin: 5px;
+
 .dialog-close {
     text-align: right;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: $card--width;
+    max-width: $card--max-width;
+    margin: $card--margin-top $card--margin-side;
+}
+
+.card-actions {
+    text-align: center;
+
+    * {
+        margin-bottom: $card-actions--margin;
+    }
 }

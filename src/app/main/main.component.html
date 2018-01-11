@@ -1,15 +1,20 @@
-<div class="top-container--large">
-  <button mat-raised-button (click)="expandAll()" color="accent">Expand all</button>
-  <button mat-raised-button (click)="closeAll()" color="accent">Close all</button>
-</div>
-<div class="top-container--small">
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>
+<div class="top-container">
+  <button mat-icon-button (click)="convertEsac(-1)">
+    <mat-icon>swap_horiz</mat-icon>
   </button>
-  <mat-menu #menu [overlapTrigger]="false">
-    <button mat-menu-item (click)="expandAll()">Expand all</button>
-    <button mat-menu-item (click)="closeAll()">Close all</button>
-  </mat-menu>
+  <div class="top-container--large">
+    <button mat-raised-button (click)="expandAll()" color="accent">Expand all</button>
+    <button mat-raised-button (click)="closeAll()" color="accent">Close all</button>
+  </div>
+  <div class="top-container--small">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu [overlapTrigger]="false">
+      <button mat-menu-item (click)="expandAll()">Expand all</button>
+      <button mat-menu-item (click)="closeAll()">Close all</button>
+    </mat-menu>
+  </div>
 </div>
 <div class="card-container">
   <mat-card class="card" *ngFor="let esac of esacs; index as idx">

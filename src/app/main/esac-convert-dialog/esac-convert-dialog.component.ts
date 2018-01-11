@@ -8,8 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class EsacConvertDialogComponent implements OnInit {
 
-  private name: string;
-  private title: string;
+  private esacs: [any];
 
   constructor(
     public dialogRef: MatDialogRef<EsacConvertDialogComponent>,
@@ -21,8 +20,7 @@ export class EsacConvertDialogComponent implements OnInit {
   }
 
   private setInfoData(): void {
-    this.name = this.data.name;
-    this.title = this.data.title;
+    this.esacs = this.data;
   }
 
   onNoClick(): void {
