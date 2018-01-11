@@ -1,0 +1,23 @@
+<div class="dialog-close">
+  <button mat-icon-button matDialogClose>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content>
+  <mat-card-header>
+    <mat-card-title>{{ name }}</mat-card-title>
+    <mat-card-subtitle>{{ title }}</mat-card-subtitle>
+  </mat-card-header>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="dialog-actions">
+    <button mat-raised-button color="accent">
+      <span>Play</span>
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button mat-raised-button color="accent">
+      <span>Download</span>
+      <mat-icon>file_download</mat-icon>
+    </button>
+  </div>
+</mat-dialog-actions>

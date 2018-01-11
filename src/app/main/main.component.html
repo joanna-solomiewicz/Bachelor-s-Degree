@@ -14,6 +14,9 @@
 <div class="card-container">
   <mat-card class="card" *ngFor="let esac of esacs; index as idx">
     <div class="card-buttons" *ngIf="esacsExpanded[idx]">
+      <button mat-icon-button (click)="convertEsac(idx)">
+        <mat-icon>swap_horiz</mat-icon>
+      </button>
       <button mat-icon-button>
         <mat-icon>edit</mat-icon>
       </button>

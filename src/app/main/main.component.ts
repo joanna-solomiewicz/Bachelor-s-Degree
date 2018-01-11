@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 
 import { MainService } from './services/main.service';
 import { EsacAddComponent } from './esac-add/esac-add.component';
+import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-dialog.component';
 
 @Component({
   selector: 'main',
@@ -29,6 +30,15 @@ export class MainComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       // use result
+    });
+  }
+
+  convertEsac(index: number): void {
+    let dialogRef = this.dialog.open(EsacConvertDialogComponent, {
+      autoFocus: false,
+      minWidth: 300,
+      disableClose: true,
+      data: { name: this.esacs[index].name, title: this.esacs[index].title }
     });
   }
 

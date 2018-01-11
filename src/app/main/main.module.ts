@@ -7,7 +7,8 @@ import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatDialog
 
 import { MainComponent } from './main.component';
 import { MainService } from './services/main.service';
-import { EsacAddComponent } from './esac-add/esac-add.component'
+import { EsacAddComponent } from './esac-add/esac-add.component';
+import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-dialog.component'
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -28,8 +29,8 @@ const appRoutes: Routes = [
     MatInputModule,
     RouterModule.forChild(appRoutes)
   ],
-  declarations: [MainComponent, EsacAddComponent],
-  entryComponents: [EsacAddComponent],
+  declarations: [MainComponent, EsacAddComponent, EsacConvertDialogComponent],
+  entryComponents: [EsacAddComponent, EsacConvertDialogComponent],
   providers: [MainService]
 })
 export class MainModule { }
