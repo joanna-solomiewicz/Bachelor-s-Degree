@@ -1,6 +1,6 @@
 {
   "/esac2midi": {
-    "target": "http://esac-server.herokuapp.com",
+    "target": "http://150.254.165.250",
     "secure": false,
     "changeOrigin": true
   },
