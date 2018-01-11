@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class MainService {
 
   private urlGetEsacs: string = '/esacs'
+  private urlEsac2Midi: string = '/esac2midi';
 
   constructor(
     private http: HttpClient
@@ -15,4 +16,7 @@ export class MainService {
     return this.http.get(this.urlGetEsacs);
   }
 
+  esacToMidi(esac: any) {
+    return this.http.post(this.urlEsac2Midi, esac, { responseType: 'arraybuffer' })
+  }
 }
