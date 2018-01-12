@@ -9,7 +9,7 @@ import { ConverterComponent } from './converter.component';
 import { EsacConvertFileComponent } from './esac-convert-file/esac-convert-file.component';
 
 import { ConverterService } from './services/converter.service';
-import { EsacNewComponent } from './esac-new/esac-new.component';
+import { EsacConvertNewComponent } from './esac-convert-new/esac-convert-new.component';
 import { EsacResultComponent } from './esac-result/esac-result.component';
 
 const appRoutes: Routes = [
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
     MatChipsModule,
     RouterModule.forChild(appRoutes)
   ],
-  declarations: [ConverterComponent, EsacConvertFileComponent, EsacNewComponent, EsacResultComponent],
+  declarations: [ConverterComponent, EsacConvertFileComponent, EsacConvertNewComponent, EsacResultComponent],
   providers: [ConverterService]
 })
 export class ConverterModule { }

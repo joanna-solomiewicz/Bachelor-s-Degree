@@ -4,11 +4,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConverterService } from '../services/converter.service';
 
 @Component({
-  selector: 'esac-new',
-  templateUrl: './esac-new.component.html',
-  styleUrls: ['./esac-new.component.scss']
+  selector: 'esac-convert-new',
+  templateUrl: './esac-convert-new.component.html',
+  styleUrls: ['./esac-convert-new.component.scss']
 })
-export class EsacNewComponent implements OnInit {
+export class EsacConvertNewComponent implements OnInit {
 
   private form: FormGroup;
   private converting: boolean = false;

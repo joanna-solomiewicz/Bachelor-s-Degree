@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EsacNewComponent } from './esac-new.component';
+import { EsacConvertNewComponent } from './esac-convert-new.component';
 
-describe('EsacNewComponent', () => {
-  let component: EsacNewComponent;
-  let fixture: ComponentFixture<EsacNewComponent>;
+describe('EsacConvertNewComponent', () => {
+  let component: EsacConvertNewComponent;
+  let fixture: ComponentFixture<EsacConvertNewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EsacNewComponent ]
+      declarations: [ EsacConvertNewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EsacNewComponent);
+    fixture = TestBed.createComponent(EsacConvertNewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
