@@ -1,6 +1,7 @@
 $margin: 10px;
 $padding: 10px;
 $button--width: 56px;
+$file-list--margin: 5px;
 
 .file-container {
   padding: $padding;
@@ -24,6 +25,12 @@ $button--width: 56px;
     right: 0;
     top: 0;
     width: $button--width;;
+  }
+
+  .file-list {
+    .mat-chip {
+      margin: $file-list--margin;
+    }
   }
 
   .file-subcontainer > * {

@@ -5,7 +5,7 @@
       <input #file multiple type="file" class="file-input" (change)="onChooseFiles()">
     </button>
   </span>
-  <mat-chip-list *ngIf="isFilesChosen()">
+  <mat-chip-list *ngIf="isFilesChosen()" class="file-list">
     <mat-chip *ngFor="let file of files; index as idx;" (removed)="onDeleteFiles(idx)">
       <span>{{ file.name }}</span>
       <mat-icon matChipRemove>cancel</mat-icon>
