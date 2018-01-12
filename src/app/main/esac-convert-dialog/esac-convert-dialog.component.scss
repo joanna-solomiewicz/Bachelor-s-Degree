@@ -1,4 +1,4 @@
-$card--width: 250px;
+$card--width: 220px;
 $card--margin-top: 10px;
 $card--margin-side: 10px;
 $card-actions--margin: 5px;
@@ -16,8 +16,7 @@ $card-actions--margin: 5px;
 }
 
 .card {
-    width: $card--width;
-    max-width: $card--width;
+    min-width: $card--width;
     margin: $card--margin-top $card--margin-side;
 }
 
