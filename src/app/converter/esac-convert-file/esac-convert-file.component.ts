@@ -3,11 +3,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConverterService } from '../services/converter.service';
 
 @Component({
-  selector: 'esac-file',
-  templateUrl: './esac-file.component.html',
-  styleUrls: ['./esac-file.component.scss']
+  selector: 'esac-convert-file',
+  templateUrl: './esac-convert-file.component.html',
+  styleUrls: ['./esac-convert-file.component.scss']
 })
-export class EsacFileComponent implements OnInit {
+export class EsacConvertFileComponent implements OnInit {
 
   @ViewChild('file') file;
   private files = [];

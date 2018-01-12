@@ -11,7 +11,7 @@
     </div>
   </div>
   <div *ngIf="step === 2" class="wizard-step">
-    <esac-file *ngIf="sourceType === 0" (converted)="handleEsacToMidiFile($event)"></esac-file>
+    <esac-convert-file *ngIf="sourceType === 0" (converted)="handleEsacToMidiFile($event)"></esac-convert-file>
     <esac-new *ngIf="sourceType === 1" (converted)="handleEsacToMidiNew($event)"></esac-new>
   </div>
   <div *ngIf="step === 3" class="wizard-step">
