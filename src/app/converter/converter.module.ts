@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatProgressBarModule, MatIconModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatButtonModule, MatProgressBarModule, MatIconModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatChipsModule } from '@angular/material';
 
 import { ConverterComponent } from './converter.component';
 import { EsacFileComponent } from './esac-file/esac-file.component';
@@ -28,6 +28,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatChipsModule,
     RouterModule.forChild(appRoutes)
   ],
   declarations: [ConverterComponent, EsacFileComponent, EsacNewComponent, EsacResultComponent],

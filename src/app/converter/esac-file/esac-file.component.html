@@ -1,23 +1,18 @@
 <div class="file-container">
-  <form [formGroup]="form" novalidate>
-    <span class="file-button">
-      <button mat-fab color="accent">
-        <mat-icon>attach_file</mat-icon>
-        <input #file type="file" class="file-input" (change)="onChangeFile()">
-      </button>
-    </span>
-    <button mat-icon-button (click)="resetFileInput()" [disabled]="!isFileSelected()">
-      <mat-icon>clear</mat-icon>
+  <span class="file-button">
+    <button mat-fab color="accent">
+      <mat-icon>attach_file</mat-icon>
+      <input #file multiple type="file" class="file-input" (change)="onChooseFiles()">
     </button>
-    <mat-form-field>
-      <input #fileName matInput readonly formControlName="fileName" placeholder="File">
-      <mat-hint>Must be a text file</mat-hint>
-    </mat-form-field>
-    <p>
-      <button mat-raised-button color="accent" (click)="chooseFile()" [disabled]="!isFileSelected() || form.invalid">
-        <span>Convert</span>
-        <mat-icon>swap_horiz</mat-icon>
-      </button>
-    </p>
-  </form>
+  </span>
+  <mat-chip-list *ngIf="isFilesChosen()">
+    <mat-chip *ngFor="let file of files; index as idx;" (removed)="onDeleteFile(idx)">
+      <span>{{ file.name }}</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
+  <button mat-raised-button color="accent" [disabled]="!isFilesChosen()">
+    <span>Convert</span>
+    <mat-icon>swap_horiz</mat-icon>
+  </button>
 </div>

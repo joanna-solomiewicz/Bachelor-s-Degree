@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ConverterService } from '../services/converter.service';
 
@@ -11,8 +10,7 @@ import { ConverterService } from '../services/converter.service';
 export class EsacFileComponent implements OnInit {
 
   @ViewChild('file') file;
-  @ViewChild('fileName') fileName;
-  @Output() converted = new EventEmitter();
+  private files = [];
 
   constructor(
     private converterService: ConverterService
@@ -21,44 +19,19 @@ export class EsacFileComponent implements OnInit {
   ngOnInit() {
   }
 
-  private form: FormGroup = new FormGroup({
-    fileName: new FormControl()
-  });
-
-  private onChangeFile(): void {
-    this.showFileName(this.file.nativeElement.files);
-  }
-
-  private showFileName(files: Object): void {
-    if (this.isFileSelected()) {
-      this.fileName.nativeElement.value = files[0].name;
-    } else {
-      this.resetFileInput();
+  private onChooseFiles(): void {
+    if (this.file) {
+      for (let file of this.file.nativeElement.files) {
+        this.files.push(file);
+      }
     }
   }
 
-  private chooseFile(): void {
-    let files = this.file.nativeElement.files;
-    if (this.isFileSelected()) {
-      let file = files[0];
-      this.converterService.esacToMidiFile(file)
-        .subscribe(response => {
-          this.converted.emit(response);
-          this.resetFileInput();
-        },
-        error => {
-          this.converted.emit(error);
-          this.resetFileInput();
-        });
-    }
+  private onDeleteFile(index: number): void {
+    this.files.splice(index, 1);
   }
 
-  private isFileSelected(): boolean {
-    return this.file.nativeElement.files[0];
-  }
-
-  private resetFileInput(): void {
-    this.file.nativeElement.value = '';
-    this.fileName.nativeElement.value = '';
+  private isFilesChosen(): boolean {
+    return this.files.length? true : false;
   }
 }
