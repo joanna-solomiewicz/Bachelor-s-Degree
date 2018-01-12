@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EsacResultComponent } from './esac-result.component';
+import { EsacConvertResultComponent } from './esac-convert-result.component';
 
-describe('EsacResultComponent', () => {
-  let component: EsacResultComponent;
-  let fixture: ComponentFixture<EsacResultComponent>;
+describe('EsacConvertResultComponent', () => {
+  let component: EsacConvertResultComponent;
+  let fixture: ComponentFixture<EsacConvertResultComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EsacResultComponent ]
+      declarations: [ EsacConvertResultComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EsacResultComponent);
+    fixture = TestBed.createComponent(EsacConvertResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
