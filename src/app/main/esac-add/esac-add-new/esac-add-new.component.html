@@ -1,0 +1,33 @@
+<div class="new-container">
+  <form [formGroup]="form" novalidate class="new-form">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Catalog">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="title" placeholder="CUT">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="region" placeholder="REG">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="source" placeholder="TRD">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="signature" placeholder="SIG">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="key" placeholder="KEY*">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput matTextareaAutosize formControlName="melody" placeholder="MEL*"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput matTextareaAutosize formControlName="remarks" placeholder="BEM"></textarea>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button color="accent" (click)="addEsac()" [disabled]="form.invalid">
+    <span>Add</span>
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

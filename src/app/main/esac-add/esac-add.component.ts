@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'esac-add',
@@ -9,7 +8,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class EsacAddComponent implements OnInit {
 
-  private form: FormGroup;
+  public step: number = 0;
+  private lastStep: number = 2;
+  private sourceType: number;
+  public progress: number = 0;
 
   constructor(
     public dialogRef: MatDialogRef<EsacAddComponent>,
@@ -17,32 +19,24 @@ export class EsacAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.form = this.newForm();
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  private addEsac(): void {
-    console.log(this.form.value);
-    this.dialogRef.close();
+  private chooseSource(source: number): void {
+    this.sourceType = source;
+    this.step++;
+    this.updateProgress();
   }
 
-  private newForm(): FormGroup {
-    return new FormGroup({
-      name: new FormControl(''),
-      title: new FormControl(''),
-      source: new FormControl(''),
-      region: new FormControl(''),
-      signature: new FormControl(''),
-      key: new FormControl('', [
-        Validators.required
-      ]),
-      melody: new FormControl('', [
-        Validators.required
-      ]),
-      remarks: new FormControl('')
-    });
+  private prevStep(): void {
+    if (this.step > 0) this.step--;
+    this.updateProgress();
+  }
+
+  private updateProgress(): void {
+    this.progress = this.step * 100 / this.lastStep;
   }
 }
