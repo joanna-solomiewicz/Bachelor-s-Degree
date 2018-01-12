@@ -1,4 +1,5 @@
 $top--margin: 10px;
+$top-buttons--margin: 5px;
 $background-opacity: .8;
 $background-color: rgba(255, 255, 255, $background-opacity);
 $card--width: 320px;
@@ -11,15 +12,21 @@ $button-add--offset: 20px;
     margin: $top--margin;
     display: flex;
     justify-content: flex-end;
+
+    .top-item {
+        @media screen and (min-width: 501px) {
+            margin-left: $top-buttons--margin;
+        }
+    }
 }
 
-.top-container--large {
+.top-menu--large {
     @media screen and (max-width: 500px) {
         display: none;
     }
 }
 
-.top-container--small {
+.top-menu--small {
     @media screen and (min-width: 501px) {
         display: none;
     }
