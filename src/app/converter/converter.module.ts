@@ -5,10 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatProgressBarModule, MatIconModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatChipsModule } from '@angular/material';
 
+import { ConverterService } from './services/converter.service';
+
 import { ConverterComponent } from './converter.component';
 import { EsacConvertFileComponent } from './esac-convert-file/esac-convert-file.component';
-
-import { ConverterService } from './services/converter.service';
 import { EsacConvertNewComponent } from './esac-convert-new/esac-convert-new.component';
 import { EsacConvertResultComponent } from './esac-convert-result/esac-convert-result.component';
 
