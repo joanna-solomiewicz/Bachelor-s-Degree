@@ -1,27 +1,38 @@
-<div class="top-container--large">
-  <button mat-raised-button (click)="expandAll()" color="accent">Expand all</button>
-  <button mat-raised-button (click)="closeAll()" color="accent">Close all</button>
-</div>
-<div class="top-container--small">
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>
+<div class="top-container" *ngIf="esacs">
+  <button mat-icon-button (click)="downloadEsac(-1)" class="top-item">
+    <mat-icon>file_download</mat-icon>
   </button>
-  <mat-menu #menu [overlapTrigger]="false">
-    <button mat-menu-item (click)="expandAll()">Expand all</button>
-    <button mat-menu-item (click)="closeAll()">Close all</button>
-  </mat-menu>
+  <button mat-icon-button (click)="convertEsac(-1)" class="top-item">
+    <mat-icon>swap_horiz</mat-icon>
+  </button>
+  <div class="top-menu--large top-item">
+    <button mat-button (click)="expandAll()">Expand all</button>
+    <button mat-button (click)="closeAll()">Close all</button>
+  </div>
+  <div class="top-menu--small top-item">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu [overlapTrigger]="false">
+      <button mat-menu-item (click)="expandAll()">Expand all</button>
+      <button mat-menu-item (click)="closeAll()">Close all</button>
+    </mat-menu>
+  </div>
 </div>
 <div class="card-container">
   <mat-card class="card" *ngFor="let esac of esacs; index as idx">
     <div class="card-buttons" *ngIf="esacsExpanded[idx]">
+      <button mat-icon-button (click)="downloadEsac(idx)" color="accent">
+        <mat-icon>file_download</mat-icon>
+      </button>
+      <button mat-icon-button (click)="convertEsac(idx)" color="accent">
+        <mat-icon>swap_horiz</mat-icon>
+      </button>
       <button mat-icon-button>
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button>
         <mat-icon>delete</mat-icon>
-      </button>
-      <button mat-icon-button (click)="downloadEsac(idx)" color="accent">
-        <mat-icon>file_download</mat-icon>
       </button>
     </div>
     <mat-card-header>
