@@ -1,14 +1,18 @@
 @import './assets/styles/theme';
 @import './assets/styles/material_icons';
 
-body, 
-html {
-    height: 100%;
-}
-
 body {
     margin: 0;
-    background-image: url('./assets/images/wallpaper.png');
-    background-size: cover;
-    background-attachment: fixed;
+
+    &:after {
+        content: "";
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        background: url('./assets/images/wallpaper.png');
+        background-size: cover;
+    }
 }
