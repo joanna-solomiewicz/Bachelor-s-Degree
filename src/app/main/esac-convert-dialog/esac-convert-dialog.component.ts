@@ -12,7 +12,8 @@ import { MainService } from '../services/main.service';
 })
 export class EsacConvertDialogComponent implements OnInit {
 
-  private esacs: [any];
+  private esacs: any[];
+  private downloading: boolean[];
 
   constructor(
     public dialogRef: MatDialogRef<EsacConvertDialogComponent>,
@@ -24,7 +25,8 @@ export class EsacConvertDialogComponent implements OnInit {
     this.setInfoData();
   }
 
-  private downloadMidi(esac): void {
+  private downloadMidi(esac, index: number): void {
+    this.downloading[index] = true;
     this.mainService.esacToMidi(esac)
       .subscribe(data => {
         let blob = new Blob([data], { type: 'audio/midi' });
@@ -32,11 +34,13 @@ export class EsacConvertDialogComponent implements OnInit {
       },
       error => {
         console.log('Error downloading file: ', error)
-      });
+      },
+      () => this.downloading[index] = false);
   }
 
   private setInfoData(): void {
     this.esacs = this.data;
+    this.downloading = Array<boolean>(this.esacs.length).fill(false);
   }
 
   onNoClick(): void {

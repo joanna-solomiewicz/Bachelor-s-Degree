@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
 
 import { MainComponent } from './main.component';
 import { MainService } from './services/main.service';
@@ -27,6 +27,7 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     RouterModule.forChild(appRoutes)
   ],
   declarations: [MainComponent, EsacAddComponent, EsacConvertDialogComponent],
