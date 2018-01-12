@@ -25,4 +25,8 @@ $button--width: 56px;
     top: 0;
     width: $button--width;;
   }
+
+  .file-subcontainer > * {
+    margin: 0 $margin;
+  }
 }

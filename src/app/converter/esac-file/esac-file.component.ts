@@ -27,11 +27,12 @@ export class EsacFileComponent implements OnInit {
     }
   }
 
-  private onDeleteFile(index: number): void {
-    this.files.splice(index, 1);
+  private onDeleteFiles(index?: number): void {
+    if (index) this.files.splice(index, 1);
+    else this.files = [];
   }
 
   private isFilesChosen(): boolean {
-    return this.files.length? true : false;
+    return this.files.length ? true : false;
   }
 }

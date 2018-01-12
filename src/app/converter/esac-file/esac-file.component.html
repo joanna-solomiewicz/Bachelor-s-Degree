@@ -6,13 +6,18 @@
     </button>
   </span>
   <mat-chip-list *ngIf="isFilesChosen()">
-    <mat-chip *ngFor="let file of files; index as idx;" (removed)="onDeleteFile(idx)">
+    <mat-chip *ngFor="let file of files; index as idx;" (removed)="onDeleteFiles(idx)">
       <span>{{ file.name }}</span>
       <mat-icon matChipRemove>cancel</mat-icon>
     </mat-chip>
   </mat-chip-list>
-  <button mat-raised-button color="accent" [disabled]="!isFilesChosen()">
-    <span>Convert</span>
-    <mat-icon>swap_horiz</mat-icon>
-  </button>
+  <div class="file-subcontainer">
+    <button mat-fab color="primary" (click)="onDeleteFiles()" [disabled]="!isFilesChosen()">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-raised-button color="accent" [disabled]="!isFilesChosen()">
+      <span>Convert</span>
+      <mat-icon>swap_horiz</mat-icon>
+    </button>
+  </div>
 </div>
