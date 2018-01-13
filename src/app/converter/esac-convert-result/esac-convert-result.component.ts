@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EsacConvertResultComponent implements OnInit {
 
-  @Input() midi;
+  @Input() midis;
 
   constructor() { }
 

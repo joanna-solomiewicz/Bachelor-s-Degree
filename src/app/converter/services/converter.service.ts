@@ -17,9 +17,11 @@ export class ConverterService {
     return this.http.get(this.urlGetEsacs);
   }
 
-  esacToMidiFile(file: any) {
+  esacToMidiFile(files: any[]) {
     let input = new FormData();
-    input.append('file', file);
+    for (let file of files) {
+      input.append(file.name, file);
+    }
 
     return this.http.post(this.urlEsac2MidiFile, input);
   }

@@ -23,17 +23,22 @@ export class EsacConvertNewComponent implements OnInit {
   }
 
   private submit(): void {
-    this.converting = true;
-    this.converterService.esacToMidiNew(this.form.value)
-      .subscribe(data => {
-        this.downloadMidi(data);
-        this.converted.emit(data);
-      },
-      error => {
-        console.log('Error downloading file: ', error)
-        this.converted.emit(error);
-      },
-      () => this.converting = false);
+    this.converted.emit([
+      {esac: {"name":"DWOK01","title":"Wezme ja kontusz","region":"Mazowsze i Krakowskie","source":"Oskar Kolberg, Opera omnia, vol 1, p. 3-4","signature":"0100100000","key":"K0001a 08  A 3/4 2/4","melody":"1_3b21-7  1_3b21-7  123b_4_  5__\n    556b543b  22543b2  13b5_-7_  1__. //","remarks":""}, midi: "", midi64url: ""},
+      {esac: {"name":"DWOK01","title":"Wezme ja kontusz","region":"Mazowsze i Krakowskie","source":"Oskar Kolberg, Opera omnia, vol 1, p. 3-4","signature":"0100100000","key":"K0001a 08  A 3/4 2/4","melody":"1_3b21-7  1_3b21-7  123b_4_  5__\n    556b543b  22543b2  13b5_-7_  1__. //","remarks":""}, midi: "", midi64url: ""},
+      {esac: {"name":"DWOK01","title":"Wezme ja kontusz","region":"Mazowsze i Krakowskie","source":"Oskar Kolberg, Opera omnia, vol 1, p. 3-4","signature":"0100100000","key":"K0001a 08  A 3/4 2/4","melody":"1_3b21-7  1_3b21-7  123b_4_  5__\n    556b543b  22543b2  13b5_-7_  1__. //","remarks":""}, midi: "", midi64url: ""}
+    ]);
+    // this.converting = true;
+    // this.converterService.esacToMidiNew(this.form.value)
+    //   .subscribe(data => {
+    //     this.downloadMidi(data);
+    //     this.converted.emit(data);
+    //   },
+    //   error => {
+    //     console.log('Error downloading file: ', error)
+    //     this.converted.emit(error);
+    //   },
+    //   () => this.converting = false);
   }
 
   private downloadMidi(data: ArrayBuffer): void {
@@ -59,10 +64,10 @@ export class EsacConvertNewComponent implements OnInit {
       region: new FormControl(''),
       signature: new FormControl(''),
       key: new FormControl('', [
-        Validators.required
+        // Validators.required
       ]),
       melody: new FormControl('', [
-        Validators.required
+        // Validators.required
       ]),
       remarks: new FormControl('')
     });

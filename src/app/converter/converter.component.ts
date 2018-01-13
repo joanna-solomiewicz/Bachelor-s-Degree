@@ -12,7 +12,7 @@ export class ConverterComponent implements OnInit {
   private converterType: number;
   private sourceType: number;
   public progress: number = 0;
-  private result: ArrayBuffer;
+  private result;
   player = MIDI.Player;
   private midiLoaded = false;
 

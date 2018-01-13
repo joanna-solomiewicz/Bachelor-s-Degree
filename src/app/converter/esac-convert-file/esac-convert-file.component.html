@@ -1,4 +1,4 @@
-<div class="file-container">
+<div class="file-container" *ngIf="!converting">
   <span class="file-button">
     <button mat-fab color="accent">
       <mat-icon>attach_file</mat-icon>
@@ -15,9 +15,12 @@
     <button mat-fab color="primary" (click)="onDeleteFiles()" [disabled]="!isFilesChosen()">
       <mat-icon>delete</mat-icon>
     </button>
-    <button mat-raised-button color="accent" [disabled]="!isFilesChosen()">
+    <button mat-raised-button color="accent" (click)="submit()" [disabled]="!isFilesChosen()">
       <span>Convert</span>
       <mat-icon>swap_horiz</mat-icon>
     </button>
   </div>
+</div>
+<div *ngIf="converting" class="new-spinner">
+  <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
 </div>

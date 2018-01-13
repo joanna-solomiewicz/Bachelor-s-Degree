@@ -1,1 +1,57 @@
-{{midi.byteLength}}
+<div class="card-container">
+    <div *ngFor="let midi of midis; index as idx;">
+        <mat-card class="card" *ngIf="midi.esac">
+            <mat-card-header>
+                <mat-card-title>{{ midi.esac.name }}</mat-card-title>
+                <mat-card-subtitle>{{ midi.esac.title }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p *ngIf="midi.esac.region">
+                    <span class="card-content--bold">REG:</span>
+                    <span>{{ midi.esac.region }}</span>
+                </p>
+                <p *ngIf="midi.esac.source">
+                    <span class="card-content--bold">TRD:</span>
+                    <span>{{ midi.esac.source }}</span>
+                </p>
+                <p *ngIf="midi.esac.signature">
+                    <span class="card-content--bold">SIG:</span>
+                    <span>{{ midi.esac.signature }}</span>
+                </p>
+                <p *ngIf="midi.esac.key">
+                    <span class="card-content--bold">KEY:</span>
+                    <span>{{ midi.esac.key }}</span>
+                </p>
+                <p *ngIf="midi.esac.melody">
+                    <span class="card-content--bold">MEL:</span>
+                    <span class="whitespace">{{ midi.esac.melody }}</span>
+                </p>
+                <p *ngIf="midi.esac.remarks">
+                    <span class="card-content--bold">BEM:</span>
+                    <span>{{ midi.esac.remarks }}</span>
+                </p>
+            </mat-card-content>
+            <mat-card-actions class="card-actions">
+                <button mat-raised-button color="primary">
+                    <span>Add ESAC</span>
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button mat-raised-button color="accent">
+                    <span>Play</span>
+                    <mat-icon>play_arrow</mat-icon>
+                </button>
+                <button mat-raised-button color="accent">
+                    <span>Download</span>
+                    <mat-icon>file_download</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+        <!-- <mat-card class="card">
+            <mat-card-content>
+                <div class="new-spinner">
+                    <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
+                </div>
+            </mat-card-content>
+        </mat-card> -->
+    </div>
+</div>
