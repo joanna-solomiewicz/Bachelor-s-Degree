@@ -6,6 +6,7 @@ import * as FileSaver from 'file-saver';
 import { MainService } from './services/main.service';
 import { EsacAddComponent } from './esac-add/esac-add.component';
 import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-dialog.component';
+import { EsacEditDialogComponent } from './esac-edit-dialog/esac-edit-dialog.component';
 
 @Component({
   selector: 'main',
@@ -77,6 +78,22 @@ export class MainComponent implements OnInit {
       minWidth: 300,
       disableClose: true,
       data: esacs
+    });
+  }
+
+  editEsac(index: number): void {
+    let esac = this.esacs[index];
+    let dialogRef = this.dialog.open(EsacEditDialogComponent, {
+      autoFocus: false,
+      minWidth: 300,
+      disableClose: true,
+      data: esac
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.esacs[index] = result;
+      }
     });
   }
 
