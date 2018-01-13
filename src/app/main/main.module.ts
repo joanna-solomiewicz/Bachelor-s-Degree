@@ -12,7 +12,8 @@ import { EsacAddComponent } from './esac-add/esac-add.component';
 import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-dialog.component';
 import { EsacAddNewComponent } from './esac-add/esac-add-new/esac-add-new.component';
 import { EsacAddFileComponent } from './esac-add/esac-add-file/esac-add-file.component';
-import { EsacEditDialogComponent } from './esac-edit-dialog/esac-edit-dialog.component'
+import { EsacEditDialogComponent } from './esac-edit-dialog/esac-edit-dialog.component';
+import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dialog.component'
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -36,8 +37,8 @@ const appRoutes: Routes = [
     MatChipsModule,
     RouterModule.forChild(appRoutes)
   ],
-  declarations: [MainComponent, EsacAddComponent, EsacConvertDialogComponent, EsacAddNewComponent, EsacAddFileComponent, EsacEditDialogComponent],
-  entryComponents: [EsacAddComponent, EsacConvertDialogComponent, EsacEditDialogComponent],
+  declarations: [MainComponent, EsacAddComponent, EsacConvertDialogComponent, EsacAddNewComponent, EsacAddFileComponent, EsacEditDialogComponent, EsacDeleteDialogComponent],
+  entryComponents: [EsacAddComponent, EsacConvertDialogComponent, EsacEditDialogComponent, EsacDeleteDialogComponent],
   providers: [MainService]
 })
 export class MainModule { }

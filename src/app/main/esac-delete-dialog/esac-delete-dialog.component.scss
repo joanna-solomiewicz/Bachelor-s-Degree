@@ -1,0 +1,10 @@
+$confirm-message--margin: 20px;
+
+.mat-dialog-content {
+    margin: $confirm-message--margin 0;
+}
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: space-around;
+}
