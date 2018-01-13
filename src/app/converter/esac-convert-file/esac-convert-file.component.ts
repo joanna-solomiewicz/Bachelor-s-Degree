@@ -55,6 +55,6 @@ export class EsacConvertFileComponent implements OnInit {
   //       this.converted.emit(error);
   //     },
   //     () => this.converting = false);
-  // }
+  }
 
 }
