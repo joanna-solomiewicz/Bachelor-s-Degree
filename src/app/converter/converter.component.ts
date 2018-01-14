@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class ConverterComponent implements OnInit {
 
   public step: number = 0;
-  private lastStep: number = 3;
+  private lastStepESAC: number = 3;
+  private lastStepMIDI: number = 2;
   private converterType: number;
   private sourceType: number;
   public progress: number = 0;
@@ -37,7 +38,12 @@ export class ConverterComponent implements OnInit {
   }
 
   private updateProgress(): void {
-    this.progress = this.step * 100 / this.lastStep;
+    if (this.converterType === 0) {
+      this.progress = this.step * 100 / this.lastStepESAC;
+    }
+    else {
+      this.progress = this.step * 100 / this.lastStepMIDI;
+    }
   }
 
   private handleEsacToMidiFile(event): void {
