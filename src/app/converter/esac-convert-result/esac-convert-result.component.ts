@@ -12,6 +12,7 @@ export class EsacConvertResultComponent implements OnInit {
   @Input() midis;
   player = MIDI.Player;
   private midiLoaded = false;
+  private midiPlaying;
 
   constructor() { }
 
@@ -22,6 +23,15 @@ export class EsacConvertResultComponent implements OnInit {
         this.midiLoaded = true;
       }
     });
+    this.initMidiPlaying();
+  }
+
+  private initMidiPlaying(): void {
+    this.midiPlaying = Array<boolean>(this.midis.length).fill(false);
+  }
+
+  private isMidiPlaying(index: number): boolean {
+    return this.midiPlaying[index];
   }
 
   private downloadMidi(index: number): void {
@@ -33,7 +43,22 @@ export class EsacConvertResultComponent implements OnInit {
 
   private playMidi(index:number) : void {
     if (this.midiLoaded) {
-      this.player.loadFile('../../../assets/batman.mid', this.player.start);
+      const midi = this.midis[index];
+      this.player.loadFile(midi.midi64url, this.player.start);
+      this.setMidiPlaying(index);
     }
+  }
+
+  private stopMidi(index:number) : void {
+    this.player.stop();
+    this.setMidiStop(index);
+  }
+
+  private setMidiPlaying(index: number): void {
+    this.midiPlaying[index] = true;
+  }
+
+  private setMidiStop(index: number): void {
+    this.midiPlaying[index] = false;
   }
 }

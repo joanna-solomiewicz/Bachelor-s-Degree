@@ -36,9 +36,13 @@
                     <span>Add ESAC</span>
                     <mat-icon>add</mat-icon>
                 </button>
-                <button mat-raised-button color="accent" (click)="playMidi(idx)">
+                <button mat-raised-button color="accent" (click)="playMidi(idx)" *ngIf="!isMidiPlaying(idx)">
                     <span>Play</span>
                     <mat-icon>play_arrow</mat-icon>
+                </button>
+                <button mat-raised-button color="accent" (click)="stopMidi(idx)" *ngIf="isMidiPlaying(idx)">
+                    <span>Stop</span>
+                    <mat-icon>stop</mat-icon>
                 </button>
                 <button mat-raised-button color="accent" (click)="downloadMidi(idx)">
                     <span>Download</span>
