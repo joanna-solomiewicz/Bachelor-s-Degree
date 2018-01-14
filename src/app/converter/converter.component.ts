@@ -51,4 +51,10 @@ export class ConverterComponent implements OnInit {
     this.updateProgress();
     this.result = event;
   }
+
+  private handleMidiToEsac(event): void {
+    this.step++;
+    this.updateProgress();
+    this.result = event;
+  }
 }

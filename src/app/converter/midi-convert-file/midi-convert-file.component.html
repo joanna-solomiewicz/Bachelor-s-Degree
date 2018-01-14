@@ -1,0 +1,26 @@
+<div class="file-container" *ngIf="!converting">
+  <span class="file-button">
+    <button mat-fab color="accent" [disabled]="isFilesChosen()">
+      <mat-icon>attach_file</mat-icon>
+      <input #file multiple type="file" class="file-input" (change)="onChooseFiles()">
+    </button>
+  </span>
+  <mat-chip-list *ngIf="isFilesChosen()" class="file-list">
+    <mat-chip *ngFor="let file of files; index as idx;" (removed)="onDeleteFiles(idx)">
+      <span>{{ file.name }}</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
+  <mat-form-field *ngIf="isFilesChosen()">
+    <input matInput placeholder="KEY" [(ngModel)]="key">
+  </mat-form-field>
+  <div class="file-subcontainer">
+    <button mat-raised-button color="accent" (click)="submit()" [disabled]="!isSubmittable()">
+      <span>Convert</span>
+      <mat-icon>swap_horiz</mat-icon>
+    </button>
+  </div>
+</div>
+<div *ngIf="converting" class="new-spinner">
+  <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
+</div>
