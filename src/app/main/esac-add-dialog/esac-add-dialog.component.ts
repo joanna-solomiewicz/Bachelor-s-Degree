@@ -2,11 +2,11 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'esac-add',
-  templateUrl: './esac-add.component.html',
-  styleUrls: ['./esac-add.component.scss']
+  selector: 'esac-add-dialog',
+  templateUrl: './esac-add-dialog.component.html',
+  styleUrls: ['./esac-add-dialog.component.scss']
 })
-export class EsacAddComponent implements OnInit {
+export class EsacAddDialogComponent implements OnInit {
 
   public step: number = 0;
   private lastStep: number = 2;
@@ -14,7 +14,7 @@ export class EsacAddComponent implements OnInit {
   public progress: number = 0;
 
   constructor(
-    public dialogRef: MatDialogRef<EsacAddComponent>,
+    public dialogRef: MatDialogRef<EsacAddDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 

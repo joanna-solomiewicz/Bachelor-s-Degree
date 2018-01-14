@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EsacAddComponent } from './esac-add.component';
+import { EsacAddDialogComponent } from './esac-add-dialog.component';
 
-describe('EsacAddComponent', () => {
-  let component: EsacAddComponent;
-  let fixture: ComponentFixture<EsacAddComponent>;
+describe('EsacAddDialogComponent', () => {
+  let component: EsacAddDialogComponent;
+  let fixture: ComponentFixture<EsacAddDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EsacAddComponent ]
+      declarations: [ EsacAddDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EsacAddComponent);
+    fixture = TestBed.createComponent(EsacAddDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

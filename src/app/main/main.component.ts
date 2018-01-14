@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material';
 import * as FileSaver from 'file-saver';
 
 import { MainService } from './services/main.service';
-import { EsacAddComponent } from './esac-add/esac-add.component';
+import { EsacAddDialogComponent } from './esac-add-dialog/esac-add-dialog.component';
 import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-dialog.component';
 import { EsacEditDialogComponent } from './esac-edit-dialog/esac-edit-dialog.component';
 import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dialog.component';
@@ -58,7 +58,7 @@ export class MainComponent implements OnInit {
   }
 
   addEsac(): void {
-    let dialogRef = this.dialog.open(EsacAddComponent, {
+    let dialogRef = this.dialog.open(EsacAddDialogComponent, {
       autoFocus: false,
       minWidth: 300,
       width: '80%',
