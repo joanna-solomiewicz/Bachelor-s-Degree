@@ -1,6 +1,29 @@
 <div class="card-container">
     <div *ngFor="let midi of midis; index as idx;">
         <mat-card class="card" *ngIf="midi.esac">
+            <div class="card-speed" *ngIf="isMidiPlaying(idx)">
+                <button mat-icon-button (click)="slowDownMidi(idx)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                <mat-slider [min]="midiSpeedMin" [max]="midiSpeedMax" [step]="midiSpeedStep" [(ngModel)]="midiSpeedValue"></mat-slider>
+                <button mat-icon-button (click)="speedUpMidi(idx)">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            <div class="card-buttons">
+                <button mat-icon-button color="accent" (click)="playMidi(idx)" *ngIf="!isMidiPlaying(idx)">
+                    <mat-icon>play_arrow</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="stopMidi(idx)" *ngIf="isMidiPlaying(idx)">
+                    <mat-icon>stop</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="downloadMidi(idx)">
+                    <mat-icon>file_download</mat-icon>
+                </button>
+                <button mat-icon-button color="primary">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
             <mat-card-header>
                 <mat-card-title>{{ midi.esac.name }}</mat-card-title>
                 <mat-card-subtitle>{{ midi.esac.title }}</mat-card-subtitle>
@@ -31,31 +54,6 @@
                     <span>{{ midi.esac.remarks }}</span>
                 </p>
             </mat-card-content>
-            <mat-card-actions class="card-actions">
-                <button mat-raised-button color="primary">
-                    <span>Add ESAC</span>
-                    <mat-icon>add</mat-icon>
-                </button>
-                <button mat-raised-button color="accent" (click)="playMidi(idx)" *ngIf="!isMidiPlaying(idx)">
-                    <span>Play</span>
-                    <mat-icon>play_arrow</mat-icon>
-                </button>
-                <button mat-raised-button color="accent" (click)="stopMidi(idx)" *ngIf="isMidiPlaying(idx)">
-                    <span>Stop</span>
-                    <mat-icon>stop</mat-icon>
-                </button>
-                <button mat-raised-button color="accent" (click)="downloadMidi(idx)">
-                    <span>Download</span>
-                    <mat-icon>file_download</mat-icon>
-                </button>
-            </mat-card-actions>
         </mat-card>
-        <!-- <mat-card class="card">
-            <mat-card-content>
-                <div class="new-spinner">
-                    <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
-                </div>
-            </mat-card-content>
-        </mat-card> -->
     </div>
 </div>

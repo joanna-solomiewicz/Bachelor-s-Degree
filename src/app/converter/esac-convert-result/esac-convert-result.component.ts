@@ -13,6 +13,10 @@ export class EsacConvertResultComponent implements OnInit {
   player = MIDI.Player;
   private midiLoaded = false;
   private midiPlaying;
+  private midiSpeedValue: number = 1;
+  private midiSpeedMax: number = 0.5;
+  private midiSpeedMin: number = 1.5;
+  private midiSpeedStep: number = 0.1;
 
   constructor() { }
 
@@ -41,7 +45,7 @@ export class EsacConvertResultComponent implements OnInit {
     FileSaver.saveAs(blob, midi.esac.name + '_' + midi.esac.title + '.mid');
   }
 
-  private playMidi(index:number) : void {
+  private playMidi(index: number): void {
     if (this.midiLoaded) {
       const midi = this.midis[index];
       this.player.loadFile(midi.midi64url, this.player.start);
@@ -49,7 +53,7 @@ export class EsacConvertResultComponent implements OnInit {
     }
   }
 
-  private stopMidi(index:number) : void {
+  private stopMidi(index: number): void {
     this.player.stop();
     this.setMidiStop(index);
   }
@@ -60,5 +64,23 @@ export class EsacConvertResultComponent implements OnInit {
 
   private setMidiStop(index: number): void {
     this.midiPlaying[index] = false;
+  }
+
+  private speedUpMidi(index: number): void {
+    if (this.midiSpeedValue > this.midiSpeedMax) {
+      this.stopMidi(index);
+      this.player.timeWarp -= 0.1;
+      this.midiSpeedValue -= 0.1;
+      this.playMidi(index);
+    }
+  }
+
+  private slowDownMidi(index: number): void {
+    if (this.midiSpeedValue < this.midiSpeedMin) {
+      this.stopMidi(index);
+      this.player.timeWarp += 0.1;
+      this.midiSpeedValue += 0.1;
+      this.playMidi(index);
+    }
   }
 }
