@@ -13,18 +13,10 @@ export class ConverterComponent implements OnInit {
   private sourceType: number;
   public progress: number = 0;
   private result;
-  player = MIDI.Player;
-  private midiLoaded = false;
 
   constructor() { }
 
   ngOnInit() {
-    MIDI.loadPlugin({
-      soundfontUrl: 'assets/soundfont/',
-      onsuccess: () => {
-        this.midiLoaded = true;
-      }
-    });
   }
 
   private chooseConverter(converter: number): void {
@@ -56,6 +48,5 @@ export class ConverterComponent implements OnInit {
   private handleEsacToMidiNew(event): void {
     this.step++;
     this.result = event;
-    if (this.midiLoaded) this.player.loadFile('../../assets/batman.mid', this.player.start);
   }
 }

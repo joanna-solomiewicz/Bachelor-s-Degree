@@ -10,10 +10,18 @@ import * as FileSaver from 'file-saver';
 export class EsacConvertResultComponent implements OnInit {
 
   @Input() midis;
+  player = MIDI.Player;
+  private midiLoaded = false;
 
   constructor() { }
 
   ngOnInit() {
+    MIDI.loadPlugin({
+      soundfontUrl: '../../../assets/soundfont/',
+      onsuccess: () => {
+        this.midiLoaded = true;
+      }
+    });
   }
 
   private downloadMidi(index: number): void {
@@ -23,4 +31,9 @@ export class EsacConvertResultComponent implements OnInit {
     FileSaver.saveAs(blob, midi.esac.name + '_' + midi.esac.title + '.mid');
   }
 
+  private playMidi(index:number) : void {
+    if (this.midiLoaded) {
+      this.player.loadFile('../../../assets/batman.mid', this.player.start);
+    }
+  }
 }
