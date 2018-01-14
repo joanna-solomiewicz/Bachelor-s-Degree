@@ -42,11 +42,13 @@ export class ConverterComponent implements OnInit {
 
   private handleEsacToMidiFile(event): void {
     this.step++;
+    this.updateProgress();
     this.result = event;
   }
 
   private handleEsacToMidiNew(event): void {
     this.step++;
+    this.updateProgress();
     this.result = event;
   }
 }
