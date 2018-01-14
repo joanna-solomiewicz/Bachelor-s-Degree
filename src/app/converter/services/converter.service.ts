@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ConverterService {
 
-  private urlGetEsacs: string = '/esacs';
-  private urlEsac2MidiFile: string = '/esac2midifile';
-  private urlEsac2MidiNew: string = '/esac2midi'; //esac2midinew
+  private urlGetEsacs: string = '/api/esacs';
+  private urlEsac2MidiFile: string = '/api/esac2midifile';
+  private urlEsac2MidiNew: string = '/api/esac2midi'; //esac2midinew
 
   constructor(
     private http: HttpClient

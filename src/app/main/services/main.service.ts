@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class MainService {
 
-  private urlGetEsacs: string = '/esacs'
-  private urlEsac2Midi: string = '/esac2midi';
-  private urlSearchEsacs: string = '/esacs';
+  private urlGetEsacs: string = '/api/esacs'
+  private urlEsac2Midi: string = '/api/esac2midi';
+  private urlSearchEsacs: string = '/api/esacs';
 
   constructor(
     private http: HttpClient
