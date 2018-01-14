@@ -1,22 +1,47 @@
 <div class="top-container" *ngIf="esacs">
-  <button mat-icon-button (click)="downloadEsac(-1)" class="top-item">
-    <mat-icon>file_download</mat-icon>
-  </button>
-  <button mat-icon-button (click)="convertEsac(-1)" class="top-item">
-    <mat-icon>swap_horiz</mat-icon>
-  </button>
-  <div class="top-menu--large top-item">
-    <button mat-button (click)="expandAll()">Expand all</button>
-    <button mat-button (click)="closeAll()">Close all</button>
+  <div class="top-container--left">
+    <div>
+      <mat-form-field class="search-type">
+        <mat-select placeholder="Type" [(value)]="searchType">
+          <mat-option *ngFor="let searchType of searchTypes" [value]="searchType">
+            {{ searchType }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="search-term">
+        <input matInput placeholder="Search term" [(ngModel)]="searchTerm">
+      </mat-form-field>
+      <button mat-mini-fab (click)="search()" [disabled]="isSearchIncomplete()" color="accent" class="search-button">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <mat-chip-list *ngIf="searchTerms" class="search-list">
+      <mat-chip *ngFor="let searchTerm of searchTerms; index as idx;">
+        <span>{{ searchTerm.term }}</span>
+        <mat-icon matChipRemove (click)="removeSearch(idx)">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
   </div>
-  <div class="top-menu--small top-item">
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
+  <div class="top-container--right">
+    <button mat-icon-button (click)="downloadEsac(-1)" class="top-item">
+      <mat-icon>file_download</mat-icon>
     </button>
-    <mat-menu #menu [overlapTrigger]="false">
-      <button mat-menu-item (click)="expandAll()">Expand all</button>
-      <button mat-menu-item (click)="closeAll()">Close all</button>
-    </mat-menu>
+    <button mat-icon-button (click)="convertEsac(-1)" class="top-item">
+      <mat-icon>swap_horiz</mat-icon>
+    </button>
+    <div class="top-menu--large top-item">
+      <button mat-button (click)="expandAll()">Expand all</button>
+      <button mat-button (click)="closeAll()">Close all</button>
+    </div>
+    <div class="top-menu--small top-item">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu [overlapTrigger]="false">
+        <button mat-menu-item (click)="expandAll()">Expand all</button>
+        <button mat-menu-item (click)="closeAll()">Close all</button>
+      </mat-menu>
+    </div>
   </div>
 </div>
 <div class="card-container">

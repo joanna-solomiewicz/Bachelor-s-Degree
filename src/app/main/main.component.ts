@@ -18,6 +18,10 @@ export class MainComponent implements OnInit {
 
   public esacs;  //typ
   private esacsExpanded: boolean[] = [];
+  private searchTerm: string = '';
+  private searchTerms = [];
+  private searchType;
+  private searchTypes: string[] = ['Name', 'CUT', 'REG', 'TRD', 'SIG', 'KEY', 'MEL', 'BEM', 'Melody', 'Rhythm'];
 
   constructor(
     private mainService: MainService,
@@ -26,6 +30,25 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.getEsacs();
+  }
+
+  private search(): void {
+    this.searchTerms.push({ type: this.searchType, term: this.searchTerm })
+    console.log(this.searchTerms)
+    this.resetSearch();
+  }
+
+  private removeSearch(index: number): void {
+    this.searchTerms.splice(index, 1);
+  }
+
+  private resetSearch(): void {
+    this.searchTerm = '';
+    this.searchType = undefined;
+  }
+
+  private isSearchIncomplete(): boolean {
+    return this.searchType === undefined || this.searchTerm === '';
   }
 
   private getEsacs(): void {
