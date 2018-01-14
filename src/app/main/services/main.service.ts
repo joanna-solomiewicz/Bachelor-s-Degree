@@ -7,6 +7,7 @@ export class MainService {
 
   private urlGetEsacs: string = '/esacs'
   private urlEsac2Midi: string = '/esac2midi';
+  private urlSearchEsacs: string = '/esacs';
 
   constructor(
     private http: HttpClient
@@ -18,5 +19,9 @@ export class MainService {
 
   esacToMidi(esac: any) {
     return this.http.post(this.urlEsac2Midi, esac, { responseType: 'arraybuffer' })
+  }
+
+  searchEsacs(terms: any): Observable<any> {
+    return this.http.post(this.urlSearchEsacs, terms);
   }
 }

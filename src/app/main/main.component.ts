@@ -34,12 +34,23 @@ export class MainComponent implements OnInit {
 
   private search(): void {
     this.searchTerms.push({ type: this.searchType, term: this.searchTerm })
-    console.log(this.searchTerms)
+    this.mainService.searchEsacs(this.searchTerms).subscribe(
+      data => {
+        this.esacs = data;
+      }, error => {
+        console.log('GET /esacs error');
+      })
     this.resetSearch();
   }
 
   private removeSearch(index: number): void {
     this.searchTerms.splice(index, 1);
+    this.mainService.searchEsacs(this.searchTerms).subscribe(
+      data => {
+        this.esacs = data;
+      }, error => {
+        console.log('GET /esacs error');
+      })
   }
 
   private resetSearch(): void {
