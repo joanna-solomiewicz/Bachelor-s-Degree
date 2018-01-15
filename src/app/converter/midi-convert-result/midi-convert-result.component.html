@@ -1,0 +1,14 @@
+<div class="card-container">
+    <mat-card class="card">
+        <mat-card-content>
+            <p *ngIf="esac.key">
+                <span class="card-content--bold">KEY:</span>
+                <span>{{ esac.key }}</span>
+            </p>
+            <p *ngIf="esac.melody">
+                <span class="card-content--bold">MEL:</span>
+                <span class="whitespace">{{ esac.melody }}</span>
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

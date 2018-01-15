@@ -12,6 +12,7 @@ import { EsacConvertFileComponent } from './esac-convert-file/esac-convert-file.
 import { EsacConvertNewComponent } from './esac-convert-new/esac-convert-new.component';
 import { EsacConvertResultComponent } from './esac-convert-result/esac-convert-result.component';
 import { MidiConvertFileComponent } from './midi-convert-file/midi-convert-file.component';
+import { MidiConvertResultComponent } from './midi-convert-result/midi-convert-result.component';
 
 const appRoutes: Routes = [
   { path: 'converter', component: ConverterComponent },
@@ -34,7 +35,7 @@ const appRoutes: Routes = [
     MatSliderModule,
     RouterModule.forChild(appRoutes)
   ],
-  declarations: [ConverterComponent, EsacConvertFileComponent, EsacConvertNewComponent, EsacConvertResultComponent, MidiConvertFileComponent],
+  declarations: [ConverterComponent, EsacConvertFileComponent, EsacConvertNewComponent, EsacConvertResultComponent, MidiConvertFileComponent, MidiConvertResultComponent],
   providers: [ConverterService]
 })
 export class ConverterModule { }

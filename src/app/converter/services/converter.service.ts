@@ -7,7 +7,8 @@ export class ConverterService {
 
   private urlGetEsacs: string = '/api/esacs';
   private urlEsac2MidiFile: string = '/api/esac2midifile';
-  private urlEsac2MidiNew: string = '/api/esac2midi'; //esac2midinew
+  private urlEsac2MidiNew: string = '/esac2midi'; //esac2midinew
+  private urlMidi2Esac: string = '/midi2esac';
 
   constructor(
     private http: HttpClient
@@ -28,5 +29,14 @@ export class ConverterService {
 
   esacToMidiNew(form: any) {
     return this.http.post(this.urlEsac2MidiNew, form, { responseType: 'arraybuffer' })
+  }
+
+  midiToEsac(form: any) {
+    let input = new FormData();
+    input.append(form.midi.name, form.midi);
+
+    const queryParam = '?key=' + form.key;
+
+    return this.http.post(this.urlMidi2Esac + queryParam, input);
   }
 }

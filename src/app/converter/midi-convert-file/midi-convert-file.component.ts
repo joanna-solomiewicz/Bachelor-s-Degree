@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
+import { ConverterService } from '../services/converter.service';
+
 @Component({
   selector: 'midi-convert-file',
   templateUrl: './midi-convert-file.component.html',
@@ -13,7 +15,9 @@ export class MidiConvertFileComponent implements OnInit {
   private converting: boolean = false;
   @Output() converted = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private converterService: ConverterService
+  ) { }
 
   ngOnInit() {
   }
@@ -38,6 +42,15 @@ export class MidiConvertFileComponent implements OnInit {
   }
 
   private submit(): void {
-    this.converted.emit({ midi: this.files[0], key: this.key });
+    this.converting = true;
+    this.converterService.midiToEsac({ midi: this.files[0], key: this.key })
+      .subscribe(data => {
+        this.converted.emit(data);
+      },
+      error => {
+        console.log('Error downloading file: ', error)
+        this.converted.emit(error);
+      },
+      () => this.converting = false);
   }
 }

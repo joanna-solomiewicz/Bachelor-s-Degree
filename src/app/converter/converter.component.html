@@ -18,6 +18,9 @@
       <esac-convert-file *ngIf="sourceType === 0" (converted)="handleEsacToMidiFile($event)"></esac-convert-file>
       <esac-convert-new *ngIf="sourceType === 1" (converted)="handleEsacToMidiNew($event)"></esac-convert-new>
     </div>
+    <div *ngIf="converterType === 1">
+      <midi-convert-result [esac]="result"></midi-convert-result>
+    </div>
   </div>
   <div *ngIf="step === 3" class="wizard-step">
     <div *ngIf="converterType === 0">

@@ -1,0 +1,26 @@
+$card--width: 220px;
+$card--margin-top: 10px;
+$card--margin-side: 10px;
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    min-width: $card--width;
+    margin: $card--margin-top $card--margin-side;
+    text-align: initial;
+}
+
+.card-content--bold {
+    font-weight: bold;
+}
+
+.whitespace {
+    white-space: pre-wrap;
+}
+
