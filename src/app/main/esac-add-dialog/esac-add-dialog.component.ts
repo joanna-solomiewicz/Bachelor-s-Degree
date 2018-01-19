@@ -12,6 +12,7 @@ export class EsacAddDialogComponent implements OnInit {
   private lastStep: number = 2;
   private sourceType: number;
   public progress: number = 0;
+  public text;
 
   constructor(
     public dialogRef: MatDialogRef<EsacAddDialogComponent>,
@@ -23,6 +24,12 @@ export class EsacAddDialogComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  receiveMessage($event) {
+    this.step++;
+    this.updateProgress();
+    this.text = $event.text;
   }
 
   public chooseSource(source: number): void {

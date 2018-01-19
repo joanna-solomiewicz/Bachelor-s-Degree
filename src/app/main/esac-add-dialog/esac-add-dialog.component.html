@@ -12,11 +12,15 @@
     </div>
     <div *ngIf="step === 1" class="wizard-step">
       <esac-add-file *ngIf="sourceType === 0"></esac-add-file>
-      <esac-add-new *ngIf="sourceType === 1"></esac-add-new>
+      <esac-add-new *ngIf="sourceType === 1" (isSubmited)="receiveMessage($event)"></esac-add-new>
+    </div>
+    <div *ngIf="step === 2" class="wizard-step">
+      <p class="message">{{text}}</p>
+      <button mat-raised-button color="accent" (click)="onNoClick()">Close</button>
     </div>
   </div>
 </mat-dialog-content>
-<mat-dialog-actions *ngIf="step > 0">
+<mat-dialog-actions *ngIf="step === 1">
   <button mat-button (click)="prevStep()">
     <mat-icon>chevron_left</mat-icon>
     <span>Previous</span>

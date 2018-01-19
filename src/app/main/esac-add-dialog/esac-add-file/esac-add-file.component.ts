@@ -6,7 +6,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./esac-add-file.component.scss']
 })
 export class EsacAddFileComponent implements OnInit {
-
   @ViewChild('file') file;
   private files = [];
 
@@ -24,8 +23,11 @@ export class EsacAddFileComponent implements OnInit {
   }
 
   private onDeleteFiles(index?: number): void {
-    if (index) this.files.splice(index, 1);
-    else this.files = [];
+    if (index) {
+      this.files.splice(index, 1);
+    } else {
+      this.files = [];
+    }
   }
 
   private isFilesChosen(): boolean {
