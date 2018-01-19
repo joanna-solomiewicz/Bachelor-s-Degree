@@ -28,7 +28,7 @@ export class ConverterService {
   }
 
   esacToMidiNew(form: any) {
-    return this.http.post(this.urlEsac2MidiNew, form, { responseType: 'arraybuffer' })
+    return this.http.post(this.urlEsac2MidiNew, form, { responseType: 'arraybuffer' });
   }
 
   midiToEsac(form: any) {

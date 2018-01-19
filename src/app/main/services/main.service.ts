@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class MainService {
 
-  private urlGetEsacs: string = '/api/esacs'
+  private urlGetEsacs: string = '/api/esacs';
   private urlEsac2Midi: string = '/api/esac2midi';
   private urlSearchEsacs: string = '/api/esacs';
 
@@ -18,7 +18,7 @@ export class MainService {
   }
 
   esacToMidi(esac: any) {
-    return this.http.post(this.urlEsac2Midi, esac, { responseType: 'arraybuffer' })
+    return this.http.post(this.urlEsac2Midi, esac, { responseType: 'arraybuffer' });
   }
 
   searchEsacs(terms: any): Observable<any> {

@@ -25,18 +25,20 @@ export class EsacAddDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  private chooseSource(source: number): void {
+  public chooseSource(source: number): void {
     this.sourceType = source;
     this.step++;
     this.updateProgress();
   }
 
-  private prevStep(): void {
-    if (this.step > 0) this.step--;
+  public prevStep(): void {
+    if (this.step > 0) {
+      this.step--;
+    }
     this.updateProgress();
   }
 
-  private updateProgress(): void {
+  public updateProgress(): void {
     this.progress = this.step * 100 / this.lastStep;
   }
 }
