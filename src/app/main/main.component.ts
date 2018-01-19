@@ -146,7 +146,10 @@ export class MainComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) this.esacs.splice(index, 1);
+      if (result) {
+        this.esacs.splice(index, 1);
+        // this.mainService.deleteEsac(esac.index);
+      }
     });
   }
 
@@ -171,7 +174,7 @@ export class MainComponent implements OnInit {
       string += 'KEY[' + esac.key + ']\n';
       string += 'MEL[' + esac.melody + ']\n';
       string += 'BEM[' + esac.remarks + ']\n';
-      string += '\n'
+      string += '\n';
     }
 
     return string;

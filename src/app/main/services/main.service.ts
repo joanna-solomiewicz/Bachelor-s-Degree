@@ -8,6 +8,7 @@ export class MainService {
   private urlGetEsacs: string = '/api/esac/list';
   private urlEsac2Midi: string = '/api/esac2midi';
   private urlSearchEsacs: string = '/api/esacs';
+  private urlDeleteFile: string = '/api/esac';
 
   constructor(
     private http: HttpClient
@@ -23,5 +24,9 @@ export class MainService {
 
   searchEsacs(terms: any): Observable<any> {
     return this.http.post(this.urlSearchEsacs, terms);
+  }
+
+  deleteEsac(id: number): Observable<any> {
+    return this.http.delete(this.urlDeleteFile + id);
   }
 }
