@@ -16,7 +16,7 @@ import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dial
 })
 export class MainComponent implements OnInit {
 
-  public esacs;  //typ
+  public esacs = null;  //typ
   private esacsExpanded: boolean[] = [];
   private searchTerm: string = '';
   private searchTerms = [];
@@ -32,14 +32,18 @@ export class MainComponent implements OnInit {
     this.getEsacs();
   }
 
+  public isEsacs(): boolean {
+    return !this.esacs || this.esacs.length === 0 ? false : true;
+  }
+
   private search(): void {
-    this.searchTerms.push({ type: this.searchType, term: this.searchTerm })
+    this.searchTerms.push({ type: this.searchType, term: this.searchTerm });
     this.mainService.searchEsacs(this.searchTerms).subscribe(
       data => {
         this.esacs = data;
       }, error => {
         console.log('GET /esacs error');
-      })
+      });
     this.resetSearch();
   }
 
@@ -50,7 +54,7 @@ export class MainComponent implements OnInit {
         this.esacs = data;
       }, error => {
         console.log('GET /esacs error');
-      })
+      });
   }
 
   private resetSearch(): void {
@@ -70,7 +74,7 @@ export class MainComponent implements OnInit {
       }, error => {
         console.log('GET /esacs error');
       }
-    )
+    );
   }
 
   private fillEsacsExpanded(length: number): void {

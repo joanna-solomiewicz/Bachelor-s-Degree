@@ -1,16 +1,5 @@
 {
-  "/api/*": {
-    "target": "http://localhost:8080",
-    "secure": false,
-    "logLevel": "debug"
-  },
-  "/esac2midi": {
-    "target": "http://150.254.165.250",
-    "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
-  },
-  "/": {
+  "/api/": {
     "target": "http://150.254.165.250",
     "secure": false,
     "changeOrigin": true,

@@ -15,7 +15,7 @@ describe('MainService', () => {
 
   describe('getEsacs', () => {
     it('call get method from HttpClient with required parameters', () => {
-      const urlGetEsacsEndpoint = '/api/esacs';
+      const urlGetEsacsEndpoint = '/api/esac/list';
 
       mainService.getEsacs();
 
