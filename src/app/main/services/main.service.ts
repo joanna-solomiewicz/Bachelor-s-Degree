@@ -8,6 +8,7 @@ export class MainService {
   private urlGetEsacs: string = '/api/esac/list';
   private urlEsac2Midi: string = '/api/esac2midi';
   private urlSearchEsacs: string = '/api/esacs';
+  private urlEsac2MidiFile: string = '/api/esac2midi?format=file';
   private esacEndpoint: string = '/api/esac';
 
   constructor(
@@ -20,6 +21,10 @@ export class MainService {
 
   esacToMidi(esac: any) {
     return this.http.post(this.urlEsac2Midi, esac);
+  }
+
+  esacToMidiFile(esac: any) {
+    return this.http.post(this.urlEsac2MidiFile, esac, {responseType: 'arraybuffer'});
   }
 
   searchEsacs(terms: any): Observable<any> {

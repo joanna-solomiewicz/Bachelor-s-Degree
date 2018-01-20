@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import * as FileSaver from 'file-saver';
 
 import { MainService } from './services/main.service';
+
 import { EsacAddDialogComponent } from './esac-add-dialog/esac-add-dialog.component';
 import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-dialog.component';
 import { EsacEditDialogComponent } from './esac-edit-dialog/esac-edit-dialog.component';
@@ -110,8 +111,11 @@ export class MainComponent implements OnInit {
 
   convertEsac(index: number): void {
     let esacs;
-    if (index === -1) esacs = this.esacs;
-    else esacs = [this.esacs[index]];
+    if (index === -1) {
+      esacs = this.esacs;
+    } else {
+      esacs = [this.esacs[index]];
+    }
     let dialogRef = this.dialog.open(EsacConvertDialogComponent, {
       autoFocus: false,
       minWidth: 300,

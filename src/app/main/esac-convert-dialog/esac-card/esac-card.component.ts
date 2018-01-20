@@ -45,7 +45,7 @@ export class EsacCardComponent implements OnInit {
   }
 
   public downloadMidi(esac, index: number): void {
-    this.mainService.esacToMidi(esac)
+    this.mainService.esacToMidiFile(esac)
       .subscribe(data => {
         const blob = new Blob([data], { type: 'audio/midi' });
         FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.mid');
