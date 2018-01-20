@@ -131,6 +131,7 @@ export class MainComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.mainService.updateEsac(esac.id, result).subscribe();
         this.esacs[index] = result;
       }
     });

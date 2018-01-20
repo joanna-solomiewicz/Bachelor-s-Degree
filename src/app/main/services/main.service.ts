@@ -29,4 +29,8 @@ export class MainService {
   deleteEsac(id: any): Observable<any> {
     return this.http.delete(this.esacEndpoint + '/' + id);
   }
+
+  updateEsac(id: any, result): Observable<any> {
+    return this.http.patch(this.esacEndpoint + '/' + id, JSON.stringify(result));
+  }
 }
