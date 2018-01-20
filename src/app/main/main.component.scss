@@ -1,13 +1,6 @@
 $top--margin: 10px;
 $top-buttons--margin: 5px;
 $search--margin: 2px;
-$background-opacity: .8;
-$background-color: rgba(255, 255, 255, $background-opacity);
-$card--width: 320px;
-$card--max-width: 350px;
-$card--margin-top: 10px;
-$card--margin-side: 5px;
-$button-add--offset: 20px;
 
 .top-container {
     margin: $top--margin;
@@ -70,33 +63,4 @@ $button-add--offset: 20px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-
-.card {
-    width: $card--width;
-    max-width: $card--max-width;
-    margin: $card--margin-top $card--margin-side;
-    background-color: $background-color;
-}
-
-.card-buttons {
-    text-align: right;
-}
-
-.card-content--bold {
-    font-weight: bold;
-}
-
-.whitespace {
-    white-space: pre-wrap;
-}
-
-.button-add {
-    position: fixed;
-    right: $button-add--offset;
-    bottom: $button-add--offset;
-}
-
-.card-footer-button {
-    width: 100%;
 }

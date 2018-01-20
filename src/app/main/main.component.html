@@ -1,4 +1,4 @@
-<div class="top-container" *ngIf="isEsacs()">
+<div class="top-container" *ngIf="isAnyEsac()">
   <div class="top-container--left">
     <div>
       <mat-form-field class="search-type">
@@ -45,65 +45,9 @@
   </div>
 </div>
 <div class="card-container">
-  <mat-card class="card" *ngFor="let esac of esacs; index as idx">
-    <div class="card-buttons" *ngIf="esacsExpanded[idx]">
-      <button mat-icon-button (click)="downloadEsac(idx)" color="accent">
-        <mat-icon>file_download</mat-icon>
-      </button>
-      <button mat-icon-button color="accent">
-        <mat-icon>play_arrow</mat-icon>
-      </button>
-      <button mat-icon-button (click)="convertEsac(idx)" color="accent">
-        <mat-icon>swap_horiz</mat-icon>
-      </button>
-      <button mat-icon-button (click)="editEsac(idx)">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)="deleteEsac(idx)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </div>
-    <mat-card-header>
-      <mat-card-title>{{ esac.name }}</mat-card-title>
-      <mat-card-subtitle>{{ esac.title }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p *ngIf="esac.region.length && esacsExpanded[idx]">
-        <span class="card-content--bold">REG:</span>
-        <span>{{ esac.region }}</span>
-      </p>
-      <p *ngIf="esac.source.length && esacsExpanded[idx]">
-        <span class="card-content--bold">TRD:</span>
-        <span>{{ esac.source }}</span>
-      </p>
-      <p *ngIf="esac.signature.length && esacsExpanded[idx]">
-        <span class="card-content--bold">SIG:</span>
-        <span>{{ esac.signature }}</span>
-      </p>
-      <p *ngIf="esac.key.length">
-        <span class="card-content--bold">KEY:</span>
-        <span>{{ esac.key }}</span>
-      </p>
-      <p *ngIf="esac.melody.length">
-        <span class="card-content--bold">MEL:</span>
-        <span class="whitespace">{{ esac.melody }}</span>
-      </p>
-      <p *ngIf="esac.remarks.length && esacsExpanded[idx]">
-        <span class="card-content--bold">BEM:</span>
-        <span>{{ esac.remarks }}</span>
-      </p>
-    </mat-card-content>
-    <mat-card-footer>
-      <div class="card-footer">
-        <button mat-button (click)="toggleCard(idx)" *ngIf="!esacsExpanded[idx]" class="card-footer-button">
-          <mat-icon>expand_more</mat-icon>
-        </button>
-        <button mat-button (click)="toggleCard(idx)" *ngIf="esacsExpanded[idx]" class="card-footer-button">
-          <mat-icon>expand_less</mat-icon>
-        </button>
-      </div>
-    </mat-card-footer>
-  </mat-card>
+  <div *ngFor="let esac of esacs; index as idx;">
+    <main-card [esac]="esac" [isExpanded]=esacsExpanded[idx]></main-card>
+  </div>
 </div>
 
 <button mat-fab color="accent" class="button-add" (click)="addEsac()">

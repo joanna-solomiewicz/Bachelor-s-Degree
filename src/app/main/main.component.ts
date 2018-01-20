@@ -4,10 +4,10 @@ import { MatDialog } from '@angular/material';
 import * as FileSaver from 'file-saver';
 
 import { MainService } from './services/main.service';
+import { EsacService } from './services/esac.service';
 
 import { EsacAddDialogComponent } from './esac-add-dialog/esac-add-dialog.component';
 import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-dialog.component';
-import { EsacEditDialogComponent } from './esac-edit-dialog/esac-edit-dialog.component';
 import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dialog.component';
 
 @Component({
@@ -26,14 +26,27 @@ export class MainComponent implements OnInit {
 
   constructor(
     private mainService: MainService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private esacService: EsacService
   ) { }
 
   ngOnInit() {
     this.getEsacs();
   }
 
-  public isEsacs(): boolean {
+  private getEsacs(): void {
+    this.mainService.getEsacs().subscribe(
+      data => {
+        this.esacService.setEsacs(data);
+        this.esacs = this.esacService.getEsacs();
+        this.fillEsacsExpanded(this.esacs.length);
+      }, error => {
+        console.log('GET /esacs error');
+      }
+    );
+  }
+
+  public isAnyEsac(): boolean {
     return !this.esacs || this.esacs.length === 0 ? false : true;
   }
 
@@ -42,6 +55,7 @@ export class MainComponent implements OnInit {
     this.mainService.searchEsacs(this.searchTerms).subscribe(
       data => {
         this.esacs = data;
+        this.esacService.setEsacs(data);
       }, error => {
         console.log('GET /esacs error');
       });
@@ -53,6 +67,7 @@ export class MainComponent implements OnInit {
     this.mainService.searchEsacs(this.searchTerms).subscribe(
       data => {
         this.esacs = data;
+        this.esacService.setEsacs(data);
       }, error => {
         console.log('GET /esacs error');
       });
@@ -65,17 +80,6 @@ export class MainComponent implements OnInit {
 
   private isSearchIncomplete(): boolean {
     return this.searchType === undefined || this.searchTerm === '';
-  }
-
-  private getEsacs(): void {
-    this.mainService.getEsacs().subscribe(
-      data => {
-        this.esacs = data;
-        this.fillEsacsExpanded(this.esacs.length);
-      }, error => {
-        console.log('GET /esacs error');
-      }
-    );
   }
 
   private fillEsacsExpanded(length: number): void {
@@ -110,12 +114,8 @@ export class MainComponent implements OnInit {
   }
 
   convertEsac(index: number): void {
-    let esacs;
-    if (index === -1) {
-      esacs = this.esacs;
-    } else {
-      esacs = [this.esacs[index]];
-    }
+    let esacs = this.esacService.getEsacs();
+
     let dialogRef = this.dialog.open(EsacConvertDialogComponent, {
       autoFocus: false,
       minWidth: 300,
@@ -124,44 +124,8 @@ export class MainComponent implements OnInit {
     });
   }
 
-  editEsac(index: number): void {
-    let esac = this.esacs[index];
-    let dialogRef = this.dialog.open(EsacEditDialogComponent, {
-      autoFocus: false,
-      minWidth: 300,
-      disableClose: true,
-      data: esac
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.mainService.updateEsac(esac.id, result).subscribe();
-        this.esacs[index] = result;
-      }
-    });
-  }
-
-  deleteEsac(index: number): void {
-    let esac = this.esacs[index];
-    let dialogRef = this.dialog.open(EsacDeleteDialogComponent, {
-      autoFocus: false,
-      minWidth: 300,
-      disableClose: true,
-      data: esac
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.mainService.deleteEsac(esac.id).subscribe();
-        this.esacs.splice(index, 1);
-      }
-    });
-  }
-
   private downloadEsac(index: number): void {
-    let esacs;
-    if (index === -1) esacs = this.esacs;
-    else esacs = [this.esacs[index]];
+    let esacs = this.esacService.getEsacs();
 
     const content = this.esacToString(esacs);
     let blob = new Blob([content], { type: 'text/plain' });

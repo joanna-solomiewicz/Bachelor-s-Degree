@@ -7,6 +7,7 @@ import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatDialog
 
 import { MainService } from './services/main.service';
 import { MidiPlayerService } from './services/midi-player.service';
+import { EsacService } from './services/esac.service';
 
 import { MainComponent } from './main.component';
 import { EsacAddDialogComponent } from './esac-add-dialog/esac-add-dialog.component';
@@ -15,7 +16,9 @@ import { EsacAddNewComponent } from './esac-add-dialog/esac-add-new/esac-add-new
 import { EsacAddFileComponent } from './esac-add-dialog/esac-add-file/esac-add-file.component';
 import { EsacEditDialogComponent } from './esac-edit-dialog/esac-edit-dialog.component';
 import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dialog.component';
-import { EsacCardComponent } from './esac-convert-dialog/esac-card/esac-card.component'
+import { EsacCardComponent } from './esac-convert-dialog/esac-card/esac-card.component';
+import { MainCardComponent } from './main-card/main-card.component';
+import { OneEsacConvertDialogComponent } from './one-esac-convert-dialog/one-esac-convert-dialog.component'
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -48,17 +51,21 @@ const appRoutes: Routes = [
     EsacAddFileComponent,
     EsacEditDialogComponent,
     EsacDeleteDialogComponent,
-    EsacCardComponent
+    EsacCardComponent,
+    MainCardComponent,
+    OneEsacConvertDialogComponent
   ],
   entryComponents: [
     EsacAddDialogComponent,
     EsacConvertDialogComponent,
     EsacEditDialogComponent,
-    EsacDeleteDialogComponent
+    EsacDeleteDialogComponent,
+    OneEsacConvertDialogComponent
   ],
   providers: [
     MainService,
-    MidiPlayerService
+    MidiPlayerService,
+    EsacService
   ]
 })
 export class MainModule { }
