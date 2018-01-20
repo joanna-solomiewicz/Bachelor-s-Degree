@@ -147,8 +147,8 @@ export class MainComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.mainService.deleteEsac(esac.id).subscribe();
         this.esacs.splice(index, 1);
-        // this.mainService.deleteEsac(esac.index);
       }
     });
   }
