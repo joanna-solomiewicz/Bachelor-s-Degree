@@ -47,8 +47,8 @@ export class MidiPlayerService {
             this.player.loadFile(midi.midi64, this.player.start);
             this.isPlaying = true;
 
-            MIDI.Player.removeListener();
-            MIDI.Player.addListener((currentSong) => {
+            this.player.removeListener();
+            this.player.addListener((currentSong) => {
                 if (currentSong.now === currentSong.end) {
                     this.isPlaying = false;
                 }
