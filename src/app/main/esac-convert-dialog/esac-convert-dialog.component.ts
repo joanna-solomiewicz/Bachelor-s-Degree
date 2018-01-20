@@ -27,37 +27,11 @@ export class EsacConvertDialogComponent implements OnInit {
     this.setInfoData();
   }
 
-  public playMidi(esac): void {
-    this.mainService.esacToMidi(esac)
-      .subscribe(data => {
-        this.midiPlayerService.setMidiSong(data);
-        this.midiPlayerService.playMidi();
-      },
-      error => {
-        console.log('Error downloading file: ', error);
-      });
-  }
-
-  public downloadMidi(esac, index: number): void {
-    this.downloading[index] = true;
-    this.mainService.esacToMidi(esac)
-      .subscribe(data => {
-        const blob = new Blob([data], { type: 'audio/midi' });
-        FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.mid');
-      },
-      error => {
-        console.log('Error downloading file: ', error);
-      },
-      () => this.downloading[index] = false);
-  }
-
   private setInfoData(): void {
     this.esacs = this.data;
-    this.downloading = Array<boolean>(this.esacs.length).fill(false);
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  closeDialog(): void {
+    this.midiPlayerService.stopMidi();
   }
-
 }

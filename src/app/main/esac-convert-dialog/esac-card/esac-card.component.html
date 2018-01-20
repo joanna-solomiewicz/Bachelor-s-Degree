@@ -1,0 +1,20 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{ esac.name }}</mat-card-title>
+    <mat-card-subtitle>{{ esac.title }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions class="card-actions">
+    <button mat-raised-button color="accent" *ngIf="!isMidiPlaying()" (click)="playMidi(esac)">
+      <span>Play</span>
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button mat-raised-button color="accent" *ngIf="isMidiPlaying()" (click)="stopMidi()">
+      <span>Pause</span>
+      <mat-icon>pause</mat-icon>
+    </button>
+    <button mat-raised-button color="accent" (click)="downloadMidi(esac, idx)">
+      <span>Download</span>
+      <mat-icon>file_download</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

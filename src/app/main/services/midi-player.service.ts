@@ -38,6 +38,9 @@ export class MidiPlayerService {
     }
 
     public playMidi(): void {
+        if (this.isMidiPlaying) {
+            this.stopMidi();
+        }
         if (this.isMidiLoaded) {
             const midi = this.getMidiSong();
 
@@ -46,6 +49,13 @@ export class MidiPlayerService {
 
             this.player.loadFile(midi.midi64, this.player.start);
             this.isPlaying = true;
+
+            MIDI.Player.removeListener();
+            MIDI.Player.addListener((currentSong) => {
+                if (currentSong.now === currentSong.end) {
+                    this.isPlaying = false;
+                }
+            });
         }
     }
 

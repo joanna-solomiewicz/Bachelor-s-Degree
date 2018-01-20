@@ -14,7 +14,8 @@ import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-d
 import { EsacAddNewComponent } from './esac-add-dialog/esac-add-new/esac-add-new.component';
 import { EsacAddFileComponent } from './esac-add-dialog/esac-add-file/esac-add-file.component';
 import { EsacEditDialogComponent } from './esac-edit-dialog/esac-edit-dialog.component';
-import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dialog.component'
+import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dialog.component';
+import { EsacCardComponent } from './esac-convert-dialog/esac-card/esac-card.component'
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     EsacAddNewComponent,
     EsacAddFileComponent,
     EsacEditDialogComponent,
-    EsacDeleteDialogComponent
+    EsacDeleteDialogComponent,
+    EsacCardComponent
   ],
   entryComponents: [
     EsacAddDialogComponent,

@@ -1,0 +1,22 @@
+$card--width: 220px;
+$card--margin-top: 10px;
+$card--margin-side: 10px;
+$card-actions--margin: 5px;
+
+.card {
+    min-width: $card--width;
+    margin: $card--margin-top $card--margin-side;
+}
+
+.card-actions {
+    text-align: center;
+
+    * {
+        margin-bottom: $card-actions--margin;
+    }
+}
+
+.new-spinner {
+  display: flex;
+  justify-content: center;
+}

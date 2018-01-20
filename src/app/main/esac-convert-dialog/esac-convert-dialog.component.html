@@ -1,34 +1,12 @@
 <div class="dialog-close">
-  <button mat-icon-button matDialogClose>
+  <button (click)="closeDialog()" mat-icon-button matDialogClose>
     <mat-icon>close</mat-icon>
   </button>
 </div>
 <mat-dialog-content>
   <div class="card-container">
     <div *ngFor="let esac of esacs; index as idx;">
-      <mat-card class="card" *ngIf="!downloading[idx]">
-        <mat-card-header>
-          <mat-card-title>{{ esac.name }}</mat-card-title>
-          <mat-card-subtitle>{{ esac.title }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions class="card-actions">
-          <button mat-raised-button color="accent" (click)="playMidi(esac, idx)">
-            <span>Play</span>
-            <mat-icon>play_arrow</mat-icon>
-          </button>
-          <button mat-raised-button color="accent" (click)="downloadMidi(esac, idx)">
-            <span>Download</span>
-            <mat-icon>file_download</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-      <mat-card class="card" *ngIf="downloading[idx]">
-        <mat-card-content>
-          <div class="new-spinner">
-            <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
-          </div>
-        </mat-card-content>
-      </mat-card>
+      <esac-card [esac]="esac"></esac-card>
     </div>
   </div>
 </mat-dialog-content>
