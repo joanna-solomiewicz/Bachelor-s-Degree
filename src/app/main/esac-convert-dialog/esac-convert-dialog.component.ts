@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import * as FileSaver from 'file-saver';
 
 import { MainService } from '../services/main.service';
+import { MidiPlayerService } from '../services/midi-player.service';
 
 @Component({
   selector: 'esac-convert-dialog',
@@ -18,22 +19,34 @@ export class EsacConvertDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EsacConvertDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private mainService: MainService
+    private mainService: MainService,
+    private midiPlayerService: MidiPlayerService
   ) { }
 
   ngOnInit() {
     this.setInfoData();
   }
 
-  private downloadMidi(esac, index: number): void {
+  public playMidi(esac): void {
+    this.mainService.esacToMidi(esac)
+      .subscribe(data => {
+        this.midiPlayerService.setMidiSong(data);
+        this.midiPlayerService.playMidi();
+      },
+      error => {
+        console.log('Error downloading file: ', error);
+      });
+  }
+
+  public downloadMidi(esac, index: number): void {
     this.downloading[index] = true;
     this.mainService.esacToMidi(esac)
       .subscribe(data => {
-        let blob = new Blob([data], { type: 'audio/midi' });
+        const blob = new Blob([data], { type: 'audio/midi' });
         FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.mid');
       },
       error => {
-        console.log('Error downloading file: ', error)
+        console.log('Error downloading file: ', error);
       },
       () => this.downloading[index] = false);
   }

@@ -19,7 +19,7 @@ export class MainService {
   }
 
   esacToMidi(esac: any) {
-    return this.http.post(this.urlEsac2Midi, esac, { responseType: 'arraybuffer' });
+    return this.http.post(this.urlEsac2Midi, esac);
   }
 
   searchEsacs(terms: any): Observable<any> {

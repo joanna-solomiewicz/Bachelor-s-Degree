@@ -6,8 +6,8 @@ import { Observable } from 'rxjs/Observable';
 export class ConverterService {
 
   private urlGetEsacs: string = '/api/esacs';
-  private urlEsac2MidiFile: string = '/api/esac2midifile';
-  private urlEsac2MidiNew: string = '/esac2midi'; //esac2midinew
+  // private urlEsac2MidiFile: string = '/api/esacjson';
+  private urlEsac2MidiNew: string = '/esac2midi';
   private urlMidi2Esac: string = '/midi2esac';
 
   constructor(
@@ -19,12 +19,12 @@ export class ConverterService {
   }
 
   esacToMidiFile(files: any[]) {
-    let input = new FormData();
-    for (let file of files) {
-      input.append(file.name, file);
-    }
+    // let input = new FormData();
+    // for (let file of files) {
+    //   input.append(file.name, file);
+    // }
 
-    return this.http.post(this.urlEsac2MidiFile, input);
+    // return this.http.post(this.urlEsac2MidiFile, input);
   }
 
   esacToMidiNew(form: any) {
