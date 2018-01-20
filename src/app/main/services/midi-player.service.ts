@@ -44,9 +44,6 @@ export class MidiPlayerService {
         if (this.isMidiLoaded) {
             const midi = this.getMidiSong();
 
-            // MOCK REMOVE THIS LATER
-            midi.midi64 = "data:audio/midi;base64,TVRoZAAAAAYAAAABAGBNVHJrAAABDQD/UQMKLCoAkEUoYIBFKACQSCgwgEgoAJBHKDCARygAkEUoMIBFKACQRCgwgEQoAJBFKGCARSgAkEgoMIBIKACQRygwgEcoAJBFKDCARSgAkEQoMIBEKACQRSgwgEUoAJBHKDCARygAkEgoYIBIKACQSihggEooAJBMKIFAgEwoAJBMKDCATCgAkEwoMIBMKACQTSgwgE0oAJBMKDCATCgAkEooMIBKKACQSCgwgEgoAJBHKDCARygAkEcoMIBHKACQTCgwgEwoAJBKKDCASigAkEgoMIBIKACQRygwgEcoAJBFKDCARSgAkEgoMIBIKACQTChggEwoAJBEKGCARCgAkEUogViARSgA/y8A";
-
             this.player.loadFile(midi.midi64, this.player.start);
             this.isPlaying = true;
 
