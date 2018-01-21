@@ -4,7 +4,6 @@ $card--width: 320px;
 $card--max-width: 350px;
 $card--margin-top: 10px;
 $card--margin-side: 5px;
-$button-add--offset: 20px;
 
 .card {
     width: $card--width;
@@ -23,12 +22,6 @@ $button-add--offset: 20px;
 
 .whitespace {
     white-space: pre-wrap;
-}
-
-.button-add {
-    position: fixed;
-    right: $button-add--offset;
-    bottom: $button-add--offset;
 }
 
 .card-footer-button {

@@ -1,6 +1,7 @@
 $top--margin: 10px;
 $top-buttons--margin: 5px;
 $search--margin: 2px;
+$button-add--offset: 20px;
 
 .top-container {
     margin: $top--margin;
@@ -63,4 +64,10 @@ $search--margin: 2px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.button-add {
+    position: fixed;
+    right: $button-add--offset;
+    bottom: $button-add--offset;
 }
