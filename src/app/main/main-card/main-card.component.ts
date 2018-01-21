@@ -61,7 +61,7 @@ export class MainCardComponent implements OnInit {
   }
 
   public isMidiPlaying(): boolean {
-    return this.esac.isPlaying && this.midiPlayerService.isMidiPlaying() && this.checkEsacId();
+    return this.checkEsacId() && this.esac.isPlaying && this.midiPlayerService.isMidiPlaying();
   }
 
   private checkEsacId(): boolean {
