@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -12,6 +12,8 @@ export class EsacAddFileComponent implements OnInit {
   @ViewChild('file') file;
   private files = [];
   private createNewEsacFromURL: string = '/api/esac?parse=file';
+
+  @Output() isSubmited = new EventEmitter<object>();
 
   constructor(
     private http: HttpClient
@@ -44,6 +46,11 @@ export class EsacAddFileComponent implements OnInit {
     const input = new FormData();
     input.append('file', this.files[0]);
 
-    return this.http.put(this.createNewEsacFromURL, input).subscribe();
+    return this.http.put(this.createNewEsacFromURL, input).subscribe(data => {
+      this.isSubmited.emit({text: 'Success'});
+    },
+    error => {
+      this.isSubmited.emit({text: 'Error downloading file. Please try again.'});
+    });
   }
 }
