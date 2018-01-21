@@ -124,15 +124,15 @@ export class MainComponent implements OnInit {
     });
   }
 
-  private downloadEsac(index: number): void {
+  private downloadEsac(): void {
     let esacs = this.esacService.getEsacs();
 
-    const content = this.esacToString(esacs);
+    const content = this.esacsToString(esacs);
     let blob = new Blob([content], { type: 'text/plain' });
     FileSaver.saveAs(blob, 'esacs.txt');
   }
 
-  private esacToString(esacs): string { //typ
+  private esacsToString(esacs): string { //typ
     let string = '';
     for (let esac of esacs) {
       string += esac.name + '\n';

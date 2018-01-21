@@ -75,26 +75,24 @@ export class MainCardComponent implements OnInit {
     });
   }
 
-  private downloadEsac(index: number): void {
+  private downloadEsac(): void {
     const esac = this.esac;
     const content = this.esacToString(esac);
     const blob = new Blob([content], { type: 'text/plain' });
-    FileSaver.saveAs(blob, 'esacs.txt');
+    FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.txt');
   }
 
-  private esacToString(esacs): string {
+  private esacToString(esac): string {
     let string = '';
-    for (let esac of esacs) {
-      string += esac.name + '\n';
-      string += 'CUT[' + esac.title + ']\n';
-      string += 'REG[' + esac.region + ']\n';
-      string += 'TRD[' + esac.source + ']\n';
-      string += 'SIG[' + esac.signature + ']\n';
-      string += 'KEY[' + esac.key + ']\n';
-      string += 'MEL[' + esac.melody + ']\n';
-      string += 'BEM[' + esac.remarks + ']\n';
-      string += '\n';
-    }
+    string += esac.name + '\n';
+    string += 'CUT[' + esac.title + ']\n';
+    string += 'REG[' + esac.region + ']\n';
+    string += 'TRD[' + esac.source + ']\n';
+    string += 'SIG[' + esac.signature + ']\n';
+    string += 'KEY[' + esac.key + ']\n';
+    string += 'MEL[' + esac.melody + ']\n';
+    string += 'BEM[' + esac.remarks + ']\n';
+    string += '\n';
 
     return string;
   }
