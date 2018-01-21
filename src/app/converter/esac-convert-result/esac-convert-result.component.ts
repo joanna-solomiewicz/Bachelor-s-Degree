@@ -2,6 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import * as FileSaver from 'file-saver';
 
+import { MainService } from './../../main/services/main.service';
+import { MidiPlayerService } from './../../main/services/midi-player.service';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'esac-convert-result',
   templateUrl: './esac-convert-result.component.html',
@@ -9,78 +13,68 @@ import * as FileSaver from 'file-saver';
 })
 export class EsacConvertResultComponent implements OnInit {
 
-  @Input() midis;
-  player = MIDI.Player;
-  private midiLoaded = false;
-  private midiPlaying;
-  private midiSpeedValue: number = 1;
-  private midiSpeedMax: number = 0.5;
-  private midiSpeedMin: number = 1.5;
-  private midiSpeedStep: number = 0.1;
+  @Input() esac;
 
-  constructor() { }
+  private createNewEsacFromFromURL: string = '/api/esac';
+  public speedData = this.midiPlayerService.getSpeedData();
+
+  constructor(
+    private http: HttpClient,
+    private mainService: MainService,
+    private midiPlayerService: MidiPlayerService
+  ) { }
 
   ngOnInit() {
-    MIDI.loadPlugin({
-      soundfontUrl: '../../../assets/soundfont/',
-      onsuccess: () => {
-        this.midiLoaded = true;
-      }
-    });
-    this.initMidiPlaying();
+    this.esac.isPlaying = false;
   }
 
-  private initMidiPlaying(): void {
-    this.midiPlaying = Array<boolean>(this.midis.length).fill(false);
+  public playMidi(esac): void {
+    this.mainService.esacToMidi(esac)
+      .subscribe(data => {
+        this.esac.isPlaying = true;
+        this.midiPlayerService.setMidiSong(data, this.esac.id);
+        this.midiPlayerService.playMidi();
+      },
+      error => {
+        console.log('Error downloading file: ', error);
+      });
   }
 
-  private isMidiPlaying(index: number): boolean {
-    return this.midiPlaying[index];
+  public stopMidi(): void {
+    this.esac.isPlaying = false;
+    this.midiPlayerService.stopMidi();
   }
 
-  private downloadMidi(index: number): void {
-    const midi = this.midis[index];
-    let content = midi.midi;
-    let blob = new Blob([content], { type: 'audio/midi' });
-    FileSaver.saveAs(blob, midi.esac.name + '_' + midi.esac.title + '.mid');
+  public isMidiPlaying(): boolean {
+    return this.checkEsacId() && this.esac.isPlaying && this.midiPlayerService.isMidiPlaying();
   }
 
-  private playMidi(index: number): void {
-    if (this.midiLoaded) {
-      const midi = this.midis[index];
-      this.player.loadFile(midi.midi64url, this.player.start);
-      this.setMidiPlaying(index);
-    }
+  private checkEsacId(): boolean {
+    return this.esac.id === this.midiPlayerService.getEsacId();
   }
 
-  private stopMidi(index: number): void {
-    this.player.stop();
-    this.setMidiStop(index);
+  public downloadMidi(esac, index: number): void {
+    this.mainService.esacToMidiFile(esac)
+      .subscribe(data => {
+        const blob = new Blob([data], { type: 'audio/midi' });
+        FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.mid');
+      },
+      error => {
+        console.log('Error downloading file: ', error);
+      });
   }
 
-  private setMidiPlaying(index: number): void {
-    this.midiPlaying[index] = true;
+  public addEsac(): any {
+    return this.http.put(this.createNewEsacFromFromURL, this.esac).subscribe();
   }
 
-  private setMidiStop(index: number): void {
-    this.midiPlaying[index] = false;
+  public slowDownMidi(): void {
+    this.midiPlayerService.slowDownMidi();
+    this.speedData = this.midiPlayerService.getSpeedData();
   }
 
-  private speedUpMidi(index: number): void {
-    if (this.midiSpeedValue > this.midiSpeedMax) {
-      this.stopMidi(index);
-      this.player.timeWarp -= 0.1;
-      this.midiSpeedValue -= 0.1;
-      this.playMidi(index);
-    }
-  }
-
-  private slowDownMidi(index: number): void {
-    if (this.midiSpeedValue < this.midiSpeedMin) {
-      this.stopMidi(index);
-      this.player.timeWarp += 0.1;
-      this.midiSpeedValue += 0.1;
-      this.playMidi(index);
-    }
+  public speedUpMidi(): void {
+    this.midiPlayerService.speedUpMidi();
+    this.speedData = this.midiPlayerService.getSpeedData();
   }
 }

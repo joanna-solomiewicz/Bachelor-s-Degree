@@ -84,4 +84,13 @@ export class MidiPlayerService {
             this.playMidi();
         }
     }
+
+    public getSpeedData(): any {
+        return {
+            midiSpeedValue: this.midiSpeedValue,
+            midiSpeedMax: this.midiSpeedMax,
+            midiSpeedMin: this.midiSpeedMin,
+            midiSpeedStep: this.midiSpeedStep,
+        };
+    }
 }

@@ -1,59 +1,57 @@
 <div class="card-container">
-    <div *ngFor="let midi of midis; index as idx;">
-        <mat-card class="card" *ngIf="midi.esac">
-            <div class="card-speed" *ngIf="isMidiPlaying(idx)">
-                <button mat-icon-button (click)="slowDownMidi(idx)">
-                    <mat-icon>remove</mat-icon>
-                </button>
-                <mat-slider [min]="midiSpeedMin" [max]="midiSpeedMax" [step]="midiSpeedStep" [(ngModel)]="midiSpeedValue"></mat-slider>
-                <button mat-icon-button (click)="speedUpMidi(idx)">
-                    <mat-icon>add</mat-icon>
-                </button>
-            </div>
-            <div class="card-buttons">
-                <button mat-icon-button color="accent" (click)="playMidi(idx)" *ngIf="!isMidiPlaying(idx)">
-                    <mat-icon>play_arrow</mat-icon>
-                </button>
-                <button mat-icon-button color="accent" (click)="stopMidi(idx)" *ngIf="isMidiPlaying(idx)">
-                    <mat-icon>stop</mat-icon>
-                </button>
-                <button mat-icon-button color="accent" (click)="downloadMidi(idx)">
-                    <mat-icon>file_download</mat-icon>
-                </button>
-                <button mat-icon-button color="primary">
-                    <mat-icon>add</mat-icon>
-                </button>
-            </div>
-            <mat-card-header>
-                <mat-card-title>{{ midi.esac.name }}</mat-card-title>
-                <mat-card-subtitle>{{ midi.esac.title }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <p *ngIf="midi.esac.region">
-                    <span class="card-content--bold">REG:</span>
-                    <span>{{ midi.esac.region }}</span>
-                </p>
-                <p *ngIf="midi.esac.source">
-                    <span class="card-content--bold">TRD:</span>
-                    <span>{{ midi.esac.source }}</span>
-                </p>
-                <p *ngIf="midi.esac.signature">
-                    <span class="card-content--bold">SIG:</span>
-                    <span>{{ midi.esac.signature }}</span>
-                </p>
-                <p *ngIf="midi.esac.key">
-                    <span class="card-content--bold">KEY:</span>
-                    <span>{{ midi.esac.key }}</span>
-                </p>
-                <p *ngIf="midi.esac.melody">
-                    <span class="card-content--bold">MEL:</span>
-                    <span class="whitespace">{{ midi.esac.melody }}</span>
-                </p>
-                <p *ngIf="midi.esac.remarks">
-                    <span class="card-content--bold">BEM:</span>
-                    <span>{{ midi.esac.remarks }}</span>
-                </p>
-            </mat-card-content>
-        </mat-card>
-    </div>
+    <mat-card class="card">
+        <div class="card-speed" *ngIf="isMidiPlaying()">
+            <button mat-icon-button (click)="slowDownMidi()">
+                <mat-icon>remove</mat-icon>
+            </button>
+            <mat-slider disabled [min]="speedData.midiSpeedMin" [max]="speedData.midiSpeedMax" [step]="speedData.midiSpeedStep" [value]="speedData.midiSpeedValue"></mat-slider>
+            <button mat-icon-button (click)="speedUpMidi()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div class="card-buttons">
+            <button mat-icon-button color="accent" (click)="playMidi(esac)" *ngIf="!isMidiPlaying()">
+                <mat-icon>play_arrow</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" (click)="stopMidi()" *ngIf="isMidiPlaying()">
+                <mat-icon>stop</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" (click)="downloadMidi(esac)">
+                <mat-icon>file_download</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="addEsac()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <mat-card-header>
+            <mat-card-title>{{ esac.name }}</mat-card-title>
+            <mat-card-subtitle>{{ esac.title }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p *ngIf="esac.region">
+                <span class="card-content--bold">REG:</span>
+                <span>{{ esac.region }}</span>
+            </p>
+            <p *ngIf="esac.source">
+                <span class="card-content--bold">TRD:</span>
+                <span>{{ esac.source }}</span>
+            </p>
+            <p *ngIf="esac.signature">
+                <span class="card-content--bold">SIG:</span>
+                <span>{{ esac.signature }}</span>
+            </p>
+            <p *ngIf="esac.key">
+                <span class="card-content--bold">KEY:</span>
+                <span>{{ esac.key }}</span>
+            </p>
+            <p *ngIf="esac.melody">
+                <span class="card-content--bold">MEL:</span>
+                <span class="whitespace">{{ esac.melody }}</span>
+            </p>
+            <p *ngIf="esac.remarks">
+                <span class="card-content--bold">BEM:</span>
+                <span>{{ esac.remarks }}</span>
+            </p>
+        </mat-card-content>
+    </mat-card>
 </div>

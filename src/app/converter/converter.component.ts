@@ -40,8 +40,7 @@ export class ConverterComponent implements OnInit {
   private updateProgress(): void {
     if (this.converterType === 0) {
       this.progress = this.step * 100 / this.lastStepESAC;
-    }
-    else {
+    } else {
       this.progress = this.step * 100 / this.lastStepMIDI;
     }
   }
