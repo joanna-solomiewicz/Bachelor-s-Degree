@@ -27,7 +27,7 @@ export class EsacCardComponent implements OnInit {
     this.mainService.esacToMidi(esac)
       .subscribe(data => {
         this.esac.isPlaying = true;
-        this.midiPlayerService.setMidiSong(data);
+        this.midiPlayerService.setMidiSong(data, this.esac.id);
         this.midiPlayerService.playMidi();
       },
       error => {
@@ -41,7 +41,11 @@ export class EsacCardComponent implements OnInit {
   }
 
   public isMidiPlaying(): boolean {
-    return this.esac.isPlaying && this.midiPlayerService.isMidiPlaying();
+    return this.esac.isPlaying && this.midiPlayerService.isMidiPlaying() && this.checkEsacId();
+  }
+
+  private checkEsacId(): boolean {
+    return this.esac.id === this.midiPlayerService.getEsacId();
   }
 
   public downloadMidi(esac, index: number): void {

@@ -6,6 +6,7 @@ export class MidiPlayerService {
     private player = MIDI.Player;
 
     private midiSong = {};
+    private currentEsacId;
 
     private isMidiLoaded;
     private isPlaying = false;
@@ -25,12 +26,17 @@ export class MidiPlayerService {
         });
     }
 
-    public setMidiSong(midiFile): void {
+    public setMidiSong(midiFile, midiId): void {
         this.midiSong = midiFile;
+        this.currentEsacId = midiId;
     }
 
     public getMidiSong(): any {
         return this.midiSong;
+    }
+
+    public getEsacId(): any {
+        return this.currentEsacId;
     }
 
     public isMidiPlaying(): boolean {
