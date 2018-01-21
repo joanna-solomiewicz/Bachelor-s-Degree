@@ -26,7 +26,7 @@ export class EsacAddNewComponent implements OnInit {
 
   private addEsac(): any {
     return this.http.put(this.createNewEsacFromURL, this.form.value).subscribe(data => {
-        this.isSubmited.emit({text: 'Successs'});
+        this.isSubmited.emit({text: 'Success'});
       },
       error => {
         this.isSubmited.emit({text: 'Error downloading file. Please try again.'});
