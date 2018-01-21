@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class EsacAddNewComponent implements OnInit {
 
   private form: FormGroup;
-  private createNewEsacFromFromURL: string = '/api/esac';
+  private createNewEsacFromURL: string = '/api/esac';
 
   @Output() isSubmited = new EventEmitter<object>();
 
@@ -25,7 +25,7 @@ export class EsacAddNewComponent implements OnInit {
   }
 
   private addEsac(): any {
-    return this.http.put(this.createNewEsacFromFromURL, this.form.value).subscribe(data => {
+    return this.http.put(this.createNewEsacFromURL, this.form.value).subscribe(data => {
         this.isSubmited.emit({text: 'Successs'});
       },
       error => {
