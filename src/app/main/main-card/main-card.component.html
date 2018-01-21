@@ -3,8 +3,11 @@
     <button mat-icon-button (click)="downloadEsac()" color="accent">
       <mat-icon>file_download</mat-icon>
     </button>
-    <button mat-icon-button color="accent">
+    <button mat-icon-button *ngIf="!isMidiPlaying()" (click)="playMidi()" color="accent">
       <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="isMidiPlaying()" (click)="stopMidi()" color="accent">
+      <mat-icon>pause</mat-icon>
     </button>
     <button mat-icon-button (click)="convertEsac()" color="accent">
       <mat-icon>swap_horiz</mat-icon>

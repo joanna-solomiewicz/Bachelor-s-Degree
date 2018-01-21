@@ -6,6 +6,7 @@ import * as FileSaver from 'file-saver';
 
 import { MainService } from './../services/main.service';
 import { EsacService } from './../services/esac.service';
+import { MidiPlayerService } from './../services/midi-player.service';
 
 import { OneEsacConvertDialogComponent } from './../one-esac-convert-dialog/one-esac-convert-dialog.component';
 import { EsacEditDialogComponent } from './../esac-edit-dialog/esac-edit-dialog.component';
@@ -21,7 +22,8 @@ export class MainCardComponent implements OnInit {
   constructor(
     private mainService: MainService,
     public dialog: MatDialog,
-    public esacService: EsacService
+    public esacService: EsacService,
+    private midiPlayerService: MidiPlayerService
   ) { }
 
   @Input() esac: any;
@@ -39,6 +41,31 @@ export class MainCardComponent implements OnInit {
       disableClose: true,
       data: esac
     });
+  }
+
+  public playMidi(): void {
+    this.mainService.esacToMidi(this.esac)
+      .subscribe(data => {
+        this.esac.isPlaying = true;
+        this.midiPlayerService.setMidiSong(data, this.esac.id);
+        this.midiPlayerService.playMidi();
+      },
+      error => {
+        console.log('Error downloading file: ', error);
+      });
+  }
+
+  public stopMidi(): void {
+    this.esac.isPlaying = false;
+    this.midiPlayerService.stopMidi();
+  }
+
+  public isMidiPlaying(): boolean {
+    return this.esac.isPlaying && this.midiPlayerService.isMidiPlaying() && this.checkEsacId();
+  }
+
+  private checkEsacId(): boolean {
+    return this.esac.id === this.midiPlayerService.getEsacId();
   }
 
   editEsac(): void {
