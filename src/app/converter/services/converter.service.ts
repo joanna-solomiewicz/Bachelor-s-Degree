@@ -5,30 +5,18 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ConverterService {
 
-  private urlGetEsacs: string = '/api/esacs';
-  // private urlEsac2MidiFile: string = '/api/esacjson';
-  private urlEsac2MidiNew: string = '/esac2midi';
   private urlMidi2Esac: string = '/midi2esac';
+  private urlEsacFile2EsacObject: string = '/api/esacjson';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getEsacs(): Observable<any> {
-    return this.http.get(this.urlGetEsacs);
-  }
+  esacFileToEsacObject(file: any): Observable<any> {
+    const input = new FormData();
+    input.append('file', file);
 
-  esacToMidiFile(files: any[]) {
-    // let input = new FormData();
-    // for (let file of files) {
-    //   input.append(file.name, file);
-    // }
-
-    // return this.http.post(this.urlEsac2MidiFile, input);
-  }
-
-  esacToMidiNew(form: any) {
-    return this.http.post(this.urlEsac2MidiNew, form, { responseType: 'arraybuffer' });
+    return this.http.post(this.urlEsacFile2EsacObject, input);
   }
 
   midiToEsac(form: any) {
