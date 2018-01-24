@@ -41,7 +41,8 @@ export class EsacConvertFileComponent implements OnInit {
 
   private submit(): void {
     this.converting = true;
-    this.converterService.esacFileToEsacObject(this.files[0])
+    const file = this.files[0];
+    this.converterService.esacFileToEsacObject(file)
       .subscribe(data => {
         this.converted.emit(data);
       },
