@@ -34,4 +34,15 @@ export class EsacConvertDialogComponent implements OnInit {
   closeDialog(): void {
     this.midiPlayerService.stopMidi();
   }
+
+  downloadAllMidi() {
+    this.mainService.multipleEsacToMidiFile(this.esacs)
+      .subscribe(data => {
+        data.forEach((midi, index) => {
+          const blob = new Blob([midi], { type: 'audio/midi' });
+          const esac = this.esacs[index];
+          FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.mid');
+        })
+      })
+  }
 }

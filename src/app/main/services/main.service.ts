@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { forkJoin } from "rxjs/observable/forkJoin";
 
 @Injectable()
 export class MainService {
@@ -25,6 +26,15 @@ export class MainService {
 
   esacToMidiFile(esac: any) {
     return this.http.post(this.urlEsac2MidiFile, esac, {responseType: 'arraybuffer'});
+  }
+
+  multipleEsacToMidiFile(esacs: any[]) {
+    let httpCalls = [];
+    for (let esac of esacs) {
+      httpCalls.push(this.http.post(this.urlEsac2MidiFile, esac, {responseType: 'arraybuffer'}));
+    }
+
+    return forkJoin(httpCalls);
   }
 
   searchEsacs(terms: any): Observable<any> {

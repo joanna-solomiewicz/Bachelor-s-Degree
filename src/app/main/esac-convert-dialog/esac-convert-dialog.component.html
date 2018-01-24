@@ -4,6 +4,10 @@
   </button>
 </div>
 <mat-dialog-content>
+  <button mat-raised-button color="accent" (click)="downloadAllMidi()">
+      <span>Download All</span>
+      <mat-icon>file_download</mat-icon>
+  </button>
   <div class="card-container">
     <div *ngFor="let esac of esacs; index as idx;">
       <esac-card [esac]="esac"></esac-card>
