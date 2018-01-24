@@ -11,7 +11,7 @@ export class MidiConvertFileComponent implements OnInit {
 
   @ViewChild('file') file;
   private files = [];
-  private key = '';
+  private key: string = '';
   private converting: boolean = false;
   @Output() converted = new EventEmitter();
 
@@ -43,13 +43,12 @@ export class MidiConvertFileComponent implements OnInit {
 
   private submit(): void {
     this.converting = true;
-    this.converterService.midiToEsac({ midi: this.files[0], key: this.key })
+    const file = this.files[0];
+    this.converterService.midiToEsac({ midi: file, key: this.key })
       .subscribe(data => {
         this.converted.emit(data);
       },
       error => {
-        console.log('Error downloading file: ', error)
-        this.converted.emit(error);
       },
       () => this.converting = false);
   }
