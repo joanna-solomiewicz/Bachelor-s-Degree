@@ -1,14 +1,51 @@
-<div class="card-container">
-    <mat-card class="card">
-        <mat-card-content>
-            <p *ngIf="esac.key">
-                <span class="card-content--bold">KEY:</span>
-                <span>{{ esac.key }}</span>
-            </p>
-            <p *ngIf="esac.melody">
-                <span class="card-content--bold">MEL:</span>
-                <span class="whitespace">{{ esac.melody }}</span>
-            </p>
-        </mat-card-content>
-    </mat-card>
+<div *ngIf="isMidiPlaying()">
+    <button mat-icon-button (click)="slowDownMidi()">
+        <mat-icon>remove</mat-icon>
+    </button>
+    <mat-slider disabled [min]="speedData.midiSpeedMin" [max]="speedData.midiSpeedMax" [step]="speedData.midiSpeedStep" [value]="speedData.midiSpeedValue"></mat-slider>
+    <button mat-icon-button (click)="speedUpMidi()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+<div>
+    <button mat-icon-button color="accent" (click)="playMidi()" *ngIf="!isMidiPlaying()">
+        <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button mat-icon-button color="accent" (click)="stopMidi()" *ngIf="isMidiPlaying()">
+        <mat-icon>stop</mat-icon>
+    </button>
+    <button mat-icon-button color="accent" (click)="downloadEsac()">
+        <mat-icon>file_download</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" (click)="addEsac()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+<div class="new-container">
+    <form [formGroup]="form" novalidate class="new-form">
+        <mat-form-field>
+            <input matInput formControlName="name" placeholder="Catalog">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="title" placeholder="CUT">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="region" placeholder="REG">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="source" placeholder="TRD">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="signature" placeholder="SIG">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="key" placeholder="KEY*">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput matTextareaAutosize formControlName="melody" placeholder="MEL*"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput matTextareaAutosize formControlName="remarks" placeholder="BEM"></textarea>
+        </mat-form-field>
+    </form>
 </div>

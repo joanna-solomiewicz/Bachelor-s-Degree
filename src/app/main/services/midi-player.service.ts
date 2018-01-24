@@ -26,7 +26,7 @@ export class MidiPlayerService {
         });
     }
 
-    public setMidiSong(midiFile, midiId): void {
+    public setMidiSong(midiFile, midiId?): void {
         this.midiSong = midiFile;
         this.currentEsacId = midiId;
     }

@@ -1,26 +1,23 @@
-$card--width: 220px;
-$card--margin-top: 10px;
-$card--margin-side: 10px;
+$padding: 10px;
+$padding--item: 2px;
 
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.new-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $padding 0;
 }
 
-.card {
-    min-width: $card--width;
-    margin: $card--margin-top $card--margin-side;
-    text-align: initial;
-}
+.new-form {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-around;
 
-.card-content--bold {
-    font-weight: bold;
+  * {
+    padding: 0 $padding--item;
+  }
 }
-
-.whitespace {
-    white-space: pre-wrap;
-}
-
