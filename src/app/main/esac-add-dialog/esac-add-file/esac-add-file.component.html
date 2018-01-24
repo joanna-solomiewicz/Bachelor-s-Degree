@@ -1,8 +1,8 @@
 <div class="file-container">
   <span class="file-button">
-    <button mat-fab color="accent">
+    <button mat-fab color="accent" [disabled]="isFilesChosen()">
       <mat-icon>attach_file</mat-icon>
-      <input #file multiple type="file" class="file-input" (change)="onChooseFiles()">
+      <input #file type="file" class="file-input" (change)="onChooseFiles()">
     </button>
   </span>
   <mat-chip-list *ngIf="isFilesChosen()" class="file-list">
