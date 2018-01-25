@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -27,6 +27,10 @@ export class MidiConvertResultComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fillForm();
+  }
+
+  ngOnDestroy() {
+    this.stopMidi();
   }
 
   private fillForm(): FormGroup {

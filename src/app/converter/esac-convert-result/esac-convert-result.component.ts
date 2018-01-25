@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 import * as FileSaver from 'file-saver';
 
@@ -26,6 +26,10 @@ export class EsacConvertResultComponent implements OnInit {
 
   ngOnInit() {
     this.esac.isPlaying = false;
+  }
+
+  ngOnDestroy() {
+    this.stopMidi();
   }
 
   public playMidi(esac): void {
