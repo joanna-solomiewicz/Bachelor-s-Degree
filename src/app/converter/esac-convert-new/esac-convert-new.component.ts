@@ -34,10 +34,10 @@ export class EsacConvertNewComponent implements OnInit {
       region: new FormControl(''),
       signature: new FormControl(''),
       key: new FormControl('', [
-        // Validators.required
+        Validators.required
       ]),
       melody: new FormControl('', [
-        // Validators.required
+        Validators.required
       ]),
       remarks: new FormControl('')
     });
