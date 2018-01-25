@@ -2,9 +2,9 @@
   <div class="top-container--left">
     <div>
       <mat-form-field class="search-type">
-        <mat-select placeholder="Type" [(value)]="searchType">
-          <mat-option *ngFor="let searchType of searchTypes" [value]="searchType">
-            {{ searchType }}
+        <mat-select placeholder="Type" [(value)]="searchField">
+          <mat-option *ngFor="let searchField of searchFields" [value]="searchField.field">
+            {{ searchField.placeholder }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -17,7 +17,7 @@
     </div>
     <mat-chip-list *ngIf="searchTerms" class="search-list">
       <mat-chip *ngFor="let searchTerm of searchTerms; index as idx;">
-        <span>{{ searchTerm.term }}</span>
+        <span>{{ searchTerm.field }}: {{ searchTerm.term }}</span>
         <mat-icon matChipRemove (click)="removeSearch(idx)">cancel</mat-icon>
       </mat-chip>
     </mat-chip-list>

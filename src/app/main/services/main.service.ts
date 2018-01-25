@@ -8,7 +8,7 @@ export class MainService {
 
   private urlGetEsacs: string = '/api/esac/list';
   private urlEsac2Midi: string = '/api/esac2midi';
-  private urlSearchEsacs: string = '/api/esacs';
+  private urlSearchEsacs: string = '/api/esac/search';
   private urlEsac2MidiFile: string = '/api/esac2midi?format=file';
   private esacEndpoint: string = '/api/esac';
 

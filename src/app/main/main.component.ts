@@ -21,8 +21,17 @@ export class MainComponent implements OnInit {
   private esacsExpanded: boolean[] = [];
   private searchTerm: string = '';
   private searchTerms = [];
-  private searchType;
-  private searchTypes: string[] = ['Name', 'CUT', 'REG', 'TRD', 'SIG', 'KEY', 'MEL', 'BEM', 'Melody', 'Rhythm'];
+  private searchField;
+  private searchFields: Object[] = [
+    { "field": "name", "placeholder": "Name" },
+    { "field": "title", "placeholder": "CUT" },
+    { "field": "region", "placeholder": "REG" },
+    { "field": "source", "placeholder": "TRD" },
+    { "field": "signature", "placeholder": "SIG" },
+    { "field": "key", "placeholder": "KEY" },
+    { "field": "melody", "placeholder": "MEL" },
+    { "field": "remarks", "placeholder": "BEM" }
+  ]
 
   constructor(
     private mainService: MainService,
@@ -51,13 +60,12 @@ export class MainComponent implements OnInit {
   }
 
   private search(): void {
-    this.searchTerms.push({ type: this.searchType, term: this.searchTerm });
+    this.searchTerms.push({ field: this.searchField, term: this.searchTerm });
     this.mainService.searchEsacs(this.searchTerms).subscribe(
       data => {
-        this.esacs = data;
         this.esacService.setEsacs(data);
+        this.esacs = this.esacService.getEsacs();
       }, error => {
-        console.log('GET /esacs error');
       });
     this.resetSearch();
   }
@@ -66,20 +74,19 @@ export class MainComponent implements OnInit {
     this.searchTerms.splice(index, 1);
     this.mainService.searchEsacs(this.searchTerms).subscribe(
       data => {
-        this.esacs = data;
         this.esacService.setEsacs(data);
+        this.esacs = this.esacService.getEsacs();
       }, error => {
-        console.log('GET /esacs error');
       });
   }
 
   private resetSearch(): void {
     this.searchTerm = '';
-    this.searchType = undefined;
+    this.searchField = undefined;
   }
 
   private isSearchIncomplete(): boolean {
-    return this.searchType === undefined || this.searchTerm === '';
+    return this.searchField === undefined || this.searchTerm === '';
   }
 
   private fillEsacsExpanded(length: number): void {
