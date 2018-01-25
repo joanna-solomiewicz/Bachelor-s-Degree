@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { ConverterService } from '../services/converter.service';
+import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
   selector: 'midi-convert-file',
@@ -16,7 +17,8 @@ export class MidiConvertFileComponent implements OnInit {
   @Output() converted = new EventEmitter();
 
   constructor(
-    private converterService: ConverterService
+    private converterService: ConverterService,
+    private messageDialogService: MessageDialogService
   ) { }
 
   ngOnInit() {
@@ -47,9 +49,11 @@ export class MidiConvertFileComponent implements OnInit {
     this.converterService.midiToEsac({ midi: file, key: this.key })
       .subscribe(data => {
         this.converted.emit(data);
+        this.converting = false;
       },
       error => {
-      },
-      () => this.converting = false);
+        this.messageDialogService.displayMessageDialog('Invalid file format or key');
+        this.converting = false;
+      });
   }
 }

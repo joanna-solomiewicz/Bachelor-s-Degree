@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatProgressBarModule, MatChipsModule, MatChip, MatSelectModule, MatSliderModule } from '@angular/material';
 
+import { SharedModule } from '../shared/shared.module';
+
 import { MainService } from './services/main.service';
 import { MidiPlayerService } from './services/midi-player.service';
 import { EsacService } from './services/esac.service';
@@ -42,6 +44,7 @@ const appRoutes: Routes = [
     MatChipsModule,
     MatSelectModule,
     MatSliderModule,
+    SharedModule,
     RouterModule.forChild(appRoutes)
   ],
   declarations: [

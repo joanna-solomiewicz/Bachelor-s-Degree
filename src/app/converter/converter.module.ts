@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatProgressBarModule, MatIconModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatChipsModule, MatCardModule, MatSliderModule } from '@angular/material';
 
 import { ConverterService } from './services/converter.service';
+import { SharedModule } from '../shared/shared.module';
 
 import { ConverterComponent } from './converter.component';
 import { EsacConvertFileComponent } from './esac-convert-file/esac-convert-file.component';
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     MatChipsModule,
     MatCardModule,
     MatSliderModule,
+    SharedModule,
     RouterModule.forChild(appRoutes)
   ],
   declarations: [ConverterComponent, EsacConvertFileComponent, EsacConvertNewComponent, EsacConvertResultComponent, MidiConvertFileComponent, MidiConvertResultComponent],
