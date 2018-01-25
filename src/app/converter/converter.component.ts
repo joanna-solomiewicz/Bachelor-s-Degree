@@ -62,4 +62,16 @@ export class ConverterComponent implements OnInit {
     this.updateProgress();
     this.result = event;
   }
+
+  convertAgain(): void {
+    this.step = 0;
+    this.converterType = null;
+    this.sourceType = null;
+    this.progress = 0;
+    this.result = null;
+  }
+
+  isProgressCompleted(): boolean {
+    return this.progress === 100;
+  }
 }

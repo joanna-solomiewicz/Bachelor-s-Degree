@@ -32,5 +32,9 @@
       <mat-icon>chevron_left</mat-icon>
       <span>Previous</span>
     </button>
+    <button mat-button color="accent" (click)="convertAgain()" *ngIf="isProgressCompleted()">
+      <span>Convert again</span>
+      <mat-icon>swap_horiz</mat-icon>
+    </button>
   </div>
 </div>
