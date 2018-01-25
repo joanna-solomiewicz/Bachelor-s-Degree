@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 import { MatDialog } from '@angular/material';
 
@@ -30,6 +30,10 @@ export class MainCardComponent implements OnInit {
   @Input() isExpanded: boolean;
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.stopMidi();
   }
 
   convertEsac(index: number): void {
@@ -126,6 +130,9 @@ export class MainCardComponent implements OnInit {
 
   public toggleCard(): void {
     this.isExpanded = !this.isExpanded;
+    if (!this.isExpanded) {
+      this.stopMidi();
+    }
   }
 
 }
