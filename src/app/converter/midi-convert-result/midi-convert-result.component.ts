@@ -6,6 +6,7 @@ import * as FileSaver from 'file-saver';
 
 import { MidiPlayerService } from './../../main/services/midi-player.service';
 import { MainService } from './../../main/services/main.service';
+import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
   selector: 'midi-convert-result',
@@ -22,7 +23,8 @@ export class MidiConvertResultComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private mainService: MainService,
-    private midiPlayerService: MidiPlayerService
+    private midiPlayerService: MidiPlayerService,
+    private messageDialogService: MessageDialogService
   ) { }
 
   ngOnInit() {
@@ -73,7 +75,7 @@ export class MidiConvertResultComponent implements OnInit {
         this.midiPlayerService.playMidi();
       },
       error => {
-        console.log('Error downloading file: ', error);
+        this.messageDialogService.displayMessageDialog('Error playing MIDI');
       });
   }
 
@@ -92,7 +94,10 @@ export class MidiConvertResultComponent implements OnInit {
   public addEsac(): any {
     return this.http.put(this.createNewEsacFromURL, this.form.value)
       .subscribe(data => {
-      })
+        this.messageDialogService.displayMessageDialog('EsAC added successfully');
+      }, error => {
+        this.messageDialogService.displayMessageDialog('Error adding EsAC');
+      });
   }
 
   private esacToString(esac): string {
