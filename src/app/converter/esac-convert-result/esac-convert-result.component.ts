@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import * as FileSaver from 'file-saver';
 
 import { MainService } from './../../main/services/main.service';
 import { MidiPlayerService } from './../../main/services/midi-player.service';
-import { HttpClient } from '@angular/common/http';
+import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
   selector: 'esac-convert-result',
@@ -21,7 +22,8 @@ export class EsacConvertResultComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private mainService: MainService,
-    private midiPlayerService: MidiPlayerService
+    private midiPlayerService: MidiPlayerService,
+    private messageDialogService: MessageDialogService
   ) { }
 
   ngOnInit() {
@@ -40,7 +42,7 @@ export class EsacConvertResultComponent implements OnInit {
         this.midiPlayerService.playMidi();
       },
       error => {
-        console.log('Error downloading file: ', error);
+        this.messageDialogService.displayMessageDialog('Invalid EsAC');
       });
   }
 
@@ -64,12 +66,17 @@ export class EsacConvertResultComponent implements OnInit {
         FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.mid');
       },
       error => {
-        console.log('Error downloading file: ', error);
+        this.messageDialogService.displayMessageDialog('Error downloading EsAC');
       });
   }
 
   public addEsac(): any {
-    return this.http.put(this.createNewEsacFromFromURL, this.esac).subscribe();
+    return this.http.put(this.createNewEsacFromFromURL, this.esac)
+      .subscribe(data => {
+        this.messageDialogService.displayMessageDialog('EsAC added successfully');
+      }, error => {
+        this.messageDialogService.displayMessageDialog('Error adding EsAC');
+      });
   }
 
   public slowDownMidi(): void {

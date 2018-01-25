@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { ConverterService } from '../services/converter.service';
+import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
   selector: 'esac-convert-file',
@@ -15,7 +16,8 @@ export class EsacConvertFileComponent implements OnInit {
   @Output() converted = new EventEmitter();
 
   constructor(
-    private converterService: ConverterService
+    private converterService: ConverterService,
+    private messageDialogService: MessageDialogService
   ) { }
 
   ngOnInit() {
@@ -45,12 +47,12 @@ export class EsacConvertFileComponent implements OnInit {
     this.converterService.esacFileToEsacObject(file)
       .subscribe(data => {
         this.converted.emit(data);
+        this.converting = false;
       },
       error => {
-      },
-      () => {
+        this.messageDialogService.displayMessageDialog('Invalid file format');
         this.converting = false;
-      })
+      });
   }
 
 }
