@@ -30,6 +30,8 @@ export class MainComponent implements OnInit {
     { "field": "signature", "placeholder": "SIG" },
     { "field": "key", "placeholder": "KEY" },
     { "field": "melody", "placeholder": "MEL" },
+    { "field": "melody_raw", "placeholder": "Raw melody" },
+    { "field": "melody_rhythm", "placeholder": "Rhythm" },
     { "field": "remarks", "placeholder": "BEM" }
   ]
 
