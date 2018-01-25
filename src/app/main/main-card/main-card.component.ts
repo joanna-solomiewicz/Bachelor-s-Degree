@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 
 import { MatDialog } from '@angular/material';
 
@@ -30,6 +30,7 @@ export class MainCardComponent implements OnInit {
 
   @Input() esac: any;
   @Input() isExpanded: boolean;
+  @Output() updated = new EventEmitter();
   public speedData = this.midiPlayerService.getSpeedData();
 
   ngOnInit() {
@@ -101,6 +102,7 @@ export class MainCardComponent implements OnInit {
           .subscribe(data => {
             this.esac = result;
             this.messageDialogService.displayMessageDialog('EsAC edited successfully');
+            this.updated.emit();
           }, error => {
             this.messageDialogService.displayMessageDialog('Error editing EsAC');
           })

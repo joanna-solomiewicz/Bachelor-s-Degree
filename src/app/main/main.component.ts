@@ -127,6 +127,10 @@ export class MainComponent implements OnInit {
     });
   }
 
+  handleEsacUpdate(): void {
+    this.search();
+  }
+
   convertEsac(index: number): void {
     let esacs = this.esacService.getEsacs();
 
