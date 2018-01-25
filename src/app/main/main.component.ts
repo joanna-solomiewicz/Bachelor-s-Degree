@@ -62,7 +62,9 @@ export class MainComponent implements OnInit {
   }
 
   private search(): void {
-    this.searchTerms.push({ field: this.searchField, term: this.searchTerm });
+    if (!this.isSearchIncomplete()) {
+      this.searchTerms.push({ field: this.searchField, term: this.searchTerm });
+    }
     this.mainService.searchEsacs(this.searchTerms).subscribe(
       data => {
         this.esacService.setEsacs(data);
@@ -117,8 +119,8 @@ export class MainComponent implements OnInit {
       disableClose: true
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      // use result
+    dialogRef.afterClosed().subscribe(() => {
+      this.search();
     });
   }
 

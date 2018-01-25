@@ -24,7 +24,6 @@ export class EsacAddDialogComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
-    window.location.reload();
   }
 
   receiveMessage($event) {
