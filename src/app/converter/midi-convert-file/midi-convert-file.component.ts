@@ -52,7 +52,7 @@ export class MidiConvertFileComponent implements OnInit {
         this.converting = false;
       },
       error => {
-        this.messageDialogService.displayMessageDialog('Invalid file format or key');
+        this.messageDialogService.displayMessageDialog('Invalid file or key');
         this.converting = false;
       });
   }

@@ -7,6 +7,7 @@ import * as FileSaver from 'file-saver';
 import { MainService } from './../services/main.service';
 import { EsacService } from './../services/esac.service';
 import { MidiPlayerService } from './../services/midi-player.service';
+import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 import { OneEsacConvertDialogComponent } from './../one-esac-convert-dialog/one-esac-convert-dialog.component';
 import { EsacEditDialogComponent } from './../esac-edit-dialog/esac-edit-dialog.component';
@@ -23,7 +24,8 @@ export class MainCardComponent implements OnInit {
     private mainService: MainService,
     public dialog: MatDialog,
     public esacService: EsacService,
-    private midiPlayerService: MidiPlayerService
+    private midiPlayerService: MidiPlayerService,
+    private messageDialogService: MessageDialogService
   ) { }
 
   @Input() esac: any;
@@ -57,7 +59,7 @@ export class MainCardComponent implements OnInit {
         this.midiPlayerService.playMidi();
       },
       error => {
-        console.log('Error downloading file: ', error);
+        this.messageDialogService.displayMessageDialog('Invalid EsAC');
       });
   }
 
@@ -95,25 +97,33 @@ export class MainCardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.mainService.updateEsac(esac.id, result).subscribe();
-        this.esac = result;
+        this.mainService.updateEsac(esac.id, result)
+          .subscribe(data => {
+            this.esac = result;
+            this.messageDialogService.displayMessageDialog('EsAC edited successfully');
+          }, error => {
+            this.messageDialogService.displayMessageDialog('Error editing EsAC');
+          })
       }
     });
   }
 
   deleteEsac(esacId: string): void {
-    let esac = this.esac;
     let dialogRef = this.dialog.open(EsacDeleteDialogComponent, {
       autoFocus: false,
       minWidth: 300,
-      disableClose: true,
-      data: esac
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.mainService.deleteEsac(esac.id).subscribe();
-        this.esacService.deleteEsac(esacId);
+        this.mainService.deleteEsac(esacId)
+          .subscribe(() => {
+            this.esacService.deleteEsac(esacId);
+            this.messageDialogService.displayMessageDialog('EsAC deleted successfully');
+          }, error => {
+            this.messageDialogService.displayMessageDialog('Error deleting EsAC');
+          });
       }
     });
   }

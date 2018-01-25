@@ -50,7 +50,7 @@ export class EsacConvertFileComponent implements OnInit {
         this.converting = false;
       },
       error => {
-        this.messageDialogService.displayMessageDialog('Invalid file format');
+        this.messageDialogService.displayMessageDialog('Invalid file');
         this.converting = false;
       });
   }

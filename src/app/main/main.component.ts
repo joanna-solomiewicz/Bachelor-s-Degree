@@ -5,6 +5,7 @@ import * as FileSaver from 'file-saver';
 
 import { MainService } from './services/main.service';
 import { EsacService } from './services/esac.service';
+import { MessageDialogService } from '../shared/services/message-dialog.service';
 
 import { EsacAddDialogComponent } from './esac-add-dialog/esac-add-dialog.component';
 import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-dialog.component';
@@ -17,7 +18,7 @@ import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dial
 })
 export class MainComponent implements OnInit {
 
-  public esacs = null;  //typ
+  public esacs = null;
   private esacsExpanded: boolean[] = [];
   private searchTerm: string = '';
   private searchTerms = [];
@@ -38,7 +39,8 @@ export class MainComponent implements OnInit {
   constructor(
     private mainService: MainService,
     public dialog: MatDialog,
-    private esacService: EsacService
+    private esacService: EsacService,
+    private messageDialogService: MessageDialogService
   ) { }
 
   ngOnInit() {
@@ -46,15 +48,14 @@ export class MainComponent implements OnInit {
   }
 
   private getEsacs(): void {
-    this.mainService.getEsacs().subscribe(
-      data => {
+    this.mainService.getEsacs()
+      .subscribe(data => {
         this.esacService.setEsacs(data);
         this.esacs = this.esacService.getEsacs();
         this.fillEsacsExpanded(this.esacs.length);
       }, error => {
-        console.log('GET /esacs error');
-      }
-    );
+        this.messageDialogService.displayMessageDialog('Error fetching EsACs');
+      });
   }
 
   public isAnyEsac(): boolean {
@@ -65,22 +66,24 @@ export class MainComponent implements OnInit {
     if (!this.isSearchIncomplete()) {
       this.searchTerms.push({ field: this.searchField, term: this.searchTerm });
     }
-    this.mainService.searchEsacs(this.searchTerms).subscribe(
-      data => {
+    this.mainService.searchEsacs(this.searchTerms)
+      .subscribe(data => {
         this.esacService.setEsacs(data);
         this.esacs = this.esacService.getEsacs();
       }, error => {
+        this.messageDialogService.displayMessageDialog('Error searching EsACs');
       });
     this.resetSearch();
   }
 
   private removeSearch(index: number): void {
     this.searchTerms.splice(index, 1);
-    this.mainService.searchEsacs(this.searchTerms).subscribe(
-      data => {
+    this.mainService.searchEsacs(this.searchTerms)
+      .subscribe(data => {
         this.esacService.setEsacs(data);
         this.esacs = this.esacService.getEsacs();
       }, error => {
+        this.messageDialogService.displayMessageDialog('Error searching EsACs');
       });
   }
 
@@ -143,7 +146,7 @@ export class MainComponent implements OnInit {
     FileSaver.saveAs(blob, 'esacs.txt');
   }
 
-  private esacsToString(esacs): string { //typ
+  private esacsToString(esacs): string {
     let string = '';
     for (let esac of esacs) {
       string += esac.name + '\n';

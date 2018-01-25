@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { MessageDialogService } from '../../shared/services/message-dialog.service';
+
 @Injectable()
 export class MidiPlayerService {
 
@@ -15,7 +17,9 @@ export class MidiPlayerService {
     private midiSpeedMin: number = 1.5;
     private midiSpeedStep: number = 0.1;
 
-    constructor() {
+    constructor(
+        private messageDialogService: MessageDialogService
+    ) {
         this.isMidiLoaded = false;
 
         MIDI.loadPlugin({
@@ -59,6 +63,9 @@ export class MidiPlayerService {
                     this.resetMidiSettings();
                 }
             });
+        }
+        else {
+            this.messageDialogService.displayMessageDialog('Playing MIDI unsupported');
         }
     }
 

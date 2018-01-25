@@ -5,6 +5,7 @@ import * as FileSaver from 'file-saver';
 
 import { MainService } from '../services/main.service';
 import { MidiPlayerService } from '../services/midi-player.service';
+import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
   selector: 'esac-convert-dialog',
@@ -20,7 +21,8 @@ export class EsacConvertDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<EsacConvertDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private mainService: MainService,
-    private midiPlayerService: MidiPlayerService
+    private midiPlayerService: MidiPlayerService,
+    private messageDialogService: MessageDialogService
   ) { }
 
   ngOnInit() {
@@ -43,6 +45,8 @@ export class EsacConvertDialogComponent implements OnInit {
           const esac = this.esacs[index];
           FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.mid');
         })
+      }, error => {
+        this.messageDialogService.displayMessageDialog('Error downloading EsACs');
       })
   }
 }

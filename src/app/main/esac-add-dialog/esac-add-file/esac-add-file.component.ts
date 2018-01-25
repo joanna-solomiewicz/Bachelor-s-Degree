@@ -46,11 +46,12 @@ export class EsacAddFileComponent implements OnInit {
     const input = new FormData();
     input.append('file', this.files[0]);
 
-    return this.http.put(this.createNewEsacFromURL, input).subscribe(data => {
-      this.isSubmited.emit({text: 'Success'});
-    },
-    error => {
-      this.isSubmited.emit({text: 'Error downloading file. Please try again.'});
-    });
+    return this.http.put(this.createNewEsacFromURL, input)
+      .subscribe(data => {
+        this.isSubmited.emit({ text: 'EsAC added successfully' });
+      },
+      error => {
+        this.isSubmited.emit({ text: 'Invalid file' });
+      });
   }
 }

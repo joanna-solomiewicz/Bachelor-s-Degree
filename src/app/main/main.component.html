@@ -1,4 +1,4 @@
-<div class="top-container" *ngIf="isAnyEsac()">
+<div class="top-container">
   <div class="top-container--left">
     <div>
       <mat-form-field class="search-type">
@@ -22,7 +22,7 @@
       </mat-chip>
     </mat-chip-list>
   </div>
-  <div class="top-container--right">
+  <div class="top-container--right" *ngIf="isAnyEsac()">
     <button mat-icon-button (click)="downloadEsac()" class="top-item">
       <mat-icon>file_download</mat-icon>
     </button>

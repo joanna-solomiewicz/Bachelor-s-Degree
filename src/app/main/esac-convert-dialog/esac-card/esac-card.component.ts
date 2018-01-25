@@ -4,6 +4,7 @@ import * as FileSaver from 'file-saver';
 
 import { MainService } from '../../services/main.service';
 import { MidiPlayerService } from '../../services/midi-player.service';
+import { MessageDialogService } from '../../../shared/services/message-dialog.service';
 
 @Component({
   selector: 'esac-card',
@@ -14,7 +15,8 @@ export class EsacCardComponent implements OnInit {
 
   constructor(
     private mainService: MainService,
-    private midiPlayerService: MidiPlayerService
+    private midiPlayerService: MidiPlayerService,
+    private messageDialogService: MessageDialogService
   ) { }
 
   @Input() esac: any;
@@ -31,7 +33,7 @@ export class EsacCardComponent implements OnInit {
         this.midiPlayerService.playMidi();
       },
       error => {
-        console.log('Error downloading file: ', error);
+        this.messageDialogService.displayMessageDialog('Invalid EsAC');
       });
   }
 
@@ -55,7 +57,7 @@ export class EsacCardComponent implements OnInit {
         FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.mid');
       },
       error => {
-        console.log('Error downloading file: ', error);
+        this.messageDialogService.displayMessageDialog('Error downloading EsAC');
       });
   }
 }
