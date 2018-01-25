@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatProgressBarModule, MatChipsModule, MatChip, MatSelectModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatProgressBarModule, MatChipsModule, MatChip, MatSelectModule, MatSliderModule } from '@angular/material';
 
 import { MainService } from './services/main.service';
 import { MidiPlayerService } from './services/midi-player.service';
@@ -41,6 +41,7 @@ const appRoutes: Routes = [
     MatProgressBarModule,
     MatChipsModule,
     MatSelectModule,
+    MatSliderModule,
     RouterModule.forChild(appRoutes)
   ],
   declarations: [

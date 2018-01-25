@@ -28,6 +28,7 @@ export class MainCardComponent implements OnInit {
 
   @Input() esac: any;
   @Input() isExpanded: boolean;
+  public speedData = this.midiPlayerService.getSpeedData();
 
   ngOnInit() {
   }
@@ -50,6 +51,7 @@ export class MainCardComponent implements OnInit {
   public playMidi(): void {
     this.mainService.esacToMidi(this.esac)
       .subscribe(data => {
+        this.speedData = this.midiPlayerService.getSpeedData();
         this.esac.isPlaying = true;
         this.midiPlayerService.setMidiSong(data, this.esac.id);
         this.midiPlayerService.playMidi();
@@ -70,6 +72,16 @@ export class MainCardComponent implements OnInit {
 
   private checkEsacId(): boolean {
     return this.esac.id === this.midiPlayerService.getEsacId();
+  }
+
+  public slowDownMidi(): void {
+    this.midiPlayerService.slowDownMidi();
+    this.speedData = this.midiPlayerService.getSpeedData();
+  }
+
+  public speedUpMidi(): void {
+    this.midiPlayerService.speedUpMidi();
+    this.speedData = this.midiPlayerService.getSpeedData();
   }
 
   editEsac(): void {
@@ -130,7 +142,7 @@ export class MainCardComponent implements OnInit {
 
   public toggleCard(): void {
     this.isExpanded = !this.isExpanded;
-    if (!this.isExpanded) {
+    if (!this.isExpanded && this.esac.isPlaying) {
       this.stopMidi();
     }
   }

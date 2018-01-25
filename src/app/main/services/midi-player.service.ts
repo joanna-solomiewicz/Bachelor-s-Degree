@@ -56,10 +56,16 @@ export class MidiPlayerService {
             this.player.removeListener();
             this.player.addListener((currentSong) => {
                 if (currentSong.now === currentSong.end) {
-                    this.isPlaying = false;
+                    this.resetMidiSettings();
                 }
             });
         }
+    }
+
+    private resetMidiSettings(): void {
+        this.isPlaying = false;
+        this.midiSpeedValue = 1;
+        this.player.timeWarp = 1;
     }
 
     public stopMidi(): void {

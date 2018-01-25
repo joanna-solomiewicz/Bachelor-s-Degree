@@ -92,7 +92,6 @@ export class MidiConvertResultComponent implements OnInit {
   public addEsac(): any {
     return this.http.put(this.createNewEsacFromURL, this.form.value)
       .subscribe(data => {
-        debugger
       })
   }
 

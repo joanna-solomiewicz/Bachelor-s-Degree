@@ -1,62 +1,71 @@
 <mat-card class="card">
-  <div class="card-buttons" *ngIf="isExpanded">
-    <button mat-icon-button (click)="downloadEsac()" color="accent">
-      <mat-icon>file_download</mat-icon>
-    </button>
-    <button mat-icon-button *ngIf="!isMidiPlaying()" (click)="playMidi()" color="accent">
-      <mat-icon>play_arrow</mat-icon>
-    </button>
-    <button mat-icon-button *ngIf="isMidiPlaying()" (click)="stopMidi()" color="accent">
-      <mat-icon>stop</mat-icon>
-    </button>
-    <button mat-icon-button (click)="convertEsac()" color="accent">
-      <mat-icon>swap_horiz</mat-icon>
-    </button>
-    <button mat-icon-button (click)="editEsac()">
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button (click)="deleteEsac(esac.id)">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </div>
-  <mat-card-header>
-    <mat-card-title>{{ esac.name }}</mat-card-title>
-    <mat-card-subtitle>{{ esac.title }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p *ngIf="esac.region.length && isExpanded">
-      <span class="card-content--bold">REG:</span>
-      <span>{{ esac.region }}</span>
-    </p>
-    <p *ngIf="esac.source.length && isExpanded">
-      <span class="card-content--bold">TRD:</span>
-      <span>{{ esac.source }}</span>
-    </p>
-    <p *ngIf="esac.signature.length && isExpanded">
-      <span class="card-content--bold">SIG:</span>
-      <span>{{ esac.signature }}</span>
-    </p>
-    <p *ngIf="esac.key.length">
-      <span class="card-content--bold">KEY:</span>
-      <span>{{ esac.key }}</span>
-    </p>
-    <p *ngIf="esac.melody.length">
-      <span class="card-content--bold">MEL:</span>
-      <span class="whitespace">{{ esac.melody }}</span>
-    </p>
-    <p *ngIf="esac.remarks.length && isExpanded">
-      <span class="card-content--bold">BEM:</span>
-      <span>{{ esac.remarks }}</span>
-    </p>
-  </mat-card-content>
-  <mat-card-footer>
-    <div class="card-footer">
-      <button mat-button (click)="toggleCard()" *ngIf="!isExpanded" class="card-footer-button">
-        <mat-icon>expand_more</mat-icon>
-      </button>
-      <button mat-button (click)="toggleCard()" *ngIf="isExpanded" class="card-footer-button">
-        <mat-icon>expand_less</mat-icon>
-      </button>
+    <div class="card-speed" *ngIf="isMidiPlaying()">
+        <button mat-icon-button (click)="slowDownMidi()">
+            <mat-icon>remove</mat-icon>
+        </button>
+        <mat-slider disabled [min]="speedData.midiSpeedMin" [max]="speedData.midiSpeedMax" [step]="speedData.midiSpeedStep" [value]="speedData.midiSpeedValue"></mat-slider>
+        <button mat-icon-button (click)="speedUpMidi()">
+            <mat-icon>add</mat-icon>
+        </button>
     </div>
-  </mat-card-footer>
+    <div class="card-buttons" *ngIf="isExpanded">
+        <button mat-icon-button (click)="downloadEsac()" color="accent">
+            <mat-icon>file_download</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="!isMidiPlaying()" (click)="playMidi()" color="accent">
+            <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="isMidiPlaying()" (click)="stopMidi()" color="accent">
+            <mat-icon>stop</mat-icon>
+        </button>
+        <button mat-icon-button (click)="convertEsac()" color="accent">
+            <mat-icon>swap_horiz</mat-icon>
+        </button>
+        <button mat-icon-button (click)="editEsac()">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteEsac(esac.id)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <mat-card-header>
+        <mat-card-title>{{ esac.name }}</mat-card-title>
+        <mat-card-subtitle>{{ esac.title }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p *ngIf="esac.region.length && isExpanded">
+            <span class="card-content--bold">REG:</span>
+            <span>{{ esac.region }}</span>
+        </p>
+        <p *ngIf="esac.source.length && isExpanded">
+            <span class="card-content--bold">TRD:</span>
+            <span>{{ esac.source }}</span>
+        </p>
+        <p *ngIf="esac.signature.length && isExpanded">
+            <span class="card-content--bold">SIG:</span>
+            <span>{{ esac.signature }}</span>
+        </p>
+        <p *ngIf="esac.key.length">
+            <span class="card-content--bold">KEY:</span>
+            <span>{{ esac.key }}</span>
+        </p>
+        <p *ngIf="esac.melody.length">
+            <span class="card-content--bold">MEL:</span>
+            <span class="whitespace">{{ esac.melody }}</span>
+        </p>
+        <p *ngIf="esac.remarks.length && isExpanded">
+            <span class="card-content--bold">BEM:</span>
+            <span>{{ esac.remarks }}</span>
+        </p>
+    </mat-card-content>
+    <mat-card-footer>
+        <div class="card-footer">
+            <button mat-button (click)="toggleCard()" *ngIf="!isExpanded" class="card-footer-button">
+                <mat-icon>expand_more</mat-icon>
+            </button>
+            <button mat-button (click)="toggleCard()" *ngIf="isExpanded" class="card-footer-button">
+                <mat-icon>expand_less</mat-icon>
+            </button>
+        </div>
+    </mat-card-footer>
 </mat-card>
