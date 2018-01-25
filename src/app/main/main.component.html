@@ -31,7 +31,7 @@
     </button>
     <div class="top-menu--large top-item">
       <button mat-button (click)="expandAll()">Expand all</button>
-      <button mat-button (click)="closeAll()">Close all</button>
+      <button mat-button (click)="closeAll()">Collapse all</button>
     </div>
     <div class="top-menu--small top-item">
       <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -39,7 +39,7 @@
       </button>
       <mat-menu #menu [overlapTrigger]="false">
         <button mat-menu-item (click)="expandAll()">Expand all</button>
-        <button mat-menu-item (click)="closeAll()">Close all</button>
+        <button mat-menu-item (click)="closeAll()">Collapse all</button>
       </mat-menu>
     </div>
   </div>
