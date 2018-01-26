@@ -7,6 +7,7 @@ import * as FileSaver from 'file-saver';
 import { MidiPlayerService } from './../../main/services/midi-player.service';
 import { MainService } from './../../main/services/main.service';
 import { MessageDialogService } from '../../shared/services/message-dialog.service';
+import { melody_regexp } from '../../shared/consts/regexp';
 
 @Component({
   selector: 'midi-convert-result',
@@ -46,7 +47,8 @@ export class MidiConvertResultComponent implements OnInit {
         Validators.required
       ]),
       melody: new FormControl(this.esac.melody, [
-        Validators.required
+        Validators.required,
+        Validators.pattern(melody_regexp)
       ]),
       remarks: new FormControl(this.esac.remarks)
     });

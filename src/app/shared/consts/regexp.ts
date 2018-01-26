@@ -1,0 +1,1 @@
+export const melody_regexp: string = '[0-7_\.b#\\-\+0^\ ()]*(\ \/\/)$';

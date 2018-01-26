@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { melody_regexp } from '../../shared/consts/regexp';
+
 @Component({
   selector: 'esac-edit-dialog',
   templateUrl: './esac-edit-dialog.component.html',
@@ -36,7 +38,8 @@ export class EsacEditDialogComponent implements OnInit {
         Validators.required
       ]),
       melody: new FormControl(esac.melody, [
-        Validators.required
+        Validators.required,
+        Validators.pattern(melody_regexp)
       ]),
       remarks: new FormControl(esac.remarks)
     });

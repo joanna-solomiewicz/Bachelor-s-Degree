@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ConverterService } from '../services/converter.service';
+import { melody_regexp } from '../../shared/consts/regexp';
 
 @Component({
   selector: 'esac-convert-new',
@@ -37,7 +38,8 @@ export class EsacConvertNewComponent implements OnInit {
         Validators.required
       ]),
       melody: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern(melody_regexp)
       ]),
       remarks: new FormControl('')
     });
