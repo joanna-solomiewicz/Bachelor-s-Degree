@@ -14,7 +14,7 @@ export class MessageDialogService {
 
   public displayMessageDialog(message: string): void {
     let dialogRef = this.dialog.open(MessageDialogComponent, {
-      autoFocus: false,
+      autoFocus: true,
       minWidth: 300,
       disableClose: true,
       data: message
