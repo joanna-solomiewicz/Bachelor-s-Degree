@@ -26,6 +26,8 @@ $card--margin-side: 5px;
 
 .whitespace {
     white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .card-footer-button {
