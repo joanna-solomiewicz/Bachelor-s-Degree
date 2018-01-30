@@ -1,1 +1,1 @@
-export const melody_regexp: string = '[0-7_\.b#\\-\+0^\ ()]*(\ \/\/)$';
+export const melody_regexp: string = '[0-7_\.b#\\-\+0^\ ()\n\r]*(\ \/\/)$';
