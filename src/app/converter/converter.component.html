@@ -1,8 +1,8 @@
 <div class="wizard">
   <mat-progress-bar mode="determinate" [value]="progress" class="wizard-progress"></mat-progress-bar>
   <div *ngIf="step === 0" class="wizard-step">
-    <button mat-raised-button (click)="chooseConverter(0)" color="primary">ESAC to MIDI</button>
-    <button mat-raised-button (click)="chooseConverter(1)" color="primary">MIDI to ESAC</button>
+    <button mat-raised-button (click)="chooseConverter(0)" color="primary">EsAC to MIDI</button>
+    <button mat-raised-button (click)="chooseConverter(1)" color="primary">MIDI to EsAC</button>
   </div>
   <div *ngIf="step === 1" class="wizard-step">
     <div *ngIf="converterType === 0">
