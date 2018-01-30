@@ -21,7 +21,7 @@ export class MidiConvertFileComponent implements OnInit {
                             'Fb', 'F', 'F#',
                             'Gb', 'G', 'G#',
                             'Ab', 'A', 'A#',
-                            'Bb', 'B', 'B#'];
+                            'Bb', 'B'];
 
   constructor(
     private converterService: ConverterService,
