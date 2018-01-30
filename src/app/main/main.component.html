@@ -9,7 +9,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field class="search-term">
-        <input matInput placeholder="Search term" [(ngModel)]="searchTerm">
+        <textarea matInput matTextareaAutosize placeholder="Search term" [(ngModel)]="searchTerm"></textarea>
       </mat-form-field>
       <button mat-mini-fab (click)="search()" [disabled]="isSearchIncomplete()" color="accent" class="search-button">
         <mat-icon>search</mat-icon>
