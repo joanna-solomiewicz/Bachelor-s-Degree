@@ -4,15 +4,15 @@
     <mat-card-subtitle>{{ esac.title }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions class="card-actions">
-    <button mat-raised-button color="accent" *ngIf="!isMidiPlaying()" (click)="playMidi(esac)">
+    <button matTooltip="Play MIDI" mat-raised-button color="accent" *ngIf="!isMidiPlaying()" (click)="playMidi(esac)">
       <span>Play</span>
       <mat-icon>play_arrow</mat-icon>
     </button>
-    <button mat-raised-button color="accent" *ngIf="isMidiPlaying()" (click)="stopMidi()">
+    <button matTooltip="Stop playing MIDI" mat-raised-button color="accent" *ngIf="isMidiPlaying()" (click)="stopMidi()">
       <span>Stop</span>
       <mat-icon>stop</mat-icon>
     </button>
-    <button mat-raised-button color="accent" (click)="downloadMidi(esac)">
+    <button matTooltip="Download MIDI" mat-raised-button color="accent" (click)="downloadMidi(esac)">
       <span>Download</span>
       <mat-icon>file_download</mat-icon>
     </button>

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatProgressBarModule, MatChipsModule, MatChip, MatSelectModule, MatSliderModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatProgressBarModule, MatChipsModule, MatChip, MatSelectModule, MatSliderModule, MatTooltipModule } from '@angular/material';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -44,6 +44,7 @@ const appRoutes: Routes = [
     MatChipsModule,
     MatSelectModule,
     MatSliderModule,
+    MatTooltipModule,
     SharedModule,
     RouterModule.forChild(appRoutes)
   ],

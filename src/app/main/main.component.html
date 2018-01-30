@@ -11,9 +11,11 @@
       <mat-form-field class="search-term">
         <textarea matInput matTextareaAutosize placeholder="Search term" [(ngModel)]="searchTerm"></textarea>
       </mat-form-field>
-      <button mat-mini-fab (click)="search()" [disabled]="isSearchIncomplete()" color="accent" class="search-button">
-        <mat-icon>search</mat-icon>
-      </button>
+      <span matTooltip="Filter EsACs">
+        <button mat-mini-fab (click)="search()" [disabled]="isSearchIncomplete()" color="accent" class="search-button">
+          <mat-icon>search</mat-icon>
+        </button>
+      </span>
     </div>
     <mat-chip-list *ngIf="searchTerms" class="search-list">
       <mat-chip *ngFor="let searchTerm of searchTerms; index as idx;">
@@ -23,10 +25,10 @@
     </mat-chip-list>
   </div>
   <div class="top-container--right" *ngIf="isAnyEsac()">
-    <button mat-icon-button (click)="downloadEsac()" class="top-item">
+    <button mat-icon-button matTooltip="Download all EsACs" (click)="downloadEsac()" class="top-item">
       <mat-icon>file_download</mat-icon>
     </button>
-    <button mat-icon-button (click)="convertEsac(-1)" class="top-item">
+    <button mat-icon-button matTooltip="Convert EsACs to MIDI" (click)="convertEsac(-1)" class="top-item">
       <mat-icon>swap_horiz</mat-icon>
     </button>
     <div class="top-menu--large top-item">
@@ -50,6 +52,6 @@
   </div>
 </div>
 
-<button mat-fab color="accent" class="button-add" (click)="addEsac()">
+<button mat-fab matTooltip="Add EsAC" color="accent" class="button-add" (click)="addEsac()">
   <mat-icon>add</mat-icon>
 </button>

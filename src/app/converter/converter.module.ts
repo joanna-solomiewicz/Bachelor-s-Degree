@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatProgressBarModule, MatIconModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatChipsModule, MatCardModule, MatSliderModule } from '@angular/material';
+import { MatButtonModule, MatProgressBarModule, MatIconModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatChipsModule, MatCardModule, MatSliderModule, MatTooltipModule } from '@angular/material';
 
 import { ConverterService } from './services/converter.service';
 import { SharedModule } from '../shared/shared.module';
@@ -34,6 +34,7 @@ const appRoutes: Routes = [
     MatChipsModule,
     MatCardModule,
     MatSliderModule,
+    MatTooltipModule,
     SharedModule,
     RouterModule.forChild(appRoutes)
   ],

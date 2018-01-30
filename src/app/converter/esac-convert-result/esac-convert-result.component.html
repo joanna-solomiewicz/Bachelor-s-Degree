@@ -1,25 +1,25 @@
 <div class="card-container">
     <mat-card class="card">
         <div class="card-speed" *ngIf="isMidiPlaying()">
-            <button mat-icon-button (click)="slowDownMidi()">
+            <button matTooltip="Play slower" mat-icon-button (click)="slowDownMidi()">
                 <mat-icon>remove</mat-icon>
             </button>
             <mat-slider disabled [min]="speedData.midiSpeedMin" [max]="speedData.midiSpeedMax" [step]="speedData.midiSpeedStep" [value]="speedData.midiSpeedValue"></mat-slider>
-            <button mat-icon-button (click)="speedUpMidi()">
+            <button matTooltip="Play faster" mat-icon-button (click)="speedUpMidi()">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
         <div class="card-buttons">
-            <button mat-icon-button color="accent" (click)="playMidi(esac)" *ngIf="!isMidiPlaying()">
+            <button matTooltip="Play MIDI" mat-icon-button color="accent" (click)="playMidi(esac)" *ngIf="!isMidiPlaying()">
                 <mat-icon>play_arrow</mat-icon>
             </button>
-            <button mat-icon-button color="accent" (click)="stopMidi()" *ngIf="isMidiPlaying()">
+            <button matTooltip="Stop playing MIDI" mat-icon-button color="accent" (click)="stopMidi()" *ngIf="isMidiPlaying()">
                 <mat-icon>stop</mat-icon>
             </button>
-            <button mat-icon-button color="accent" (click)="downloadMidi(esac)">
+            <button matTooltip="Download MIDI" mat-icon-button color="accent" (click)="downloadMidi(esac)">
                 <mat-icon>file_download</mat-icon>
             </button>
-            <button mat-icon-button color="primary" (click)="addEsac()">
+            <button matTooltip="Add this EsAC" mat-icon-button color="primary" (click)="addEsac()">
                 <mat-icon>add</mat-icon>
             </button>
         </div>

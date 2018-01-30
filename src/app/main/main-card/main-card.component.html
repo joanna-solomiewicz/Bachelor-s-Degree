@@ -1,30 +1,30 @@
 <mat-card class="card">
     <div class="card-speed" *ngIf="isMidiPlaying()">
-        <button mat-icon-button (click)="slowDownMidi()">
+        <button matTooltip="Play slower" mat-icon-button (click)="slowDownMidi()">
             <mat-icon>remove</mat-icon>
         </button>
         <mat-slider disabled [min]="speedData.midiSpeedMin" [max]="speedData.midiSpeedMax" [step]="speedData.midiSpeedStep" [value]="speedData.midiSpeedValue"></mat-slider>
-        <button mat-icon-button (click)="speedUpMidi()">
+        <button matTooltip="Play faster" mat-icon-button (click)="speedUpMidi()">
             <mat-icon>add</mat-icon>
         </button>
     </div>
     <div class="card-buttons" *ngIf="isExpanded">
-        <button mat-icon-button (click)="downloadEsac()" color="accent">
+        <button matTooltip="Download EsAC" mat-icon-button (click)="downloadEsac()" color="accent">
             <mat-icon>file_download</mat-icon>
         </button>
-        <button mat-icon-button *ngIf="!isMidiPlaying()" (click)="playMidi()" color="accent">
+        <button matTooltip="Play MIDI" mat-icon-button *ngIf="!isMidiPlaying()" (click)="playMidi()" color="accent">
             <mat-icon>play_arrow</mat-icon>
         </button>
-        <button mat-icon-button *ngIf="isMidiPlaying()" (click)="stopMidi()" color="accent">
+        <button matTooltip="Stop playing MIDI" mat-icon-button *ngIf="isMidiPlaying()" (click)="stopMidi()" color="accent">
             <mat-icon>stop</mat-icon>
         </button>
-        <button mat-icon-button (click)="convertEsac()" color="accent">
+        <button matTooltip="Convert EsAC to MIDI" mat-icon-button (click)="convertEsac()" color="accent">
             <mat-icon>swap_horiz</mat-icon>
         </button>
-        <button mat-icon-button (click)="editEsac()">
+        <button matTooltip="Edit this EsAC" mat-icon-button (click)="editEsac()">
             <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button (click)="deleteEsac(esac.id)">
+        <button matTooltip="Delete this EsAC" mat-icon-button (click)="deleteEsac(esac.id)">
             <mat-icon>delete</mat-icon>
         </button>
     </div>
