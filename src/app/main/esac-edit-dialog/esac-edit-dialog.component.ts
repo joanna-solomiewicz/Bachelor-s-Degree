@@ -11,7 +11,7 @@ import { melody_regexp } from '../../shared/consts/regexp';
 })
 export class EsacEditDialogComponent implements OnInit {
 
-  private form: FormGroup;
+  public form: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<EsacEditDialogComponent>,
@@ -22,7 +22,7 @@ export class EsacEditDialogComponent implements OnInit {
     this.form = this.fillForm();
   }
 
-  private editEsac(): void {
+  public editEsac(): void {
     this.dialogRef.close(this.form.value);
   }
 

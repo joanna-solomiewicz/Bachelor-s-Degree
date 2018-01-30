@@ -22,7 +22,7 @@ export class EsacAddFileComponent implements OnInit {
   ngOnInit() {
   }
 
-  private onChooseFiles(): void {
+  public onChooseFiles(): void {
     if (this.file) {
       for (let file of this.file.nativeElement.files) {
         this.files.push(file);
@@ -30,7 +30,7 @@ export class EsacAddFileComponent implements OnInit {
     }
   }
 
-  private onDeleteFiles(index?: number): void {
+  public onDeleteFiles(index?: number): void {
     if (index) {
       this.files.splice(index, 1);
     } else {
@@ -38,11 +38,11 @@ export class EsacAddFileComponent implements OnInit {
     }
   }
 
-  private isFilesChosen(): boolean {
+  public isFilesChosen(): boolean {
     return this.files.length ? true : false;
   }
 
-  private addEsacFile(): any {
+  public addEsacFile(): any {
     const input = new FormData();
     input.append('file', this.files[0]);
 

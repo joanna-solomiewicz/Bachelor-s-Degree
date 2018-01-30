@@ -17,7 +17,7 @@ export class EsacDeleteDialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  private confirm(decision: boolean): void {
+  public confirm(decision: boolean): void {
     this.dialogRef.close(decision);
   }
 }

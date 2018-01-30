@@ -12,7 +12,7 @@ export class EsacConvertFileComponent implements OnInit {
 
   @ViewChild('file') file;
   private files = [];
-  private converting: boolean = false;
+  public converting: boolean = false;
   @Output() converted = new EventEmitter();
 
   constructor(

@@ -12,7 +12,7 @@ export class MidiConvertFileComponent implements OnInit {
 
   @ViewChild('file') file;
   private files = [];
-  private converting: boolean = false;
+  public converting: boolean = false;
   @Output() converted = new EventEmitter();
   private key: string = '';
   private keys: string[] = ['Cb', 'C', 'C#',

@@ -14,7 +14,7 @@ import { MessageDialogService } from '../../shared/services/message-dialog.servi
 })
 export class EsacConvertDialogComponent implements OnInit {
 
-  private esacs: any[];
+  public esacs: any[];
   private downloading: boolean[];
 
   constructor(

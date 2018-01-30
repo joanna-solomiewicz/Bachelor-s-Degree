@@ -12,7 +12,7 @@ import { melody_regexp } from '../../../shared/consts/regexp';
 })
 export class EsacAddNewComponent implements OnInit {
 
-  private form: FormGroup;
+  public form: FormGroup;
   private createNewEsacFromURL: string = '/api/esac';
 
   @Output() isSubmited = new EventEmitter<object>();
@@ -25,7 +25,7 @@ export class EsacAddNewComponent implements OnInit {
     this.form = this.newForm();
   }
 
-  private addEsac(): any {
+  public addEsac(): any {
     return this.http.put(this.createNewEsacFromURL, this.form.value).subscribe(data => {
         this.isSubmited.emit({text: 'EsAC added successfully'});
       },

@@ -13,7 +13,7 @@ import { MidiPlayerService } from '../services/midi-player.service';
 })
 export class OneEsacConvertDialogComponent implements OnInit {
 
-  private esac: any;
+  public esac: any;
 
   constructor(
     public dialogRef: MatDialogRef<OneEsacConvertDialogComponent>,

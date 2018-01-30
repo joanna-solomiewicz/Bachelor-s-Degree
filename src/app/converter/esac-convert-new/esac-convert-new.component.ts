@@ -12,7 +12,7 @@ import { melody_regexp } from '../../shared/consts/regexp';
 export class EsacConvertNewComponent implements OnInit {
 
   private form: FormGroup;
-  private converting: boolean = false;
+  public converting: boolean = false;
   @Output() converted = new EventEmitter();
 
   constructor(

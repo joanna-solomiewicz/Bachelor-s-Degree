@@ -17,7 +17,7 @@ import { melody_regexp } from '../../shared/consts/regexp';
 export class MidiConvertResultComponent implements OnInit {
 
   @Input() esac;
-  private form: FormGroup;
+  public form: FormGroup;
   public speedData = this.midiPlayerService.getSpeedData();
   private createNewEsacFromURL: string = '/api/esac';
 

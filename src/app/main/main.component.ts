@@ -19,11 +19,11 @@ import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dial
 export class MainComponent implements OnInit {
 
   public esacs = null;
-  private esacsExpanded: boolean[] = [];
-  private searchTerm: string = '';
-  private searchTerms = [];
-  private searchField;
-  private searchFields: Object[] = [
+  public esacsExpanded: boolean[] = [];
+  public searchTerm: string = '';
+  public searchTerms = [];
+  public searchField;
+  public searchFields: Object[] = [
     { "field": "name", "placeholder": "Name" },
     { "field": "title", "placeholder": "CUT" },
     { "field": "region", "placeholder": "REG" },
@@ -62,7 +62,7 @@ export class MainComponent implements OnInit {
     return !this.esacs || this.esacs.length === 0 ? false : true;
   }
 
-  private search(): void {
+  public search(): void {
     if (!this.isSearchIncomplete()) {
       this.searchTerms.push({ field: this.searchField, term: this.searchTerm });
     }
@@ -92,7 +92,7 @@ export class MainComponent implements OnInit {
     this.searchField = undefined;
   }
 
-  private isSearchIncomplete(): boolean {
+  public isSearchIncomplete(): boolean {
     return this.searchField === undefined || this.searchTerm === '';
   }
 
