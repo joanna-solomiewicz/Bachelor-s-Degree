@@ -11,8 +11,8 @@
       <button mat-raised-button (click)="chooseSource(1)" color="primary">Create new</button>
     </div>
     <div *ngIf="step === 1" class="wizard-step">
-      <esac-add-file *ngIf="sourceType === 0" (isSubmited)="receiveMessage($event)"></esac-add-file>
-      <esac-add-new *ngIf="sourceType === 1" (isSubmited)="receiveMessage($event)"></esac-add-new>
+      <app-esac-add-file *ngIf="sourceType === 0" (isSubmited)="receiveMessage($event)"></app-esac-add-file>
+      <app-esac-add-new *ngIf="sourceType === 1" (isSubmited)="receiveMessage($event)"></app-esac-add-new>
     </div>
     <div *ngIf="step === 2" class="wizard-step">
       <p class="message">{{text}}</p>

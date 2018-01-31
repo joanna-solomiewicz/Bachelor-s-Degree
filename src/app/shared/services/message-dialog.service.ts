@@ -13,7 +13,7 @@ export class MessageDialogService {
   ) { }
 
   public displayMessageDialog(message: string): void {
-    let dialogRef = this.dialog.open(MessageDialogComponent, {
+    const dialogRef = this.dialog.open(MessageDialogComponent, {
       autoFocus: true,
       minWidth: 300,
       disableClose: true,

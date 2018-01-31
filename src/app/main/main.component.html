@@ -48,7 +48,7 @@
 </div>
 <div class="card-container">
   <div *ngFor="let esac of esacs; index as idx;">
-    <main-card [esac]="esac" [isExpanded]=esacsExpanded[idx] (updated)="handleEsacUpdate()"></main-card>
+    <app-main-card [esac]="esac" [isExpanded]=esacsExpanded[idx] (updated)="handleEsacUpdate()"></app-main-card>
   </div>
 </div>
 

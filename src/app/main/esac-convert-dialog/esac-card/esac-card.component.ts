@@ -7,7 +7,7 @@ import { MidiPlayerService } from '../../services/midi-player.service';
 import { MessageDialogService } from '../../../shared/services/message-dialog.service';
 
 @Component({
-  selector: 'esac-card',
+  selector: 'app-esac-card',
   templateUrl: './esac-card.component.html',
   styleUrls: ['./esac-card.component.scss']
 })

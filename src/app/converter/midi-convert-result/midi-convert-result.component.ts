@@ -10,16 +10,16 @@ import { MessageDialogService } from '../../shared/services/message-dialog.servi
 import { melody_regexp } from '../../shared/consts/regexp';
 
 @Component({
-  selector: 'midi-convert-result',
+  selector: 'app-midi-convert-result',
   templateUrl: './midi-convert-result.component.html',
   styleUrls: ['./midi-convert-result.component.scss']
 })
-export class MidiConvertResultComponent implements OnInit {
+export class MidiConvertResultComponent implements OnInit, OnDestroy {
 
   @Input() esac;
   public form: FormGroup;
   public speedData = this.midiPlayerService.getSpeedData();
-  private createNewEsacFromURL: string = '/api/esac';
+  private createNewEsacFromURL = '/api/esac';
 
   constructor(
     private http: HttpClient,

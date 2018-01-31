@@ -8,7 +8,7 @@ import { MidiPlayerService } from '../services/midi-player.service';
 import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
-  selector: 'esac-convert-dialog',
+  selector: 'app-esac-convert-dialog',
   templateUrl: './esac-convert-dialog.component.html',
   styleUrls: ['./esac-convert-dialog.component.scss']
 })
@@ -44,9 +44,9 @@ export class EsacConvertDialogComponent implements OnInit {
           const blob = new Blob([midi], { type: 'audio/midi' });
           const esac = this.esacs[index];
           FileSaver.saveAs(blob, esac.name + '_' + esac.title + '.mid');
-        })
+        });
       }, error => {
         this.messageDialogService.displayMessageDialog('Error downloading EsACs');
-      })
+      });
   }
 }

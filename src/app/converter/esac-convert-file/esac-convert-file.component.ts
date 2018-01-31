@@ -4,7 +4,7 @@ import { ConverterService } from '../services/converter.service';
 import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
-  selector: 'esac-convert-file',
+  selector: 'app-esac-convert-file',
   templateUrl: './esac-convert-file.component.html',
   styleUrls: ['./esac-convert-file.component.scss']
 })
@@ -12,7 +12,7 @@ export class EsacConvertFileComponent implements OnInit {
 
   @ViewChild('file') file;
   private files = [];
-  public converting: boolean = false;
+  public converting = false;
   @Output() converted = new EventEmitter();
 
   constructor(
@@ -25,15 +25,18 @@ export class EsacConvertFileComponent implements OnInit {
 
   private onChooseFiles(): void {
     if (this.file) {
-      for (let file of this.file.nativeElement.files) {
+      for (const file of this.file.nativeElement.files) {
         this.files.push(file);
       }
     }
   }
 
   private onDeleteFiles(index?: number): void {
-    if (index) this.files.splice(index, 1);
-    else this.files = [];
+    if (index) {
+      this.files.splice(index, 1);
+    } else {
+      this.files = [];
+    }
   }
 
   private isFilesChosen(): boolean {

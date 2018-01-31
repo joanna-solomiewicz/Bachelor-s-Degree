@@ -7,7 +7,7 @@ import { MainService } from '../services/main.service';
 import { MidiPlayerService } from '../services/midi-player.service';
 
 @Component({
-  selector: 'one-esac-convert-dialog',
+  selector: 'app-one-esac-convert-dialog',
   templateUrl: './one-esac-convert-dialog.component.html',
   styleUrls: ['./one-esac-convert-dialog.component.scss']
 })

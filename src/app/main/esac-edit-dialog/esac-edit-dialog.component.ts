@@ -5,7 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { melody_regexp } from '../../shared/consts/regexp';
 
 @Component({
-  selector: 'esac-edit-dialog',
+  selector: 'app-esac-edit-dialog',
   templateUrl: './esac-edit-dialog.component.html',
   styleUrls: ['./esac-edit-dialog.component.scss']
 })
@@ -27,7 +27,7 @@ export class EsacEditDialogComponent implements OnInit {
   }
 
   private fillForm(): FormGroup {
-    let esac = this.data;
+    const esac = this.data;
     return new FormGroup({
       name: new FormControl(esac.name),
       title: new FormControl(esac.title),
