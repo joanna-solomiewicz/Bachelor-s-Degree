@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'esac-add-file',
+  selector: 'app-esac-add-file',
   templateUrl: './esac-add-file.component.html',
   styleUrls: ['./esac-add-file.component.scss']
 })

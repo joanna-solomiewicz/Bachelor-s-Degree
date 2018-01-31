@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { melody_regexp } from '../../../shared/consts/regexp';
 
 @Component({
-  selector: 'esac-add-new',
+  selector: 'app-esac-add-new',
   templateUrl: './esac-add-new.component.html',
   styleUrls: ['./esac-add-new.component.scss']
 })

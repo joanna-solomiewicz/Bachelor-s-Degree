@@ -5,7 +5,7 @@ import { ConverterService } from '../services/converter.service';
 import { melody_regexp } from '../../shared/consts/regexp';
 
 @Component({
-  selector: 'esac-convert-new',
+  selector: 'app-esac-convert-new',
   templateUrl: './esac-convert-new.component.html',
   styleUrls: ['./esac-convert-new.component.scss']
 })

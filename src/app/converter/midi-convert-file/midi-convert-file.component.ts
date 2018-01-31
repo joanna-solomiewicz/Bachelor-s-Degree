@@ -4,7 +4,7 @@ import { ConverterService } from '../services/converter.service';
 import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
-  selector: 'midi-convert-file',
+  selector: 'app-midi-convert-file',
   templateUrl: './midi-convert-file.component.html',
   styleUrls: ['./midi-convert-file.component.scss']
 })

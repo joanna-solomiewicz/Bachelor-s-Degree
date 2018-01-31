@@ -8,7 +8,7 @@ import { MidiPlayerService } from '../services/midi-player.service';
 import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
-  selector: 'esac-convert-dialog',
+  selector: 'app-esac-convert-dialog',
   templateUrl: './esac-convert-dialog.component.html',
   styleUrls: ['./esac-convert-dialog.component.scss']
 })

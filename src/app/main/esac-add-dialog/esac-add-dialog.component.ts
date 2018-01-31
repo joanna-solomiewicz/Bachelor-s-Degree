@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'esac-add-dialog',
+  selector: 'app-esac-add-dialog',
   templateUrl: './esac-add-dialog.component.html',
   styleUrls: ['./esac-add-dialog.component.scss']
 })

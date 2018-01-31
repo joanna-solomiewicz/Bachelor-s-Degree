@@ -14,7 +14,7 @@ import { EsacEditDialogComponent } from './../esac-edit-dialog/esac-edit-dialog.
 import { EsacDeleteDialogComponent } from './../esac-delete-dialog/esac-delete-dialog.component';
 
 @Component({
-  selector: 'main-card',
+  selector: 'app-main-card',
   templateUrl: './main-card.component.html',
   styleUrls: ['./main-card.component.scss']
 })

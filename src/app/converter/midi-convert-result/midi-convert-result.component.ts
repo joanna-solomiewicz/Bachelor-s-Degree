@@ -10,7 +10,7 @@ import { MessageDialogService } from '../../shared/services/message-dialog.servi
 import { melody_regexp } from '../../shared/consts/regexp';
 
 @Component({
-  selector: 'midi-convert-result',
+  selector: 'app-midi-convert-result',
   templateUrl: './midi-convert-result.component.html',
   styleUrls: ['./midi-convert-result.component.scss']
 })

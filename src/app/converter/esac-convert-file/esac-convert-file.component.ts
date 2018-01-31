@@ -4,7 +4,7 @@ import { ConverterService } from '../services/converter.service';
 import { MessageDialogService } from '../../shared/services/message-dialog.service';
 
 @Component({
-  selector: 'esac-convert-file',
+  selector: 'app-esac-convert-file',
   templateUrl: './esac-convert-file.component.html',
   styleUrls: ['./esac-convert-file.component.scss']
 })

@@ -5,7 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { melody_regexp } from '../../shared/consts/regexp';
 
 @Component({
-  selector: 'esac-edit-dialog',
+  selector: 'app-esac-edit-dialog',
   templateUrl: './esac-edit-dialog.component.html',
   styleUrls: ['./esac-edit-dialog.component.scss']
 })
