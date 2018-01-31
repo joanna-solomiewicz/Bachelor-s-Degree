@@ -14,7 +14,7 @@ import { melody_regexp } from '../../shared/consts/regexp';
   templateUrl: './midi-convert-result.component.html',
   styleUrls: ['./midi-convert-result.component.scss']
 })
-export class MidiConvertResultComponent implements OnInit {
+export class MidiConvertResultComponent implements OnInit, OnDestroy {
 
   @Input() esac;
   public form: FormGroup;

@@ -3,7 +3,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatProgressBarModule, MatIconModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatChipsModule, MatCardModule, MatSliderModule, MatTooltipModule, MatSelectModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatProgressBarModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatChipsModule,
+  MatCardModule,
+  MatSliderModule,
+  MatTooltipModule,
+  MatSelectModule
+} from '@angular/material';
 
 import { ConverterService } from './services/converter.service';
 import { SharedModule } from '../shared/shared.module';
@@ -39,7 +51,14 @@ const appRoutes: Routes = [
     SharedModule,
     RouterModule.forChild(appRoutes)
   ],
-  declarations: [ConverterComponent, EsacConvertFileComponent, EsacConvertNewComponent, EsacConvertResultComponent, MidiConvertFileComponent, MidiConvertResultComponent],
+  declarations: [
+    ConverterComponent,
+    EsacConvertFileComponent,
+    EsacConvertNewComponent,
+    EsacConvertResultComponent,
+    MidiConvertFileComponent,
+    MidiConvertResultComponent
+  ],
   providers: [ConverterService]
 })
 export class ConverterModule { }

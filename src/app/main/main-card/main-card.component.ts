@@ -18,7 +18,7 @@ import { EsacDeleteDialogComponent } from './../esac-delete-dialog/esac-delete-d
   templateUrl: './main-card.component.html',
   styleUrls: ['./main-card.component.scss']
 })
-export class MainCardComponent implements OnInit {
+export class MainCardComponent implements OnInit, OnDestroy {
 
   constructor(
     private mainService: MainService,

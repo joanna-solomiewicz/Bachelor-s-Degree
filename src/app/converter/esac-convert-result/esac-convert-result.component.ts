@@ -12,7 +12,7 @@ import { MessageDialogService } from '../../shared/services/message-dialog.servi
   templateUrl: './esac-convert-result.component.html',
   styleUrls: ['./esac-convert-result.component.scss']
 })
-export class EsacConvertResultComponent implements OnInit {
+export class EsacConvertResultComponent implements OnInit, OnDestroy {
 
   @Input() esac;
 
