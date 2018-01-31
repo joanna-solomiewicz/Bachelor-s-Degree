@@ -153,15 +153,15 @@ export class MainComponent implements OnInit {
   private esacsToString(esacs): string {
     let string = '';
     for (let esac of esacs) {
-      string += esac.name + '\n';
-      string += 'CUT[' + esac.title + ']\n';
-      string += 'REG[' + esac.region + ']\n';
-      string += 'TRD[' + esac.source + ']\n';
-      string += 'SIG[' + esac.signature + ']\n';
-      string += 'KEY[' + esac.key + ']\n';
-      string += 'MEL[' + esac.melody + ']\n';
-      string += 'BEM[' + esac.remarks + ']\n';
-      string += '\n';
+      string += esac.name + '\r\n';
+      string += 'CUT[' + esac.title + ']\r\n';
+      string += 'REG[' + esac.region + ']\r\n';
+      string += 'TRD[' + esac.source + ']\r\n';
+      string += 'SIG[' + esac.signature + ']\r\n';
+      string += 'KEY[' + esac.key + ']\r\n';
+      string += 'MEL[' + esac.melody + ']\r\n';
+      string += 'BEM[' + esac.remarks + ']\r\n';
+      string += '\r\n';
     }
 
     return string;
