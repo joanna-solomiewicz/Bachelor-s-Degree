@@ -13,7 +13,7 @@ import { melody_regexp } from '../../../shared/consts/regexp';
 export class EsacAddNewComponent implements OnInit {
 
   public form: FormGroup;
-  private createNewEsacFromURL: string = '/api/esac';
+  private createNewEsacFromURL = '/api/esac';
 
   @Output() isSubmited = new EventEmitter<object>();
 

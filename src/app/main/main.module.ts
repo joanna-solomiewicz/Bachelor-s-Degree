@@ -20,7 +20,7 @@ import { EsacEditDialogComponent } from './esac-edit-dialog/esac-edit-dialog.com
 import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dialog.component';
 import { EsacCardComponent } from './esac-convert-dialog/esac-card/esac-card.component';
 import { MainCardComponent } from './main-card/main-card.component';
-import { OneEsacConvertDialogComponent } from './one-esac-convert-dialog/one-esac-convert-dialog.component'
+import { OneEsacConvertDialogComponent } from './one-esac-convert-dialog/one-esac-convert-dialog.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },

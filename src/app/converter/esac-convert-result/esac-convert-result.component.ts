@@ -16,7 +16,7 @@ export class EsacConvertResultComponent implements OnInit {
 
   @Input() esac;
 
-  private createNewEsacFromFromURL: string = '/api/esac';
+  private createNewEsacFromFromURL = '/api/esac';
   public speedData = this.midiPlayerService.getSpeedData();
 
   constructor(

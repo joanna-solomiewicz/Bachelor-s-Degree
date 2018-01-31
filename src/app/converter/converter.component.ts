@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConverterComponent implements OnInit {
 
-  public step: number = 0;
-  private lastStepESAC: number = 3;
-  private lastStepMIDI: number = 2;
+  public step = 0;
+  private lastStepESAC = 3;
+  private lastStepMIDI = 2;
   private converterType: number;
   private sourceType: number;
-  public progress: number = 0;
+  public progress = 0;
   private result;
 
   constructor() { }

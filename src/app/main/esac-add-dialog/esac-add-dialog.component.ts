@@ -8,10 +8,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class EsacAddDialogComponent implements OnInit {
 
-  public step: number = 0;
-  private lastStep: number = 2;
+  public step = 0;
+  private lastStep = 2;
   private sourceType: number;
-  public progress: number = 0;
+  public progress = 0;
   public text;
 
   constructor(

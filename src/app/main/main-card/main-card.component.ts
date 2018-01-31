@@ -43,7 +43,7 @@ export class MainCardComponent implements OnInit {
   convertEsac(index: number): void {
     const esac = this.esac;
 
-    let dialogRef = this.dialog.open(OneEsacConvertDialogComponent, {
+    const dialogRef = this.dialog.open(OneEsacConvertDialogComponent, {
       autoFocus: false,
       minWidth: 300,
       disableClose: true,
@@ -88,8 +88,8 @@ export class MainCardComponent implements OnInit {
   }
 
   editEsac(): void {
-    let esac = this.esac;
-    let dialogRef = this.dialog.open(EsacEditDialogComponent, {
+    const esac = this.esac;
+    const dialogRef = this.dialog.open(EsacEditDialogComponent, {
       autoFocus: false,
       minWidth: 300,
       disableClose: true,
@@ -105,13 +105,13 @@ export class MainCardComponent implements OnInit {
             this.updated.emit();
           }, error => {
             this.messageDialogService.displayMessageDialog('Error editing EsAC');
-          })
+          });
       }
     });
   }
 
   deleteEsac(esacId: string): void {
-    let dialogRef = this.dialog.open(EsacDeleteDialogComponent, {
+    const dialogRef = this.dialog.open(EsacDeleteDialogComponent, {
       autoFocus: false,
       minWidth: 300,
       disableClose: true

@@ -20,21 +20,21 @@ export class MainComponent implements OnInit {
 
   public esacs = null;
   public esacsExpanded: boolean[] = [];
-  public searchTerm: string = '';
+  public searchTerm = '';
   public searchTerms = [];
   public searchField;
   public searchFields: Object[] = [
-    { "field": "name", "placeholder": "Name" },
-    { "field": "title", "placeholder": "CUT" },
-    { "field": "region", "placeholder": "REG" },
-    { "field": "source", "placeholder": "TRD" },
-    { "field": "signature", "placeholder": "SIG" },
-    { "field": "key", "placeholder": "KEY" },
-    { "field": "melody", "placeholder": "MEL" },
-    { "field": "melody_raw", "placeholder": "Raw melody" },
-    { "field": "melody_rhythm", "placeholder": "Rhythm" },
-    { "field": "remarks", "placeholder": "BEM" }
-  ]
+    { 'field': 'name', 'placeholder': 'Name' },
+    { 'field': 'title', 'placeholder': 'CUT' },
+    { 'field': 'region', 'placeholder': 'REG' },
+    { 'field': 'source', 'placeholder': 'TRD' },
+    { 'field': 'signature', 'placeholder': 'SIG' },
+    { 'field': 'key', 'placeholder': 'KEY' },
+    { 'field': 'melody', 'placeholder': 'MEL' },
+    { 'field': 'melody_raw', 'placeholder': 'Raw melody' },
+    { 'field': 'melody_rhythm', 'placeholder': 'Rhythm' },
+    { 'field': 'remarks', 'placeholder': 'BEM' }
+  ];
 
   constructor(
     private mainService: MainService,
@@ -115,7 +115,7 @@ export class MainComponent implements OnInit {
   }
 
   addEsac(): void {
-    let dialogRef = this.dialog.open(EsacAddDialogComponent, {
+    const dialogRef = this.dialog.open(EsacAddDialogComponent, {
       autoFocus: false,
       minWidth: 300,
       width: '80%',
@@ -132,9 +132,9 @@ export class MainComponent implements OnInit {
   }
 
   convertEsac(index: number): void {
-    let esacs = this.esacService.getEsacs();
+    const esacs = this.esacService.getEsacs();
 
-    let dialogRef = this.dialog.open(EsacConvertDialogComponent, {
+    const dialogRef = this.dialog.open(EsacConvertDialogComponent, {
       autoFocus: false,
       minWidth: 300,
       disableClose: true,
@@ -143,16 +143,16 @@ export class MainComponent implements OnInit {
   }
 
   private downloadEsac(): void {
-    let esacs = this.esacService.getEsacs();
+    const esacs = this.esacService.getEsacs();
 
     const content = this.esacsToString(esacs);
-    let blob = new Blob([content], { type: 'text/plain' });
+    const blob = new Blob([content], { type: 'text/plain' });
     FileSaver.saveAs(blob, 'esacs.txt');
   }
 
   private esacsToString(esacs): string {
     let string = '';
-    for (let esac of esacs) {
+    for (const esac of esacs) {
       string += esac.name + '\n';
       string += 'CUT[' + esac.title + ']\n';
       string += 'REG[' + esac.region + ']\n';

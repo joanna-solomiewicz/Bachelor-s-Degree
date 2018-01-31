@@ -11,7 +11,7 @@ export class EsacAddFileComponent implements OnInit {
 
   @ViewChild('file') file;
   private files = [];
-  private createNewEsacFromURL: string = '/api/esac?parse=file';
+  private createNewEsacFromURL = '/api/esac?parse=file';
 
   @Output() isSubmited = new EventEmitter<object>();
 
@@ -24,7 +24,7 @@ export class EsacAddFileComponent implements OnInit {
 
   public onChooseFiles(): void {
     if (this.file) {
-      for (let file of this.file.nativeElement.files) {
+      for (const file of this.file.nativeElement.files) {
         this.files.push(file);
       }
     }

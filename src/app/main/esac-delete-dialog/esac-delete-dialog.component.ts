@@ -8,7 +8,7 @@ import { MatDialogRef } from '@angular/material';
 })
 export class EsacDeleteDialogComponent implements OnInit {
 
-  private confirmation: boolean = false;
+  private confirmation = false;
 
   constructor(
     public dialogRef: MatDialogRef<EsacDeleteDialogComponent>,

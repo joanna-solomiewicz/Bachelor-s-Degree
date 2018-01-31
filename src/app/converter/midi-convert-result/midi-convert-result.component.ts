@@ -19,7 +19,7 @@ export class MidiConvertResultComponent implements OnInit {
   @Input() esac;
   public form: FormGroup;
   public speedData = this.midiPlayerService.getSpeedData();
-  private createNewEsacFromURL: string = '/api/esac';
+  private createNewEsacFromURL = '/api/esac';
 
   constructor(
     private http: HttpClient,

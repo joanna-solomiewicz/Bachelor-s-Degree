@@ -27,7 +27,7 @@ export class EsacEditDialogComponent implements OnInit {
   }
 
   private fillForm(): FormGroup {
-    let esac = this.data;
+    const esac = this.data;
     return new FormGroup({
       name: new FormControl(esac.name),
       title: new FormControl(esac.title),

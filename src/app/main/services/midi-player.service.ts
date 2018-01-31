@@ -12,10 +12,10 @@ export class MidiPlayerService {
 
     private isMidiLoaded;
     private isPlaying = false;
-    private midiSpeedValue: number = 1;
-    private midiSpeedMax: number = 0.5;
-    private midiSpeedMin: number = 1.5;
-    private midiSpeedStep: number = 0.1;
+    private midiSpeedValue = 1;
+    private midiSpeedMax = 0.5;
+    private midiSpeedMin = 1.5;
+    private midiSpeedStep = 0.1;
 
     constructor(
         private messageDialogService: MessageDialogService
