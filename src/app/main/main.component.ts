@@ -12,7 +12,7 @@ import { EsacConvertDialogComponent } from './esac-convert-dialog/esac-convert-d
 import { EsacDeleteDialogComponent } from './esac-delete-dialog/esac-delete-dialog.component';
 
 @Component({
-  selector: 'main',
+  selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })

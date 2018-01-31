@@ -16,12 +16,12 @@ export class MidiConvertFileComponent implements OnInit {
   @Output() converted = new EventEmitter();
   private key = '';
   private keys: string[] = ['Cb', 'C', 'C#',
-                            'Db', 'D', 'D#',
-                            'Eb', 'E', 'E#',
-                            'Fb', 'F', 'F#',
-                            'Gb', 'G', 'G#',
-                            'Ab', 'A', 'A#',
-                            'Bb', 'B'];
+    'Db', 'D', 'D#',
+    'Eb', 'E', 'E#',
+    'Fb', 'F', 'F#',
+    'Gb', 'G', 'G#',
+    'Ab', 'A', 'A#',
+    'Bb', 'B'];
 
   constructor(
     private converterService: ConverterService,
@@ -38,8 +38,11 @@ export class MidiConvertFileComponent implements OnInit {
   }
 
   private onDeleteFiles(index?: number): void {
-    if (index) this.files.splice(index, 1);
-    else this.files = [];
+    if (index) {
+      this.files.splice(index, 1);
+    } else {
+      this.files = [];
+    }
   }
 
   private isFilesChosen(): boolean {

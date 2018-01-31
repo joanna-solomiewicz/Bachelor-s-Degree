@@ -63,8 +63,7 @@ export class MidiPlayerService {
                     this.resetMidiSettings();
                 }
             });
-        }
-        else {
+        } else {
             this.messageDialogService.displayMessageDialog('Playing MIDI unsupported');
         }
     }

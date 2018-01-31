@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'converter',
+  selector: 'app-converter',
   templateUrl: './converter.component.html',
   styleUrls: ['./converter.component.scss']
 })
@@ -33,7 +33,9 @@ export class ConverterComponent implements OnInit {
   }
 
   private prevStep(): void {
-    if (this.step > 0) this.step--;
+    if (this.step > 0) {
+      this.step--;
+    }
     this.updateProgress();
   }
 

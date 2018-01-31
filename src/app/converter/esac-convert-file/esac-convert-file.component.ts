@@ -32,8 +32,11 @@ export class EsacConvertFileComponent implements OnInit {
   }
 
   private onDeleteFiles(index?: number): void {
-    if (index) this.files.splice(index, 1);
-    else this.files = [];
+    if (index) {
+      this.files.splice(index, 1);
+    } else {
+      this.files = [];
+    }
   }
 
   private isFilesChosen(): boolean {
