@@ -152,7 +152,7 @@ export class MainComponent implements OnInit {
 
   private esacsToString(esacs): string {
     let string = '';
-    for (let esac of esacs) {
+    for (const esac of esacs) {
       string += esac.name + '\r\n';
       string += 'CUT[' + esac.title + ']\r\n';
       string += 'REG[' + esac.region + ']\r\n';
